@@ -5,6 +5,8 @@ name = "pypi"
 
 [packages]
 numpy = "*"
+openmeteo-requests = "*"
+requests-cache = "*"
 
 [dev-packages]
 
