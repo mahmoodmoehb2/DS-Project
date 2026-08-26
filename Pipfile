@@ -4,8 +4,12 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-numpy = "*"
+requests = "*"
 pandas = "*"
+numpy = "*"
+matplotlib = "*"
+openmeteo-requests = "*"
+requests-cache = "*"
 
 [dev-packages]
 
