@@ -1,1 +1,11 @@
 .DS_Store
+my_env/
+venv/
+.venv/
+.ipynb_checkpoints/
+openmeteo_cache.sqlite
+cache_tmax/
+*.pkl
+__pycache__/
+*.pyc
+anaconda_projects/
