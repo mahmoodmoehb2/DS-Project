@@ -9,3 +9,4 @@ cache_tmax/
 __pycache__/
 *.pyc
 anaconda_projects/
+data/raw/

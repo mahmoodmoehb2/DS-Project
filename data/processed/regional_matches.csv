@@ -1,0 +1,55 @@
+grossstadt,bundesland,gs_population,Mittelstadt_name,Mittelstadt_population,Mittelstadt_lat,Mittelstadt_lon,Mittelstadt_distance_km,Mittelstadt_fallback,Kleinstadt_name,Kleinstadt_population,Kleinstadt_lat,Kleinstadt_lon,Kleinstadt_distance_km,Kleinstadt_fallback,Landgemeinde_name,Landgemeinde_population,Landgemeinde_lat,Landgemeinde_lon,Landgemeinde_distance_km,Landgemeinde_fallback
+Saarbrücken,Saarland,183509,St. Ingbert,35059,49.278888888,7.115,9.8,False,Sulzbach/Saar,16368,49.283333333,7.066666666,7.4,False,Hornbach,1419,49.188055555,7.369166666,27.3,True
+München,Bayern,1510378,Unterhaching,26079,48.065833333,11.61,8.4,False,Unterföhring,11957,48.191666666,11.652777777,8.3,False,Baierbrunn,3426,48.016666666,11.483333333,15.1,False
+Augsburg,Bayern,303150,Gersthofen,23492,48.416666666,10.866666666,5.8,False,Stadtbergen,15614,48.366666666,10.85,3.5,False,Aystetten,3053,48.404722222,10.774166666,10.0,False
+Regensburg,Bayern,151517,Schwandorf,30239,49.3236,12.09935,34.1,False,Lappersdorf,13524,49.0525,12.090277777,4.0,False,Pettendorf,3497,49.059444444,12.005833333,7.4,False
+Nürnberg,Bayern,529508,Zirndorf,26257,49.45,10.95,9.2,False,Stein,14851,49.416666666,11.016666666,6.0,False,Kalchreuth,3033,49.566666666,11.133333333,13.2,False
+Heidelberg,Baden-Württemberg,162960,Leimen,27286,49.348055555,8.691111111,7.3,False,Dossenheim,12534,49.449166666,8.672222222,4.9,False,Gaiberg,2429,49.365833333,8.750277777,5.9,False
+Freiburg im Breisgau,Baden-Württemberg,237244,Waldkirch,22266,48.093888888,7.960833333,13.7,False,Merzhausen,5644,47.966388888,7.828611111,3.6,False,Au,1505,47.95,7.833333333,5.2,False
+Mannheim,Baden-Württemberg,316877,Schwetzingen,21609,49.383333333,8.566666666,13.7,False,Ilvesheim,9280,49.4725,8.5675,7.5,False,Wilhelmsfeld,3295,49.471666666,8.755555555,21.0,False
+Stuttgart,Baden-Württemberg,633484,Korntal-Münchingen,20394,48.830555555,9.121388888,7.3,False,Gerlingen,19774,48.8,9.065277777,8.8,False,Affalterbach,4524,48.921944444,9.321666666,19.1,False
+Karlsruhe,Baden-Württemberg,309964,Stutensee,25311,49.064722222,8.471666666,7.5,False,Eggenstein-Leopoldshafen,16777,49.077777777,8.3925,6.8,False,Au am Rhein,3490,48.951388888,8.236388888,14.0,False
+Potsdam,Brandenburg,187119,Werder (Havel),26970,52.378055555,12.935,8.8,False,Nuthetal,9269,52.348626,13.104225,6.6,False,Seddiner See,4847,52.287166666,13.000888888,13.3,False
+Darmstadt,Hessen,164792,Weiterstadt,26291,49.9,8.6,5.2,False,Mühltal,13866,49.824972222,8.702194444,6.0,False,Messel,4263,49.938330555,8.740561111,10.3,False
+Frankfurt am Main,Hessen,775790,Neu-Isenburg,39420,50.055763888,8.697083333,6.2,False,Steinbach (Taunus),10869,50.167777777,8.571875,10.1,False,Niederdorfelden,4289,50.195,8.8,12.6,False
+Wiesbaden,Hessen,285522,Taunusstein,30820,50.143472222,8.160555555,8.8,False,Walluf,5573,50.037083333,8.154166666,7.9,False,Kiedrich,4136,50.040833333,8.084166666,12.1,False
+Kassel,Hessen,204687,Baunatal,28298,51.258888888,9.418333333,8.4,False,Fuldatal,13016,51.348430555,9.525569444,4.1,False,Nieste,2119,51.313611111,9.670833333,12.0,False
+Rostock,Mecklenburg-Vorpommern,210795,Güstrow,29582,53.793888888,12.176388888,32.3,False,Dummerstorf,7672,54.016666666,12.216666666,9.2,False,Roggentin,2731,54.071389,12.205556,4.9,False
+Aachen,Nordrhein-Westfalen,252769,Würselen,38750,50.824722222,6.1275,6.2,False,Roetgen,8765,50.65,6.2,16.2,False,Heimbach,4349,50.633055555,6.483055555,32.3,False
+Bonn,Nordrhein-Westfalen,335789,Alfter,23949,50.735555555,7.009166666,6.5,False,Swisttal,18780,50.717777777,6.920277777,13.0,False,Dahlem,4457,50.383055555,6.549722222,55.3,False
+Dortmund,Nordrhein-Westfalen,595471,Schwerte,46571,51.445833333,7.565277777,10.3,False,Holzwickede,17587,51.5,7.616666666,10.6,False,Hallenberg,4488,51.112,8.6216,92.0,False
+Neuss,Nordrhein-Westfalen,155163,Kaarst,44208,51.22785,6.627330555,5.6,False,Rommerskirchen,13688,51.034722222,6.691388888,18.4,False,Marienmünster,4913,51.816666666,9.183055555,185.4,False
+Paderborn,Nordrhein-Westfalen,155749,Salzkotten,25283,51.670833333,8.604722222,12.3,False,Borchen,13706,51.666666666,8.733333333,6.0,False,Diemelsee,4686,51.366666666,8.8,39.0,True
+Köln,Nordrhein-Westfalen,1024621,Hürth,61252,50.8775,6.876111111,9.2,False,Odenthal,15385,51.033333333,7.116666666,15.0,False,Rheinbreitbach,4538,50.620277777,7.230833333,40.6,True
+Leverkusen,Nordrhein-Westfalen,166414,Monheim am Rhein,43524,51.1,6.9,9.4,False,Burscheid,19005,51.085555555,7.113611111,10.8,False,Buchholz,4801,50.689444444,7.394166666,47.9,True
+Duisburg,Nordrhein-Westfalen,500810,Neukirchen-Vluyn,28110,51.441666666,6.558333333,14.1,False,Rheurdt,6544,51.466666666,6.466666666,20.8,False,Friesenhagen,1649,50.903333333,7.810555555,93.9,True
+Solingen,Nordrhein-Westfalen,161545,Haan,30558,51.1954956,7.0085328,5.9,False,Hückeswagen,14770,51.145,7.341666666,18.2,False,Kircheib,536,50.709444444,7.456944444,57.7,True
+Bielefeld,Nordrhein-Westfalen,338410,Steinhagen,20885,52.005,8.414722222,8.2,False,Werther (Westf.),11193,52.075,8.4125,10.5,False,Luhden,1191,52.225277777,9.092222222,44.7,True
+Hagen,Nordrhein-Westfalen,190384,Herdecke,22665,51.4,7.433333333,5.4,False,Breckerfeld,9120,51.261111111,7.466666666,10.9,False,Harbach,518,50.861111111,7.846944444,61.2,True
+Münster,Nordrhein-Westfalen,322904,Telgte,20301,51.981944444,7.785555555,11.2,False,Altenberge,10438,52.045833333,7.465277777,14.4,False,Ohne,589,52.266666666,7.283333333,41.1,True
+Hamm,Nordrhein-Westfalen,180761,Ahlen,53278,51.763333333,7.891111111,10.4,False,Bönen,18239,51.598611111,7.759166666,10.1,False,Schapen,2496,52.383333333,7.566666666,79.9,True
+Mönchengladbach,Nordrhein-Westfalen,268943,Korschenbroich,34324,51.183333333,6.516666666,6.1,False,Schwalmtal,19248,51.2225,6.2625,12.2,False,Berg,1306,50.555555555,6.946944444,80.2,True
+Essen,Nordrhein-Westfalen,586608,Velbert,82462,51.340048,7.041629,12.5,False,Hünxe,13980,51.641666666,6.767222222,27.2,False,Forst,590,50.804722222,7.682222222,85.7,True
+Gelsenkirchen,Nordrhein-Westfalen,265885,Gladbeck,75799,51.57134,6.98267,10.3,False,Schermbeck,13565,51.695,6.875555555,25.5,False,Birken-Honigsessen,2468,50.819444444,7.741388888,89.1,True
+Herne,Nordrhein-Westfalen,157896,Castrop-Rauxel,74370,51.55,7.316666666,6.8,False,Olfen,13298,51.708611111,7.38,21.5,False,Samern,805,52.316666666,7.25,86.1,True
+Bochum,Nordrhein-Westfalen,366385,Hattingen,54620,51.399166666,7.185833333,9.6,False,Nachrodt-Wiblingwerde,6418,51.3375,7.635555555,33.3,False,Bitzen,767,50.793611111,7.689722222,83.5,True
+Krefeld,Nordrhein-Westfalen,228550,Tönisvorst,29331,51.320833333,6.493055555,5.3,False,Grefrath,15069,51.336280555,6.340761111,15.7,False,Kirchsahr,353,50.524444444,6.898333333,92.9,True
+Oberhausen,Nordrhein-Westfalen,211099,Dinslaken,67949,51.566666666,6.733333333,13.5,False,Alpen,12870,51.575,6.5125,26.2,False,Fürthen,1217,50.78,7.667777777,95.6,True
+Wuppertal,Nordrhein-Westfalen,358938,Schwelm,28711,51.29045,7.297180555,8.3,False,Halver,16284,51.1834,7.5027,24.1,False,Niederirsen,93,50.748333333,7.595555555,64.4,True
+Düsseldorf,Nordrhein-Westfalen,631217,Meerbusch,57440,51.266666666,6.666666666,8.9,False,Titz,8886,51.00619,6.42477,34.6,False,Windhagen,4656,50.643461,7.354305,76.3,True
+Mülheim an der Ruhr,Nordrhein-Westfalen,173255,Heiligenhaus,26590,51.3265,6.971,12.8,False,Issum,12391,51.538888888,6.423611111,34.1,False,Werkhausen,235,50.722777777,7.535555555,90.7,True
+Braunschweig,Niedersachsen,252066,Wolfenbüttel,53034,52.162222222,10.536944444,11.9,False,Cremlingen,13266,52.248888888,10.654166666,9.3,False,Vordorf,3137,52.366666666,10.516666666,10.8,False
+Osnabrück,Niedersachsen,166960,Wallenhorst,22855,52.35,8.016666666,8.1,False,Belm,14255,52.3,8.133333333,6.6,False,Rieste,3701,52.483333333,8.016666666,22.8,False
+Hannover,Niedersachsen,548186,Langenhagen,55746,52.439444444,9.74,7.2,False,Hemmingen,18885,52.323611111,9.725555555,5.7,False,Suthfeld,1476,52.366666666,9.4,23.0,False
+Oldenburg,Niedersachsen,174629,Rastede,23247,53.25,8.2,11.8,False,Wardenburg,16518,53.061666666,8.196666666,9.2,False,Uthlede,962,53.314438888,8.581791666,31.0,False
+Lübeck,Schleswig-Holstein,219044,Bad Schwartau,20169,53.919444444,10.6975,5.6,False,Stockelsdorf,17022,53.883333333,10.65,2.8,False,Badendorf,925,53.8675,10.58,7.0,False
+Kiel,Schleswig-Holstein,252668,Eckernförde,21620,54.474166666,9.837777777,25.7,False,Kronshagen,11854,54.333333333,10.083333333,3.8,False,Mönkeberg,4093,54.35,10.188888888,4.4,False
+Chemnitz,Sachsen,245618,Limbach-Oberfrohna,23923,50.866666666,12.75,12.5,False,Neukirchen/Erzgeb.,6904,50.779444444,12.866944444,6.9,False,Niederwiesa,4714,50.863333333,13.0225,8.0,False
+Dresden,Sachsen,564904,Freital,39281,51.016666666,13.65,7.2,False,Bannewitz,11128,50.993055555,13.716666666,6.4,False,Pesterwitz,3263,51.0281,13.6539,6.3,False
+Leipzig,Sachsen,611850,Markkleeberg,24488,51.275555,12.369166,7.2,False,Taucha,15759,51.38,12.493611111,9.3,False,Großdeuben,240,51.2380012,12.3842141,11.4,False
+Ludwigshafen am Rhein,Rheinland-Pfalz,176110,Frankenthal,49122,49.533333333,8.35,8.5,False,Neuhofen,7173,49.4225,8.428055555,6.5,False,Fußgönheim,2560,49.460277777,8.293611111,10.5,False
+Mainz,Rheinland-Pfalz,222889,Ingelheim am Rhein,36390,49.974722222,8.056388888,15.8,False,Budenheim,8669,50.016666666,8.166666666,7.9,False,Klein-Winternheim,3716,49.938055555,8.211666666,8.1,False
+Halle (Saale),Sachsen-Anhalt,242172,Halle-Neustadt,46280,51.4789,11.9214,3.4,False,Kabelsketal,9020,51.446944444,12.1025,10.0,False,Schraplau,1066,51.436388888,11.665,21.7,False
+Magdeburg,Sachsen-Anhalt,240114,Schönebeck,30402,52.016666666,11.75,14.8,False,Biederitz,8699,52.160833333,11.717777777,6.2,False,Loitsche-Heinrichsberg,963,52.2833,11.7167,17.7,False
+Erfurt,Thüringen,215199,Arnstadt,28264,50.834166666,10.946388888,17.0,False,Nesse-Apfelstädt,5948,50.9125,10.9133,10.9,False,Rockhausen,279,50.901944444,11.040555555,8.5,False
+Bremen,Freie Hansestadt Bremen,577026,Stuhr,34176,53.016666666,8.75,7.6,True,Ritterhude,14942,53.1861,8.758,12.7,True,Riede,3092,52.966666666,8.95,15.4,True

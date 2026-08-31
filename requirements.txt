@@ -6,3 +6,5 @@ requests-cache
 urllib3>=1.26
 openmeteo-requests
 pyarrow
+matplotlib
+scipy
