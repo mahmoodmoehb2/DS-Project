@@ -214,7 +214,7 @@ RQ_META = {
             "How has the UV Index across Europe changed over the past 20 years, "
             "and are there significant temporal and regional trends?"
         ),
-        "status": "planned",
+        "status": "ready",
     },
 
     "rq6": {
