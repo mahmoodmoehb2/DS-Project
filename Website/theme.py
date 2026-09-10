@@ -275,32 +275,30 @@ def inject_theme():
         }}
 
         /* ---------- Hero ---------- */
+
+        /* ---------- Hero ---------- */
+
         .hero {{
             position: relative;
             overflow: hidden;
-            background:
-                radial-gradient(circle at 82% 18%, rgba(255,255,255,0.18), transparent 28%),
-                linear-gradient(120deg, #2D174F 0%, #6D28D9 52%, #C2410C 100%);
+            background: #7C3AED;
             border-radius: 24px;
             padding: 58px 48px;
             color: white;
             margin: 0 0 14px 0;
             box-shadow: 0 16px 38px rgba(67, 32, 128, 0.16);
-        }}
+            }}
 
-        .hero::after {{
-            content: "";
-            position: absolute;
-            width: 360px;
-            height: 360px;
-            right: -130px;
-            top: -180px;
-            border-radius: 50%;
-            border: 1px solid rgba(255,255,255,0.20);
-            box-shadow: 0 0 0 55px rgba(255,255,255,0.035),
-                        0 0 0 110px rgba(255,255,255,0.025);
-            pointer-events: none;
-        }}
+        .hero {{
+            position: relative;
+            overflow: hidden;
+            background: #7C3AED;
+            border-radius: 24px;
+            padding: 58px 48px;
+            color: white;
+            margin: 0 0 14px 0;
+            box-shadow: 0 16px 38px rgba(67, 32, 128, 0.16);
+            }}
 
         .hero h1 {{
             color: white !important;
@@ -480,7 +478,9 @@ def inject_theme():
         .st-key-rq3_page_shell,
         .st-key-rq4_page_shell,
         .st-key-rq5_page_shell,
-        .st-key-rq6_page_shell {{
+        .st-key-rq6_page_shell,
+        .st-key-about_methods_page_shell,
+        .st-key-about_info_page_shell {{
             background: #FFFFFF !important;
             border-radius: 18px !important;
             padding: 2.4rem 3.2rem 3.2rem 3.2rem !important;
@@ -502,7 +502,11 @@ def inject_theme():
         .st-key-rq5_page_shell > div,
         .st-key-rq5_page_shell [data-testid="stVerticalBlock"],
         .st-key-rq6_page_shell > div,
-        .st-key-rq6_page_shell [data-testid="stVerticalBlock"] {{
+        .st-key-rq6_page_shell [data-testid="stVerticalBlock"],
+        .st-key-about_methods_page_shell > div,
+        .st-key-about_methods_page_shell [data-testid="stVerticalBlock"],
+        .st-key-about_info_page_shell > div,
+        .st-key-about_info_page_shell [data-testid="stVerticalBlock"] {{
             box-sizing: border-box !important;
         }}
 
@@ -513,7 +517,9 @@ def inject_theme():
         .st-key-rq3_page_shell,
         .st-key-rq4_page_shell,
         .st-key-rq5_page_shell,
-        .st-key-rq6_page_shell {{
+        .st-key-rq6_page_shell,
+        .st-key-about_methods_page_shell,
+        .st-key-about_info_page_shell {{
                 padding: 1.5rem 1.35rem 2rem 1.35rem !important;
                 border-radius: 14px !important;
             }}

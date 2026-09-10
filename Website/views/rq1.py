@@ -503,12 +503,10 @@ def _render_rq1_content():
 
     st.markdown(
         """
-        The long-term trend analysis shows that **heatwave frequency** and
-        **heatwave duration** increased significantly across German major cities
-        between 1980 and 2025.
+        The sensitivity check confirms that heatwave frequency and duration are the most robust findings, remaining statistically significant regardless of the exact analysis window. Peak temperature is more sensitive to the reference-period overlap: not significant across the full 1980-2025 record, but significant once the overlap-affected years are excluded (1991-2025), suggesting a real, if harder to detect, warming signal in the hottest days of a heatwave. Average heatwave temperature, by contrast, remains non-significant in both windows, indicating no reliable long-term trend.
 
         No statistically significant increase was observed for **peak temperature**
-        or **average heatwave temperature**.
+        or **average heatwave temperature for the time period 1980-2025**.
         """
 )
 

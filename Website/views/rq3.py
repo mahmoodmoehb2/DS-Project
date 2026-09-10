@@ -645,21 +645,12 @@ def _render_rq3_content():
 
     st.markdown(
         """
-        Across the studied European cities, **heatwave frequency increased
-        significantly between 1980 and 2025**, with approximately four additional
-        heatwave events per year across the analysed cities.
-
-        **Heatwave duration also increased significantly**, while neither peak
-        temperature nor average heatwave temperature showed a statistically
-        significant long-term trend.
-
-        At the country level, **Italy showed the strongest median increase in
-        heatwave frequency** among countries with sufficient city-level data,
-        followed by Ukraine and Spain.
-
-        Overall, the results indicate that the clearest long-term changes across
-        European cities are an increase in **how often heatwaves occur and how long
-        they last**, rather than a significant increase in their average intensity.
+        As with the German-only analysis, frequency and duration remain clearly significant"
+        " regardless of the exact time window used, the most robust finding of this research question."
+        " Peak temperature stays just short of significance even after removing the reference-period overlap "
+        "(p = 0.057 for 1991–2025, compared to p = 0.185 for the full period), a weaker signal than seen for "
+        "Germany alone, so we treat any warming in peak heatwave temperature across Europe as suggestive rather "
+        "than confirmed. Average heatwave temperature shows no evidence of a trend in either window.
         """
     )
 
