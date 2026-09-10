@@ -517,9 +517,9 @@ def render_method():
         The raw city list contained 101 entries in 50 countries. Historical
         duplicate entries for Pest and Buda were excluded, leaving 99 cities.
 
-        **Analysis period.** 1980–2025.
+        **Analysis period.** 1980-2025.
 
-        **Reference period.** 1961–1990.
+        **Reference period.** 1961-1990.
 
         **Heatwave definition.** At least 3 consecutive days above both a
         city-specific 98th-percentile threshold and an absolute threshold of 28°C.
@@ -645,12 +645,9 @@ def _render_rq3_content():
 
     st.markdown(
         """
-        As with the German-only analysis, frequency and duration remain clearly significant"
-        " regardless of the exact time window used, the most robust finding of this research question."
-        " Peak temperature stays just short of significance even after removing the reference-period overlap "
-        "(p = 0.057 for 1991–2025, compared to p = 0.185 for the full period), a weaker signal than seen for "
-        "Germany alone, so we treat any warming in peak heatwave temperature across Europe as suggestive rather "
-        "than confirmed. Average heatwave temperature shows no evidence of a trend in either window.
+        As with the German-only analysis, frequency and duration remain clearly significantregardless of the exact time window used, the most robust finding of this research question. Peak temperature stays just short of significance even after removing the reference-period overlap (p = 0.057 for 1991–2025, compared to p = 0.185 for the full period), a weaker signal than seen for 
+        Germany alone, so we treat any warming in peak heatwave temperature across Europe as suggestive rather 
+        than confirmed. Average heatwave temperature shows no evidence of a trend in either window.
         """
     )
 
@@ -667,8 +664,8 @@ def render_method():
         this threshold.
 
         **2. Detect heatwaves**  
-        Heatwaves were identified for **1980–2025** using a city-specific
-        **98th-percentile temperature threshold** based on the **1961–1990
+        Heatwaves were identified for **1980-2025** using a city-specific
+        **98th-percentile temperature threshold** based on the **1961-1990
         reference period**, together with an absolute threshold above **28 °C**.
         A heatwave required at least **3 consecutive qualifying days**.
 
