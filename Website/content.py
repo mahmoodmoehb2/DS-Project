@@ -39,7 +39,7 @@ RQ_META = {
         "short": "German heatwave trends",
         "title": (
             "How have the frequency, intensity (peak and average temperature),"
-            " and duration of heatwaves in major German cities (≥100,000 inhabitants)"
+            " and duration of heatwaves in major German cities (≥150,000 inhabitants)"
             " changed between 1980 and today?"
         ),
         "description": (

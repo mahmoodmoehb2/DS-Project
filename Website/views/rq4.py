@@ -357,8 +357,18 @@ def _render_rq4_content():
     st.markdown(
         f"**Research question:** {RQ_META['rq4']['title']}"
         )
+    
+    st.markdown(
+        """
+        **Why Italy?**  
+        Italy was identified in **RQ3** as the European country with the strongest
+        median increase in heatwave frequency among countries with sufficient
+        city-level data. RQ4 therefore examines whether this increase is concentrated
+        in large cities or also occurs in smaller cities and rural municipalities.
+        """
+)
 
-    st.subheader("How the comparison works")
+    st.subheader("How the analysis works")
     
     method_left, method_right = st.columns(2)
     
@@ -366,13 +376,13 @@ def _render_rq4_content():
         st.markdown(
             """
             **City-size classes**
-
+        
             - Large city: ≥150,000 inhabitants
-            - Medium-sized city: 20,000–149,999
-            - Small town: 5,000–19,999
-            - Rural municipality: 1,000–4,999
+            - Medium-sized city: 20,000-149,999
+            - Small town: 5,000-19,999
+            - Rural municipality: 1-4,999 and ≥15 km from a large-city
             """
-        )
+            )
     
     with method_right:
         st.markdown(
@@ -418,9 +428,6 @@ def _render_rq4_content():
 
     with tab1:
         st.markdown("#### Development from 1980 to 2025")
-        st.caption(
-            "Lines show a centered 5-year moving average for each city-size class."
-        )
 
         if yearly is not None:
             render_trend_chart(yearly, metric)
@@ -453,10 +460,6 @@ def _render_rq4_content():
 
     with tab2:
         st.markdown("#### Average values across the full analysis period")
-        st.caption(
-            "The comparison uses unique places so that municipalities shared by "
-            "multiple large-city regions are not counted more than once."
-        )
         render_overview_chart(metric)
 
     with tab3:
@@ -468,20 +471,6 @@ def _render_rq4_content():
 
     st.divider()
 
-
-    with st.expander("Statistical note"):
-        st.markdown(
-            """
-            Across the full 1980–2025 period, Kruskal–Wallis tests found no
-            statistically significant overall differences between the four
-            city-size classes for frequency (p=0.8203), peak temperature
-            (p=0.4404), average temperature (p=0.6116), or duration (p=0.8606).
-
-            The strongest result is therefore the **shared long-term change**:
-            heatwave frequency and duration rise significantly across all city sizes,
-            rather than the increase being concentrated only in large cities.
-            """
-        )
     
     st.subheader("Conclusion")
 

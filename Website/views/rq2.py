@@ -17,9 +17,9 @@ CLASS_ORDER = ["large", "medium", "small", "rural"]
 
 CLASS_LABELS = {
     "large": "Large city (≥150,000)",
-    "medium": "Medium-sized city (20,000–149,999)",
-    "small": "Small town (5,000–19,999)",
-    "rural": "Rural municipality (1–4,999)",
+    "medium": "Medium-sized city (20,000-149,999)",
+    "small": "Small town (5,000-19,999)",
+    "rural": "Rural municipality (1-4,999)",
 }
 
 
@@ -277,7 +277,7 @@ def _render_rq2_content():
             f"**Research question:** {RQ_META['rq2']['title']}"
         )
     
-    st.subheader("How the comparison works")
+    st.subheader("How the analysis works")
     
     method_left, method_right = st.columns(2)
     
@@ -287,9 +287,9 @@ def _render_rq2_content():
             **City-size classes**
 
             - Large city: ≥150,000 inhabitants
-            - Medium-sized city: 20,000–149,999
-            - Small town: 5,000–19,999
-            - Rural municipality: 1,000–4,999
+            - Medium-sized city: 20,000-149,999
+            - Small town: 5,000-19,999
+            - Rural municipality: 1-4,999 and ≥15 km from a large-city
             """
         )
     
@@ -301,9 +301,10 @@ def _render_rq2_content():
             At least **3 consecutive days** above the location-specific
             **98th-percentile temperature threshold** and above **28°C**.
     
-            Reference period: **1961–1990**
-            Analysis period: **1980–2025**
-            """
+            Reference period: **1961-1990**<br>
+            Analysis period: **1980-2025**
+            """,
+            unsafe_allow_html=True,
         )
 
     
@@ -330,7 +331,6 @@ def _render_rq2_content():
 
     with tab1:
         st.markdown("#### Development from 1980 to 2025")
-        st.caption("Lines show a centered 5-year moving average for each city-size class.")
 
         if yearly is not None:
             render_trend_chart(yearly, metric)
@@ -359,54 +359,37 @@ def _render_rq2_content():
 
     with tab2:
         st.markdown("#### Average values across the full analysis period")
-        st.caption(
-            "The comparison uses unique places so that municipalities shared by "
-            "multiple large-city regions are not counted more than once."
-        )
         render_overview_chart(metric)
 
     with tab3:
         st.markdown("#### Linear trend statistics, 1980–2025")
-        st.caption("A result is treated as statistically significant when p < 0.05.")
+        st.caption(
+            "A result is treated as statistically significant when p < 0.05."
+            )
         render_trend_table(metric)
 
     st.divider()
 
 
-    with st.expander("Statistical note"):
-        st.markdown(
-            """
-            The notebook also compares the four city-size classes using
-            Kruskal–Wallis tests. Across the full 1980–2025 period, the
-            differences between size classes were **not statistically
-            significant** for frequency (p=0.4444), peak temperature
-            (p=0.0513), average temperature (p=0.1935), or duration
-            (p=0.6640).
-
-            This means the strongest result is the **change over time**:
-            heatwaves are becoming more frequent across all city sizes,
-            rather than the overall averages being dramatically different
-            between the four classes.
-            """
-        )
     st.subheader("Conclusion")
 
     st.markdown(
         """
         Heatwave frequency has increased significantly across **all city-size classes
-        in Germany** since 1980, with similar trends from large cities to rural
+        in Germany** since 1980, with similar upward trends from large cities to rural
         municipalities.
 
         Heatwave duration increased significantly only in **large and medium-sized
-        cities**, while the trends for small towns and rural municipalities were not
+        cities**, while the trends in small towns and rural municipalities were not
         statistically significant.
 
         For heatwave intensity, neither **peak temperature** nor **average temperature**
-        showed a statistically significant increase across the city-size classes.
+        showed a statistically significant long-term increase across the city-size
+        classes.
 
-        Overall, the results suggest that the rise in heatwave frequency is **not limited
-        to large urban areas**, while changes in heatwave duration show stronger
-        urban differences.
+        Overall, the results suggest that the increase in heatwave frequency is
+        **not limited to large urban areas**. However, significant increases in
+        heatwave duration were observed only in large and medium-sized cities.
         """
     )
 
