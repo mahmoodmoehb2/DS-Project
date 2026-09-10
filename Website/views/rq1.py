@@ -503,10 +503,7 @@ def _render_rq1_content():
 
     st.markdown(
         """
-        The sensitivity check confirms that heatwave frequency and duration are the most robust findings, remaining statistically significant regardless of the exact analysis window. Peak temperature is more sensitive to the reference-period overlap: not significant across the full 1980-2025 record, but significant once the overlap-affected years are excluded (1991-2025), suggesting a real, if harder to detect, warming signal in the hottest days of a heatwave. Average heatwave temperature, by contrast, remains non-significant in both windows, indicating no reliable long-term trend.
-
-        No statistically significant increase was observed for **peak temperature**
-        or **average heatwave temperature for the time period 1980-2025**.
+        We also checked if these results hold up when we remove the years that overlap with the reference period, leaving only 1991–2025. Frequency and duration stay significant either way, so these are solid findings. Peak temperature is different: it's not significant over the full 45 years, but it is significant in the shorter window. This points to a real warming trend that's just harder to detect when the noisier early years are included. Average temperature stays non-significant in both cases.
         """
 )
 
