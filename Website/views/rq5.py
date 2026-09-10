@@ -21,7 +21,7 @@ def _render_rq5_content():
         """
     )
     st.subheader("UV Index in the European cities")
-    df = pd.read_csv("DATA_DIR / "RQ5_uvIndex.csv"")
+    df = pd.read_csv(DATA_DIR / "RQ5_uvIndex.csv")
    
     result = [] 
     
