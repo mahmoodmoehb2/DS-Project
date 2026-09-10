@@ -1,0 +1,551 @@
+from pathlib import Path
+
+import numpy as np
+import pandas as pd
+import streamlit as st
+import plotly.express as px
+from scipy import stats
+
+from theme import key_finding
+
+
+DATA_DIR = Path(__file__).resolve().parents[1] / "data"
+EVENT_FILE = DATA_DIR / "RQ1_heatwaves_events.csv"
+
+ANALYSIS_START = 1980
+ANALYSIS_END = 2025
+REFERENCE_PERIOD = "1961–1990"
+
+METRICS = {
+    "Frequency": {
+        "raw": "n_heatwaves",
+        "smooth": "n_heatwaves_smooth",
+        "title": "Frequency of heatwaves in German major cities",
+        "y": "Number of heatwaves per year",
+        "unit": "heatwaves/year",
+    },
+    "Peak temperature": {
+        "raw": "avg_max_temp",
+        "smooth": "avg_max_temp_smooth",
+        "title": "Average peak temperature of heatwaves",
+        "y": "Average peak temperature (°C)",
+        "unit": "°C/year",
+    },
+    "Average temperature": {
+        "raw": "avg_avg_temp",
+        "smooth": "avg_avg_temp_smooth",
+        "title": "Average heatwave temperature",
+        "y": "Average heatwave temperature (°C)",
+        "unit": "°C/year",
+    },
+    "Duration": {
+        "raw": "avg_duration",
+        "smooth": "avg_duration_smooth",
+        "title": "Average duration of heatwaves",
+        "y": "Average heatwave duration (days)",
+        "unit": "days/year",
+    },
+}
+
+
+@st.cache_data
+def load_events():
+    """Load the event-level heatwave table exported from the RQ1 notebook."""
+    if not EVENT_FILE.exists():
+        return None
+
+    df = pd.read_csv(EVENT_FILE)
+
+    if "start" in df.columns:
+        df["start"] = pd.to_datetime(df["start"], errors="coerce")
+
+    if "end" in df.columns:
+        df["end"] = pd.to_datetime(df["end"], errors="coerce")
+
+    if "year" not in df.columns and "start" in df.columns:
+        df["year"] = df["start"].dt.year
+
+    if "year" in df.columns:
+        df["year"] = pd.to_numeric(df["year"], errors="coerce")
+
+    return df
+
+
+def validate_events(df):
+    required = {
+        "city",
+        "year",
+        "max_temp",
+        "avg_temp",
+        "duration_days",
+    }
+
+    if df is None:
+        return required
+
+    return required - set(df.columns)
+
+
+def build_yearly(df):
+    """
+    Same annual aggregation as the notebook:
+    - frequency: total detected heatwaves across all cities per year
+    - peak temperature: mean max_temp across events per year
+    - average temperature: mean avg_temp across events per year
+    - duration: mean duration_days across events per year
+    """
+    yearly = (
+        df.groupby("year")
+        .agg(
+            n_heatwaves=("city", "count"),
+            avg_max_temp=("max_temp", "mean"),
+            avg_avg_temp=("avg_temp", "mean"),
+            avg_duration=("duration_days", "mean"),
+        )
+        .reset_index()
+    )
+
+    years = pd.DataFrame(
+        {"year": range(ANALYSIS_START, ANALYSIS_END + 1)}
+    )
+
+    yearly = years.merge(yearly, on="year", how="left")
+    yearly["n_heatwaves"] = yearly["n_heatwaves"].fillna(0)
+
+    for col in [
+        "n_heatwaves",
+        "avg_max_temp",
+        "avg_avg_temp",
+        "avg_duration",
+    ]:
+        yearly[f"{col}_smooth"] = (
+            yearly[col]
+            .rolling(5, center=True, min_periods=1)
+            .mean()
+        )
+
+    return yearly
+
+
+def calculate_trend(yearly, metric):
+    col = METRICS[metric]["raw"]
+    valid = yearly.dropna(subset=[col])
+
+    if len(valid) < 3:
+        return None
+
+    result = stats.linregress(valid["year"], valid[col])
+
+    return {
+        "slope": result.slope,
+        "p_value": result.pvalue,
+        "r_squared": result.rvalue ** 2,
+        "significant": result.pvalue < 0.05,
+    }
+
+
+def all_trend_stats(yearly):
+    rows = []
+
+    for metric in METRICS:
+        result = calculate_trend(yearly, metric)
+
+        if result is None:
+            continue
+
+        rows.append(
+            {
+                "Metric": metric,
+                "Trend per year": result["slope"],
+                "p-value": result["p_value"],
+                "Significant": "Yes" if result["significant"] else "No",
+            }
+        )
+
+    return pd.DataFrame(rows)
+
+
+def plot_yearly_trend(yearly, metric):
+    cfg = METRICS[metric]
+
+    plot_df = yearly.dropna(subset=[cfg["smooth"]]).copy()
+
+    fig = px.line(
+        plot_df,
+        x="year",
+        y=cfg["smooth"],
+        markers=False,
+        title=cfg["title"],
+    )
+
+    fig.update_traces(
+        line=dict(width=3),
+        hovertemplate="Year %{x}<br>%{y:.2f}<extra></extra>",
+    )
+
+    fig.update_layout(
+        height=500,
+        xaxis_title="Year",
+        yaxis_title=cfg["y"],
+        hovermode="x unified",
+        margin=dict(l=20, r=20, t=60, b=20),
+        paper_bgcolor="rgba(0,0,0,0)",
+        plot_bgcolor="rgba(0,0,0,0)",
+        showlegend=False,
+    )
+
+    fig.update_xaxes(
+        dtick=5,
+        showgrid=False,
+        zeroline=False,
+    )
+
+    fig.update_yaxes(
+        gridcolor="rgba(100,100,100,0.15)",
+        zeroline=False,
+    )
+
+    st.plotly_chart(fig, use_container_width=True)
+
+
+def plot_city_comparison(df, metric):
+    if metric == "Frequency":
+        city_df = (
+            df.groupby("city")
+            .size()
+            .reset_index(name="value")
+            .sort_values("value", ascending=False)
+        )
+        y_title = "Detected heatwaves, 1980–2025"
+
+    else:
+        source_col = {
+            "Peak temperature": "max_temp",
+            "Average temperature": "avg_temp",
+            "Duration": "duration_days",
+        }[metric]
+
+        city_df = (
+            df.groupby("city")[source_col]
+            .mean()
+            .reset_index(name="value")
+            .sort_values("value", ascending=False)
+        )
+        y_title = METRICS[metric]["y"]
+
+    top = city_df.head(15)
+
+    fig = px.bar(
+        top,
+        x="city",
+        y="value",
+        text="value",
+    )
+
+    fig.update_traces(
+        texttemplate="%{text:.2f}",
+        textposition="outside",
+        cliponaxis=False,
+    )
+
+    fig.update_layout(
+        height=500,
+        xaxis_title="City",
+        yaxis_title=y_title,
+        margin=dict(l=20, r=20, t=30, b=20),
+        paper_bgcolor="rgba(0,0,0,0)",
+        plot_bgcolor="rgba(0,0,0,0)",
+        showlegend=False,
+    )
+
+    fig.update_xaxes(
+        tickangle=-45,
+        showgrid=False,
+    )
+
+    fig.update_yaxes(
+        gridcolor="rgba(100,100,100,0.15)",
+        zeroline=False,
+    )
+
+    st.plotly_chart(fig, use_container_width=True)
+
+
+def render_trend_statistics(yearly):
+    stats_df = all_trend_stats(yearly)
+
+    if stats_df.empty:
+        st.info("Not enough data to calculate trend statistics.")
+        return
+
+    display = stats_df.copy()
+
+    display["Trend per year"] = display["Trend per year"].map(
+        lambda x: f"{x:+.4f}"
+    )
+
+    display["p-value"] = display["p-value"].map(
+        lambda x: "<0.0001" if x < 0.0001 else f"{x:.4f}"
+    )
+
+    st.dataframe(
+        display,
+        hide_index=True,
+        use_container_width=True,
+    )
+
+    st.caption(
+        "A trend is considered statistically significant when p < 0.05."
+    )
+
+
+def render_summary_cards(df):
+    n_cities = df["city"].nunique()
+    n_events = len(df)
+
+    first_year = int(df["year"].min())
+    last_year = int(df["year"].max())
+
+    c1, c2, c3, c4 = st.columns(4)
+
+    c1.metric("Cities with events", f"{n_cities}")
+    c2.metric("Detected heatwaves", f"{n_events:,}")
+    c3.metric("Analysis period", f"{first_year}–{last_year}")
+    c4.metric("Heatwave definition", "≥3 days")
+
+
+def render_method():
+    left, right = st.columns(2)
+
+    with left:
+        st.markdown(
+            f"""
+            **Study design**
+
+            - German major cities with population ≥150,000
+            - Analysis period: **{ANALYSIS_START}–{ANALYSIS_END}**
+            - Reference period: **{REFERENCE_PERIOD}**
+            - Event-level heatwave data exported from the RQ1 notebook
+            """
+        )
+
+    with right:
+        st.markdown(
+            """
+            **Heatwave definition**
+
+            A heatwave consists of at least **3 consecutive days**
+            where daily maximum temperature is:
+
+            - above the city-specific **98th percentile** based on 1961–1990, and
+            - above **28°C**.
+            """
+        )
+
+    st.caption(
+        "The notebook originally loaded 57 Wikidata entries, but one Bremen "
+        "federal-state duplicate was excluded from the event analysis. "
+        "The exported heatwave table contains events for 56 unique cities."
+    )
+
+
+def _render_rq1_content():
+    st.markdown(
+        '<div class="eyebrow">RQ1 · HEATWAVES · GERMANY</div>',
+        unsafe_allow_html=True,
+    )
+
+    st.title("Are heatwaves in Germany really becoming more common?")
+
+    st.markdown(
+        """
+        **Research question:** Have German major cities experienced more,
+        longer, and hotter heatwaves since 1980?
+        """
+    )
+
+    df = load_events()
+
+    if df is None:
+        st.error(
+            "Missing data file: `data/RQ1_heatwaves_events.csv`"
+        )
+        st.info(
+            "Export `data/processed/heatwaves.csv` from the RQ1 notebook "
+            "as `RQ1_heatwaves_events.csv` and place it in the website's "
+            "`data/` folder."
+        )
+        return
+
+    missing = validate_events(df)
+
+    if missing:
+        st.error(
+            "The CSV is missing these required columns: "
+            + ", ".join(sorted(missing))
+        )
+        return
+
+    df = df[
+        df["year"].between(ANALYSIS_START, ANALYSIS_END, inclusive="both")
+    ].copy()
+
+    render_summary_cards(df)
+
+    st.write("")
+
+    yearly = build_yearly(df)
+    trend_frequency = calculate_trend(yearly, "Frequency")
+    trend_duration = calculate_trend(yearly, "Duration")
+    trend_peak = calculate_trend(yearly, "Peak temperature")
+    trend_average = calculate_trend(yearly, "Average temperature")
+
+    finding_parts = []
+
+    if trend_frequency and trend_frequency["significant"]:
+        finding_parts.append("heatwave frequency increased significantly")
+
+    if trend_duration and trend_duration["significant"]:
+        finding_parts.append("average heatwave duration increased significantly")
+
+    if finding_parts:
+        finding = (
+            "Since 1980, "
+            + " and ".join(finding_parts)
+            + " across German major cities."
+        )
+    else:
+        finding = (
+            "The long-term results are calculated directly from the "
+            "RQ1 heatwave event table."
+        )
+
+    key_finding(finding)
+
+    st.write("")
+    st.subheader("Explore the results")
+
+    metric = st.segmented_control(
+        "Metric",
+        options=[
+            "Frequency",
+            "Peak temperature",
+            "Average temperature",
+            "Duration",
+        ],
+        default="Frequency",
+        key="rq1_metric",
+    )
+
+    if metric is None:
+        metric = "Frequency"
+
+    tab1, tab2, tab3 = st.tabs(
+        [
+            "Long-term trend",
+            "City comparison",
+            "Trend statistics",
+        ]
+    )
+
+    with tab1:
+        st.markdown("#### Development from 1980 to 2025")
+
+        st.caption(
+            "The line shows a centered 5-year moving average. "
+            "The yearly aggregation follows the RQ1 notebook."
+        )
+
+        plot_yearly_trend(yearly, metric)
+
+        result = calculate_trend(yearly, metric)
+
+        if result:
+            if result["significant"]:
+                st.success(
+                    f"The trend for {metric.lower()} is statistically "
+                    f"significant (p={result['p_value']:.4f})."
+                )
+            else:
+                st.info(
+                    f"The trend for {metric.lower()} is not statistically "
+                    f"significant at the 5% level "
+                    f"(p={result['p_value']:.4f})."
+                )
+
+    with tab2:
+        st.markdown("#### Comparison between cities")
+
+        st.caption(
+            "For readability, the chart shows the 15 cities with the "
+            "highest value for the selected metric across the full period."
+        )
+
+        plot_city_comparison(df, metric)
+
+    with tab3:
+        st.markdown("#### Linear trend statistics, 1980–2025")
+        render_trend_statistics(yearly)
+
+    st.divider()
+
+    st.subheader("How the analysis works")
+    render_method()
+
+    with st.expander("Data used on this page"):
+        st.markdown(
+            """
+            The page reads:
+
+            `data/RQ1_heatwaves_events.csv`
+
+            Required columns:
+
+            - `city`
+            - `year`
+            - `max_temp`
+            - `avg_temp`
+            - `duration_days`
+
+            The notebook export also contains:
+
+            - `population`
+            - `start`
+            - `end`
+
+            Those extra columns may remain in the CSV.
+            """
+        )
+
+    st.subheader("Conclusion")
+
+    def statement(label, result):
+        if result is None:
+            return f"- **{label}:** not enough data."
+        direction = "increased" if result["slope"] > 0 else "decreased"
+        sig = (
+            "statistically significant"
+            if result["significant"]
+            else "not statistically significant"
+        )
+        return (
+            f"- **{label}:** {direction} ({result['slope']:+.4f} per year), "
+            f"{sig} (p={result['p_value']:.4f})."
+        )
+
+    st.markdown(
+        "\n".join(
+            [
+                statement("Frequency", trend_frequency),
+                statement("Peak temperature", trend_peak),
+                statement("Average temperature", trend_average),
+                statement("Duration", trend_duration),
+            ]
+        )
+    )
+
+
+def render():
+    # Same page-shell structure as RQ2 and RQ4.
+    with st.container(key="rq1_page_shell"):
+        _render_rq1_content()
