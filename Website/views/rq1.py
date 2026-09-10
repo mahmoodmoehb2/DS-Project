@@ -5,6 +5,7 @@ import pandas as pd
 import streamlit as st
 import plotly.express as px
 from scipy import stats
+from content import RQ_META
 
 
 
@@ -357,11 +358,11 @@ def _render_rq1_content():
     st.title("Are heatwaves in Germany really becoming more common?")
 
     st.markdown(
-        """
-        **Research question:** Have German major cities experienced more,
-        longer, and hotter heatwaves since 1980?
-        """
-    )
+        f"**Research question:** {RQ_META['rq1']['title']}"
+)
+    
+    st.subheader("How the analysis works")
+    render_method()
 
     df = load_events()
 
@@ -439,11 +440,10 @@ def _render_rq1_content():
     if metric is None:
         metric = "Frequency"
 
-    tab1, tab2, tab3 = st.tabs(
+    tab1, tab2 = st.tabs(
         [
             "Long-term trend",
             "City comparison",
-            "Trend statistics",
         ]
     )
 
@@ -456,21 +456,15 @@ def _render_rq1_content():
         )
 
         plot_yearly_trend(yearly, metric)
-
+        
+        st.markdown(
+                """
+                das muss noch ergänzt werden. 
+                """
+        )
         result = calculate_trend(yearly, metric)
 
-        if result:
-            if result["significant"]:
-                st.success(
-                    f"The trend for {metric.lower()} is statistically "
-                    f"significant (p={result['p_value']:.4f})."
-                )
-            else:
-                st.info(
-                    f"The trend for {metric.lower()} is not statistically "
-                    f"significant at the 5% level "
-                    f"(p={result['p_value']:.4f})."
-                )
+
 
     with tab2:
         st.markdown("#### Comparison between cities")
@@ -481,70 +475,40 @@ def _render_rq1_content():
         )
 
         plot_city_comparison(df, metric)
+        st.markdown(
+                        """
+                        das muss noch ergänzt werden. 
+                        """
+                )
 
-    with tab3:
-        st.markdown("#### Linear trend statistics, 1980–2025")
-        render_trend_statistics(yearly)
 
     st.divider()
 
-    st.subheader("How the analysis works")
-    render_method()
+    
 
-    with st.expander("Data used on this page"):
+    with st.expander("Statistical note"):
         st.markdown(
             """
-            The page reads:
-
-            `data/RQ1_heatwaves_events.csv`
-
-            Required columns:
-
-            - `city`
-            - `year`
-            - `max_temp`
-            - `avg_temp`
-            - `duration_days`
-
-            The notebook export also contains:
-
-            - `population`
-            - `start`
-            - `end`
-
-            Those extra columns may remain in the CSV.
+            Das kommt...
             """
         )
 
     st.subheader("Conclusion")
 
-    def statement(label, result):
-        if result is None:
-            return f"- **{label}:** not enough data."
-        direction = "increased" if result["slope"] > 0 else "decreased"
-        sig = (
-            "statistically significant"
-            if result["significant"]
-            else "not statistically significant"
-        )
-        return (
-            f"- **{label}:** {direction} ({result['slope']:+.4f} per year), "
-            f"{sig} (p={result['p_value']:.4f})."
-        )
-
     st.markdown(
-        "\n".join(
-            [
-                statement("Frequency", trend_frequency),
-                statement("Peak temperature", trend_peak),
-                statement("Average temperature", trend_average),
-                statement("Duration", trend_duration),
-            ]
-        )
-    )
+        """
+        The long-term trend analysis shows that **heatwave frequency** and
+        **heatwave duration** increased significantly across German major cities
+        between 1980 and 2025.
+
+        No statistically significant increase was observed for **peak temperature**
+        or **average heatwave temperature**.
+        """
+)
+
+    render_trend_statistics(yearly)
 
 
 def render():
-    # Same page-shell structure as RQ2 and RQ4.
     with st.container(key="rq1_page_shell"):
         _render_rq1_content()

@@ -3,7 +3,7 @@ from pathlib import Path
 import pandas as pd
 import streamlit as st
 import plotly.express as px
-
+from content import RQ_META
 
 
 
@@ -22,9 +22,9 @@ ANALYSIS_END = 2025
 EUROPE_TRENDS = pd.DataFrame(
     [
         ("Frequency", 3.995, 0.0000, True),
-        ("Peak temperature", 0.016, 0.1854, False),
-        ("Average temperature", 0.004, 0.6896, False),
-        ("Duration", 0.039, 0.0000, True),
+        ("Average Peak Temperature", 0.016, 0.1854, False),
+        ("Average Temperature", 0.004, 0.6896, False),
+        ("Average Duration", 0.039, 0.0000, True),
     ],
     columns=["metric", "slope", "p_value", "significant"],
 )
@@ -32,9 +32,9 @@ EUROPE_TRENDS = pd.DataFrame(
 EUROPE_TRENDS_1991 = pd.DataFrame(
     [
         ("Frequency", 5.015, 0.0000, True),
-        ("Peak temperature", 0.032, 0.0566, False),
-        ("Average temperature", 0.015, 0.3058, False),
-        ("Duration", 0.046, 0.0000, True),
+        ("Average Peak Temperature", 0.032, 0.0566, False),
+        ("Average Temperature", 0.015, 0.3058, False),
+        ("Average Duration", 0.046, 0.0000, True),
     ],
     columns=["metric", "slope", "p_value", "significant"],
 )
@@ -198,7 +198,7 @@ def render_yearly_chart(yearly, metric):
             "Number of heatwaves per year",
             "Heatwave frequency across the studied European cities",
         ),
-        "Peak temperature": (
+        "Average Peak temperature": (
             "avg_max_temp_smooth",
             "Average peak temperature (°C)",
             "Average peak temperature of detected heatwaves",
@@ -208,7 +208,7 @@ def render_yearly_chart(yearly, metric):
             "Average heatwave temperature (°C)",
             "Average temperature within detected heatwaves",
         ),
-        "Duration": (
+        "Average Duration": (
             "avg_duration_smooth",
             "Average heatwave duration (days)",
             "Average duration of detected heatwaves",
@@ -244,10 +244,6 @@ def render_yearly_chart(yearly, metric):
         use_container_width=True,
     )
 
-    st.caption(
-        "Centered 5-year moving average."
-    )
-
 
 def render_europe_trend_summary(metric):
     row = EUROPE_TRENDS[
@@ -256,9 +252,9 @@ def render_europe_trend_summary(metric):
 
     unit = {
         "Frequency": "heatwaves/year",
-        "Peak temperature": "°C/year",
-        "Average temperature": "°C/year",
-        "Duration": "days/year",
+        "Average Peak Temperature": "°C/year",
+        "Average Temperature": "°C/year",
+        "Average Duration": "days/year",
     }[metric]
 
     status = (
@@ -318,14 +314,14 @@ def render_country_comparison(country_df, metric):
             "n_cities_temperature",
             "Median temperature change (°C/year)",
         ),
-        "Duration": (
+        "Average Duration": (
             "duration_slope",
             "n_cities_duration",
             "Median duration change (days/year)",
         ),
     }
 
-    if metric == "Peak temperature":
+    if metric == "Average Peak temperature":
         st.info(
             "The notebook's country-level comparison uses average "
             "heatwave temperature rather than peak temperature. "
@@ -421,21 +417,6 @@ def render_country_comparison(country_df, metric):
         use_container_width=True,
     )
 
-    if metric == "Frequency":
-        st.caption(
-            "Italy shows the strongest median city-level increase "
-            "in heatwave frequency, followed by Ukraine and Spain."
-        )
-
-    elif metric in {
-        "Duration",
-        "Average temperature",
-    }:
-        st.caption(
-            "For duration and temperature, cities with fewer than "
-            "10 years containing heatwaves were excluded from the "
-            "city-level regression."
-        )
 
 
 
@@ -535,27 +516,27 @@ def render_trend_statistics():
 def render_method():
     st.markdown(
         """
-**Study population.** European cities with at least 500,000 inhabitants,
-plus national capitals even when their population is below 500,000.
+        **Study population.** European cities with at least 500,000 inhabitants,
+        plus national capitals even when their population is below 500,000.
 
-The raw city list contained 101 entries in 50 countries. Historical
-duplicate entries for Pest and Buda were excluded, leaving 99 cities.
+        The raw city list contained 101 entries in 50 countries. Historical
+        duplicate entries for Pest and Buda were excluded, leaving 99 cities.
 
-**Analysis period.** 1980–2025.
+        **Analysis period.** 1980–2025.
 
-**Reference period.** 1961–1990.
+        **Reference period.** 1961–1990.
 
-**Heatwave definition.** At least 3 consecutive days above both a
-city-specific 98th-percentile threshold and an absolute threshold of 28°C.
+        **Heatwave definition.** At least 3 consecutive days above both a
+        city-specific 98th-percentile threshold and an absolute threshold of 28°C.
 
-**Country ranking.** For each city, the annual heatwave-frequency slope
-was estimated. Countries were ranked by the median city-level slope.
-Countries represented by fewer than 3 cities were excluded from the
-country ranking.
+        **Country ranking.** For each city, the annual heatwave-frequency slope
+        was estimated. Countries were ranked by the median city-level slope.
+        Countries represented by fewer than 3 cities were excluded from the
+        country ranking.
 
-**Important limitation.** The fixed 28°C threshold can disadvantage
-cooler countries because unusually warm periods below 28°C are not
-counted as heatwaves.
+        **Important limitation.** The fixed 28°C threshold can disadvantage
+        cooler countries because unusually warm periods below 28°C are not
+        counted as heatwaves.
         """
     )
 
@@ -573,26 +554,24 @@ def _render_rq3_content():
     )
 
     st.markdown(
-        """
-**Research question:** How have the frequency, intensity, and duration
-of heatwaves in major European cities (≥500,000 inhabitants or national
-capitals) changed between 1980 and today — and which country is most
-strongly affected?
-        """
-    )
+        f"**Research question:** {RQ_META['rq3']['title']}"
+        )
+    
+    st.subheader("How the analysis works")
+    render_method()
 
     
 
-
-    st.markdown("---")
+    st.write("")
+    st.subheader("Explore the results")
 
     metric = st.segmented_control(
         "Metric",
         [
             "Frequency",
-            "Peak temperature",
+            "Average Peak temperature",
             "Average temperature",
-            "Duration",
+            "Average Duration",
         ],
         default="Frequency",
         key="rq3_metric",
@@ -606,11 +585,10 @@ strongly affected?
 
     country_df = load_country_trends()
 
-    tab1, tab2, tab3 = st.tabs(
+    tab1, tab2 = st.tabs(
         [
             "Long-term trend",
             "Country comparison",
-            "Trend statistics",
         ]
     )
 
@@ -619,56 +597,112 @@ strongly affected?
             yearly,
             metric,
         )
+        
+        if metric == "Frequency":
+            st.caption(
+                "This chart counts, year by year, how many heatwaves were detected across the 99 European cities, then applies a five-year moving average to make the underlying direction visible against normal fluctuation. What started in the low double digits in 1980 climbs past 200 a year by 2025, and the regression backs this up for both the full 1980–2025 window and the narrower 1991–2025 check (p < 0.0001 in each case). Identifying which country drove this hardest works differently from a simple ranking: each city gets its own frequency slope, and the country score is the median across its cities, with countries below 3 cities dropped as too thin to trust. Italy comes out on top at +0.068 additional heatwaves per city each year, narrowly ahead of Ukraine and Spain, while Germany and the UK sit noticeably lower."
+                )
+        if metric == "Average Peak temperature":
+            st.caption(
+                "Here the metric is the single hottest day within each detected heatwave, averaged per year and smoothed the same way as frequency. The line drifts between about 32.5°C and 34.5°C for most of the timeline with a late uptick after 2020, but neither regression comes back significant: not for the full period (p = 0.185), and not even for the shorter 1991–2025 window (p = 0.057, just missing the 0.05 cutoff). Because the notebook only builds a country-level trend for average temperature and not for peak temperature specifically, this tab falls back to showing the frequency ranking instead, with an explanatory note rather than silently substituting one metric for another."
+                )
+        if metric == "Average temperature":
+            st.caption(
+                "Instead of just the hottest day, this metric averages every day within a heatwave's full span, so a single spike can't distort how intense the event felt overall. It mirrors peak temperature in showing no statistically meaningful trend (p = 0.690). Building the country ranking here first drops cities with fewer than 10 years containing at least one heatwave, since a slope from a handful of points isn't trustworthy. The UK sits highest at +0.036°C/year, but that number comes from exactly one city and is marked gray to signal it shouldn't be read the same way as the others; among countries with real coverage, Germany edges out Italy and Ukraine."
+                )
+        if metric == "Average Duration":
+            st.caption(
+                "Duration tracks how many days each detected heatwave lasted, averaged per year and smoothed like the other three metrics. This is the one metric that does move in a clear direction, confirmed at p < 0.0001 in both the full-period and 1991–2025 checks, rising from under 4 days in the early record to past 5.5 days by 2025. Italy again sits at the top of the country ranking (+0.052 days/year), roughly three times the rate of France, Germany, and Spain just behind it. Ukraine and Poland actually post small negative slopes here, meaning their heatwaves multiplied without stretching out any longer."
+                )
+        
+            
+        
 
     with tab2:
         render_country_comparison(
             country_df,
             metric,
         )
-
-    with tab3:
-        render_trend_statistics()
+        
+        if metric == "Frequency":
+            st.caption(
+                "This chart counts, year by year, how many heatwaves were detected across the 99 European cities, then applies a five-year moving average to make the underlying direction visible against normal fluctuation. What started in the low double digits in 1980 climbs past 200 a year by 2025, and the regression backs this up for both the full 1980–2025 window and the narrower 1991–2025 check (p < 0.0001 in each case). Identifying which country drove this hardest works differently from a simple ranking: each city gets its own frequency slope, and the country score is the median across its cities, with countries below 3 cities dropped as too thin to trust. Italy comes out on top at +0.068 additional heatwaves per city each year, narrowly ahead of Ukraine and Spain, while Germany and the UK sit noticeably lower."
+                )
+        if metric == "Average Peak temperature":
+            st.caption(
+                "Here the metric is the single hottest day within each detected heatwave, averaged per year and smoothed the same way as frequency. The line drifts between about 32.5°C and 34.5°C for most of the timeline with a late uptick after 2020, but neither regression comes back significant: not for the full period (p = 0.185), and not even for the shorter 1991–2025 window (p = 0.057, just missing the 0.05 cutoff). Because the notebook only builds a country-level trend for average temperature and not for peak temperature specifically, this tab falls back to showing the frequency ranking instead, with an explanatory note rather than silently substituting one metric for another."
+                )
+        if metric == "Average temperature":
+            st.caption(
+                "Instead of just the hottest day, this metric averages every day within a heatwave's full span, so a single spike can't distort how intense the event felt overall. It mirrors peak temperature in showing no statistically meaningful trend (p = 0.690). Building the country ranking here first drops cities with fewer than 10 years containing at least one heatwave, since a slope from a handful of points isn't trustworthy. The UK sits highest at +0.036°C/year, but that number comes from exactly one city and is marked gray to signal it shouldn't be read the same way as the others; among countries with real coverage, Germany edges out Italy and Ukraine."
+                )
+        if metric == "Average Duration":
+            st.caption(
+                "Duration tracks how many days each detected heatwave lasted, averaged per year and smoothed like the other three metrics. This is the one metric that does move in a clear direction, confirmed at p < 0.0001 in both the full-period and 1991–2025 checks, rising from under 4 days in the early record to past 5.5 days by 2025. Italy again sits at the top of the country ranking (+0.052 days/year), roughly three times the rate of France, Germany, and Spain just behind it. Ukraine and Poland actually post small negative slopes here, meaning their heatwaves multiplied without stretching out any longer."
+                )
+            
 
     st.markdown("---")
 
-    st.subheader(
-        "Conclusion"
-    )
+    with st.expander("Statistical note"):
+                st.markdown(
+                    """
+                    Das kommt...
+                    """
+                )
+    
+    st.subheader("Conclusion")
 
     st.markdown(
         """
-The European analysis shows a clear change in **how often heatwaves
-occur and how long they last**, rather than a statistically reliable
-increase in the temperature of already-detected heatwaves.
+        Across the studied European cities, **heatwave frequency increased
+        significantly between 1980 and 2025**, with approximately four additional
+        heatwave events per year across the analysed cities.
 
-Italy ranks first for the median increase in heatwave frequency across
-its studied cities, with Ukraine and Spain following behind.
+        **Heatwave duration also increased significantly**, while neither peak
+        temperature nor average heatwave temperature showed a statistically
+        significant long-term trend.
 
-This result motivates RQ4, which examines whether Italy's increasing
-heatwave trends are concentrated in large cities or are also present in
-medium-sized, small and rural places.
+        At the country level, **Italy showed the strongest median increase in
+        heatwave frequency** among countries with sufficient city-level data,
+        followed by Ukraine and Spain.
+
+        Overall, the results indicate that the clearest long-term changes across
+        European cities are an increase in **how often heatwaves occur and how long
+        they last**, rather than a significant increase in their average intensity.
         """
     )
 
-    with st.expander(
-        "Methods and data"
-    ):
-        render_method()
+    render_trend_statistics()
 
-        st.caption(
-            "Website summary values and country trends are based on "
-            "the executed `RQ3 FINAL.ipynb` notebook."
-        )
+def render_method():
+    st.markdown(
+        """
+        The analysis follows four main steps:
 
-        st.caption(
-            f"Event file: `{EVENT_FILE.name}`"
-        )
+        **1. Select European cities**  
+        European cities with at least **500,000 inhabitants** were included.
+        National capitals were included even if their population was below
+        this threshold.
 
-        st.caption(
-            f"Country trend file: `{COUNTRY_TRENDS_FILE.name}`"
-        )
+        **2. Detect heatwaves**  
+        Heatwaves were identified for **1980–2025** using a city-specific
+        **98th-percentile temperature threshold** based on the **1961–1990
+        reference period**, together with an absolute threshold above **28 °C**.
+        A heatwave required at least **3 consecutive qualifying days**.
 
+        **3. Analyse long-term trends**  
+        Annual changes in **heatwave frequency, peak temperature, average
+        temperature, and duration** were analysed. Linear regression was used
+        to estimate the trend over time and assess statistical significance.
 
+        **4. Compare countries**  
+        City-level trends were aggregated by country to identify which
+        countries experienced the strongest increases in heatwave frequency.
+        Countries with fewer than **3 analysed cities** were excluded from
+        the frequency ranking.
+        """
+    )
 
 def render():
     with st.container(

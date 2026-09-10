@@ -1,7 +1,7 @@
 from pathlib import Path
-
 import pandas as pd
 import streamlit as st
+from content import RQ_META
 
 
 try:
@@ -355,14 +355,37 @@ def _render_rq4_content():
     st.title("Are rising heatwave trends limited to large cities in Italy?")
 
     st.markdown(
-        """
-        **Research question:** In the European country most strongly affected by
-        rising heatwave trends, does this effect concentrate in large cities,
-        or is it equally present in smaller cities and rural municipalities?
-        """
-    )
+        f"**Research question:** {RQ_META['rq4']['title']}"
+        )
 
+    st.subheader("How the comparison works")
+    
+    method_left, method_right = st.columns(2)
+    
+    with method_left:
+        st.markdown(
+            """
+            **City-size classes**
 
+            - Large city: ≥150,000 inhabitants
+            - Medium-sized city: 20,000–149,999
+            - Small town: 5,000–19,999
+            - Rural municipality: 1,000–4,999
+            """
+        )
+    
+    with method_right:
+        st.markdown(
+            """
+            **Heatwave definition**
+
+            At least **3 consecutive days** above the location-specific
+            **98th-percentile temperature threshold** and above **28°C**.
+
+            Reference period: **1961–1990**  
+            Analysis period: **1980–2025**
+            """
+        )
 
     st.write("")
     st.subheader("Explore the results")
@@ -445,34 +468,6 @@ def _render_rq4_content():
 
     st.divider()
 
-    st.subheader("How the comparison works")
-
-    method_left, method_right = st.columns(2)
-
-    with method_left:
-        st.markdown(
-            """
-            **City-size classes**
-
-            - Large city: ≥150,000 inhabitants
-            - Medium-sized city: 20,000–149,999
-            - Small town: 5,000–19,999
-            - Rural municipality: 1,000–4,999
-            """
-        )
-
-    with method_right:
-        st.markdown(
-            """
-            **Heatwave definition**
-
-            At least **3 consecutive days** above the location-specific
-            **98th-percentile temperature threshold** and above **28°C**.
-
-            Reference period: **1961–1990**  
-            Analysis period: **1980–2025**
-            """
-        )
 
     with st.expander("Statistical note"):
         st.markdown(
@@ -487,18 +482,26 @@ def _render_rq4_content():
             rather than the increase being concentrated only in large cities.
             """
         )
+    
+    st.subheader("Conclusion")
 
-    with st.expander("Methodological note for Italy"):
-        st.markdown(
-            """
-            Italy does not use the same legal city-status distinction as Germany.
-            Therefore, the Italian size classes are defined **only by population**,
-            while keeping the same population thresholds as the Germany analysis.
+    st.markdown(
+        """
+        In Italy, **heatwave frequency increased significantly across all city-size
+        classes** between 1980 and 2025, with similar trends in large cities,
+        medium-sized cities, small towns, and rural municipalities.
 
-            The heatwave definition is intentionally unchanged so that Germany and
-            Italy remain methodologically comparable.
-            """
-        )
+        **Heatwave duration also increased significantly across all four city-size
+        classes**. In contrast, heatwave intensity showed less consistent changes:
+        peak temperature increased significantly only in **large cities**, while
+        average heatwave temperature showed no significant increase in any city-size
+        class.
+
+        Overall, the results show that rising heatwave trends in Italy are **not
+        concentrated in large cities**. Smaller cities and rural municipalities
+        experienced comparable increases in heatwave frequency and duration.
+        """
+    )
 
 
 def render():

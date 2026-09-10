@@ -2,7 +2,7 @@ from pathlib import Path
 
 import pandas as pd
 import streamlit as st
-
+from content import RQ_META
 
 
 try:
@@ -274,13 +274,37 @@ def _render_rq2_content():
     st.title("Do heatwaves differ by city size in Germany?")
 
     st.markdown(
-        """
-        **Research question:** How do heatwave frequency, intensity
-        (peak and average temperature), and duration differ across city sizes,
-        from large cities to rural municipalities, within the same region
-        in Germany?
-        """
-    )
+            f"**Research question:** {RQ_META['rq2']['title']}"
+        )
+    
+    st.subheader("How the comparison works")
+    
+    method_left, method_right = st.columns(2)
+    
+    with method_left:
+        st.markdown(
+            """
+            **City-size classes**
+
+            - Large city: ≥150,000 inhabitants
+            - Medium-sized city: 20,000–149,999
+            - Small town: 5,000–19,999
+            - Rural municipality: 1,000–4,999
+            """
+        )
+    
+    with method_right:
+        st.markdown(
+            """
+            **Heatwave definition**
+
+            At least **3 consecutive days** above the location-specific
+            **98th-percentile temperature threshold** and above **28°C**.
+    
+            Reference period: **1961–1990**
+            Analysis period: **1980–2025**
+            """
+        )
 
     
 
@@ -348,34 +372,6 @@ def _render_rq2_content():
 
     st.divider()
 
-    st.subheader("How the comparison works")
-
-    method_left, method_right = st.columns(2)
-
-    with method_left:
-        st.markdown(
-            """
-            **City-size classes**
-
-            - Large city: ≥150,000 inhabitants
-            - Medium-sized city: 20,000–149,999
-            - Small town: 5,000–19,999
-            - Rural municipality: 1,000–4,999
-            """
-        )
-
-    with method_right:
-        st.markdown(
-            """
-            **Heatwave definition**
-
-            At least **3 consecutive days** above the location-specific
-            **98th-percentile temperature threshold** and above **28°C**.
-
-            Reference period: **1961–1990**
-            Analysis period: **1980–2025**
-            """
-        )
 
     with st.expander("Statistical note"):
         st.markdown(
@@ -393,6 +389,28 @@ def _render_rq2_content():
             between the four classes.
             """
         )
+    st.subheader("Conclusion")
+
+    st.markdown(
+        """
+        Heatwave frequency has increased significantly across **all city-size classes
+        in Germany** since 1980, with similar trends from large cities to rural
+        municipalities.
+
+        Heatwave duration increased significantly only in **large and medium-sized
+        cities**, while the trends for small towns and rural municipalities were not
+        statistically significant.
+
+        For heatwave intensity, neither **peak temperature** nor **average temperature**
+        showed a statistically significant increase across the city-size classes.
+
+        Overall, the results suggest that the rise in heatwave frequency is **not limited
+        to large urban areas**, while changes in heatwave duration show stronger
+        urban differences.
+        """
+    )
+
+
 
 
 def render():

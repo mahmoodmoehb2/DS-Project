@@ -38,8 +38,9 @@ RQ_META = {
         "code": "RQ1",
         "short": "German heatwave trends",
         "title": (
-            "Have German major cities experienced more, longer, "
-            "and hotter heatwaves since 1980?"
+            "How have the frequency, intensity (peak and average temperature),"
+            " and duration of heatwaves in major German cities (≥100,000 inhabitants)"
+            " changed between 1980 and today?"
         ),
         "description": (
             "We analyse long-term changes in heatwave frequency, peak temperature, "
