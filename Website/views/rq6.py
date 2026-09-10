@@ -68,7 +68,7 @@ UV Index** for each state and year.
 
 **2. Health outcomes**  
 Hospital diagnosis data are used for **sunburn (ICD-10 L55)** and
-**heat-related illness / heatstroke (ICD-10 T67)**, aggregated by federal
+**effect of heat and light (ICD-10 T67)**, aggregated by federal
 state and year.
 
 **3. Temporal trends**  
@@ -127,7 +127,7 @@ def render_uv_trend(uv):
 def render_health_trend(health, diagnosis_code="ICD10-L55"):
     labels = {
         "ICD10-L55": "Sunburn (ICD-10 L55)",
-        "ICD10-T67": "Heat-related illness / heatstroke (ICD-10 T67)",
+        "ICD10-T67": "Effect of heat and light (ICD-10 T67)",
     }
 
     yearly = (
@@ -169,7 +169,7 @@ def render_health_trend(health, diagnosis_code="ICD10-L55"):
     st.plotly_chart(fig, use_container_width=True)
 
 
-def render_state_uv_comparison(uv):
+def render_state_uv_comparison(uv, start_year=2000, end_year=2024):
     state_mean = (
         uv.groupby("bundesland", as_index=False)["mean_uvi"]
         .mean()
@@ -182,7 +182,7 @@ def render_state_uv_comparison(uv):
         y="bundesland",
         orientation="h",
         labels={
-            "mean_uvi": "Average UV Index, 2000–2024",
+            "mean_uvi": f"Average UV Index, {start_year}–{end_year}",
             "bundesland": "Federal state",
         },
         title="Average UV Index by federal state",
@@ -194,7 +194,7 @@ def render_state_uv_comparison(uv):
     st.plotly_chart(fig, use_container_width=True)
 
 
-def render_state_sunburn_comparison(health):
+def render_state_sunburn_comparison(health, start_year=2000, end_year=2024):
     sunburn = health[health["icd10_code"] == "ICD10-L55"].copy()
     state_totals = (
         sunburn.groupby("state", as_index=False)["cases"]
@@ -208,7 +208,7 @@ def render_state_sunburn_comparison(health):
         y="state",
         orientation="h",
         labels={
-            "cases": "Recorded sunburn cases, 2000–2024",
+            "cases": f"Recorded sunburn cases, {start_year}–{end_year}",
             "state": "Federal state",
         },
         title="Recorded sunburn cases by federal state",
@@ -388,53 +388,124 @@ def _render_rq6_content():
 
     st.subheader("Explore the results")
 
+    st.markdown(
+        "Change the analysis period, select federal states, and switch "
+        "between UV and health-related views. The charts update automatically."
+    )
+
+    selected_years = st.slider(
+        "Select analysis period",
+        min_value=2000,
+        max_value=2024,
+        value=(2000, 2024),
+        step=1,
+        key="rq6_year_range",
+    )
+    start_year, end_year = selected_years
+
+    all_states = sorted(
+        set(uv["bundesland"].dropna().astype(str))
+        | set(health["state"].dropna().astype(str))
+    )
+
+    selected_states = st.multiselect(
+        "Select federal states",
+        options=all_states,
+        default=[],
+        placeholder="Leave empty to include all federal states",
+        key="rq6_state_filter",
+    )
+
+    active_states = selected_states if selected_states else all_states
+
+    uv_filtered = uv[
+        uv["year"].between(start_year, end_year, inclusive="both")
+        & uv["bundesland"].isin(active_states)
+    ].copy()
+
+    health_filtered = health[
+        health["year"].between(start_year, end_year, inclusive="both")
+        & health["state"].isin(active_states)
+    ].copy()
+
     metric = st.segmented_control(
-        "View",
-        ["UV trend", "Sunburn trend", "Regional UV", "UV & sunburn"],
+        "Select view",
+        ["UV trend", "Sunburn trend", "Regional UV"],
         default="UV trend",
+        key="rq6_metric",
+    )
+
+    if metric is None:
+        metric = "UV trend"
+
+    if selected_states:
+        state_scope = (
+            "1 selected federal state"
+            if len(selected_states) == 1
+            else f"{len(selected_states)} selected federal states"
+        )
+    else:
+        state_scope = f"all {len(all_states)} federal states"
+
+    st.caption(
+        f"Current selection: {start_year}–{end_year} · {state_scope}"
     )
 
     if metric == "UV trend":
-        render_uv_trend(uv)
+        if uv_filtered.empty:
+            st.info("No UV observations are available for the current selection.")
+        else:
+            render_uv_trend(uv_filtered)
+            
 
     elif metric == "Sunburn trend":
         diagnosis = st.radio(
             "Diagnosis",
-            ["Sunburn", "Heat-related illness / heatstroke"],
+            ["Sunburn", "Effect of heat and light"],
             horizontal=True,
+            key="rq6_diagnosis",
         )
         code = "ICD10-L55" if diagnosis == "Sunburn" else "ICD10-T67"
-        render_health_trend(health, code)
+
+        if health_filtered.empty:
+            st.info(
+                "No health observations are available for the current selection."
+            )
+        else:
+            render_health_trend(health_filtered, code)
+            
 
     elif metric == "Regional UV":
         tab1, tab2 = st.tabs(["UV exposure", "Sunburn cases"])
+
         with tab1:
-            render_state_uv_comparison(uv)
+            if uv_filtered.empty:
+                st.info(
+                    "No UV observations are available for the current selection."
+                )
+            else:
+                render_state_uv_comparison(
+                    uv_filtered,
+                    start_year=start_year,
+                    end_year=end_year,
+                )
+
         with tab2:
-            render_state_sunburn_comparison(health)
+            if health_filtered.empty:
+                st.info(
+                    "No health observations are available for the current selection."
+                )
+            else:
+                render_state_sunburn_comparison(
+                    health_filtered,
+                    start_year=start_year,
+                    end_year=end_year,
+                )
 
-    elif metric == "UV & sunburn":
-        render_uv_health_relationship(health, uv)
 
-    st.subheader("Methodological notes")
-    st.markdown(
-        """
-        - UV values represent a **population-weighted average of selected cities**
-        within each federal state rather than a complete spatial average of the
-        entire state.
-        - The health dataset contains **recorded diagnosis counts**, not individual
-        UV exposure measurements.
-        - Raw case counts are **not population-normalised** in this view. Therefore,
-        comparisons between federal states partly reflect differences in population
-        size.
-        - **Sunburn (L55)** is directly relevant to UV exposure. **T67** represents
-        heat-related illness and should be interpreted as contextual rather than a
-        UV-specific health outcome.
-        - Correlation between UV Index and diagnoses **does not prove causation**.
-        """
-    )
 
     st.subheader("Conclusion")
+    
     render_conclusion(uv, health)
 
     st.markdown("#### Trend statistics, 2000–2024")

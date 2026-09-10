@@ -97,7 +97,7 @@ def validate_events(df):
     return required - set(df.columns)
 
 
-def build_yearly(df):
+def build_yearly(df, start_year=ANALYSIS_START, end_year=ANALYSIS_END):
     """
     Same annual aggregation as the notebook:
     - frequency: total detected heatwaves across all cities per year
@@ -117,7 +117,7 @@ def build_yearly(df):
     )
 
     years = pd.DataFrame(
-        {"year": range(ANALYSIS_START, ANALYSIS_END + 1)}
+        {"year": range(start_year, end_year + 1)}
     )
 
     yearly = years.merge(yearly, on="year", how="left")
@@ -219,7 +219,7 @@ def plot_yearly_trend(yearly, metric):
     st.plotly_chart(fig, use_container_width=True)
 
 
-def plot_city_comparison(df, metric):
+def plot_city_comparison(df, metric, start_year=None, end_year=None):
     if metric == "Frequency":
         city_df = (
             df.groupby("city")
@@ -227,7 +227,10 @@ def plot_city_comparison(df, metric):
             .reset_index(name="value")
             .sort_values("value", ascending=False)
         )
-        y_title = "Detected heatwaves, 1980–2025"
+        if start_year is not None and end_year is not None:
+            y_title = f"Detected heatwaves, {start_year}–{end_year}"
+        else:
+            y_title = "Detected heatwaves, 1980–2025"
 
     else:
         source_col = {
@@ -396,7 +399,11 @@ def _render_rq1_content():
 
     st.write("")
 
-    yearly = build_yearly(df)
+    yearly = build_yearly(
+        df,
+        start_year=ANALYSIS_START,
+        end_year=ANALYSIS_END,
+    )
     trend_frequency = calculate_trend(yearly, "Frequency")
     trend_duration = calculate_trend(yearly, "Duration")
     trend_peak = calculate_trend(yearly, "Peak temperature")
@@ -427,12 +434,37 @@ def _render_rq1_content():
     st.write("")
     st.subheader("Explore the results")
 
+    st.markdown(
+        "Change the analysis period, select individual cities, and switch "
+        "between heatwave metrics. The charts update automatically."
+    )
+
+    selected_years = st.slider(
+        "Select analysis period",
+        min_value=ANALYSIS_START,
+        max_value=ANALYSIS_END,
+        value=(ANALYSIS_START, ANALYSIS_END),
+        step=1,
+        key="rq1_year_range",
+    )
+    start_year, end_year = selected_years
+
+    all_cities = sorted(df["city"].dropna().unique().tolist())
+
+    selected_cities = st.multiselect(
+        "Select cities",
+        options=all_cities,
+        default=[],
+        placeholder="Leave empty to include all cities",
+        key="rq1_city_filter",
+    )
+
+    active_cities = selected_cities if selected_cities else all_cities
+
     metric = st.segmented_control(
-        "Metric",
+        "Select heatwave metric",
         options=[
             "Frequency",
-            "Peak temperature",
-            "Average temperature",
             "Duration",
         ],
         default="Frequency",
@@ -442,6 +474,29 @@ def _render_rq1_content():
     if metric is None:
         metric = "Frequency"
 
+    df_filtered = df[
+        df["year"].between(start_year, end_year, inclusive="both")
+        & df["city"].isin(active_cities)
+    ].copy()
+
+    yearly_filtered = build_yearly(
+        df_filtered,
+        start_year=start_year,
+        end_year=end_year,
+    )
+
+    if selected_cities:
+        if len(active_cities) == 1:
+            scope_label = "1 selected city"
+        else:
+            scope_label = f"{len(active_cities)} selected cities"
+    else:
+        scope_label = f"all {len(all_cities)} cities"
+
+    st.caption(
+        f"Current selection: {start_year}–{end_year} · {scope_label}"
+    )
+
     tab1, tab2 = st.tabs(
         [
             "Long-term trend",
@@ -450,49 +505,43 @@ def _render_rq1_content():
     )
 
     with tab1:
-        st.markdown("#### Development from 1980 to 2025")
-        plot_yearly_trend(yearly, metric)
-        
-        if metric == "Frequency":
-            st.caption(
-                "Every year, we count how many heatwaves occurred across all 57 cities and track that number from 1980 to 2025, smoothed with a five-year moving average to see past ordinary weather noise. After three decades holding fairly steady around 10–30 heatwaves a year, frequency breaks sharply upward from the mid-2010s onward, reaching over 100 a year by the end of the decade, a rise confirmed statistically (p < 0.0001) rather than just a visual impression. Ranking cities by their total heatwave count shows the increase isn't concentrated in one region: Münster, Ludwigshafen am Rhein, Munich, and Berlin all sit near the top despite very different climates, suggesting a nationwide pattern rather than a local anomaly."
-                )
-        if metric == "Peak temperature":
-            st.caption(
-                "For each detected heatwave we record its hottest single day, then average those peaks per year across all cities, testing whether individual events are getting more extreme over time. The yearly average oscillates between roughly 31°C and 33°C across four decades without settling into a direction, and the regression confirms no statistically reliable trend (p = 0.110). Ranking cities by their average peak instead reveals a geographic rather than temporal pattern: Ludwigshafen am Rhein, Karlsruhe, Mainz, and other Rhine valley cities dominate regardless of how often they experience heatwaves, pointing to climate zone, not long-term warming, as the main driver of intensity."
-                )
-        if metric == "Average temperature":
-            st.caption(
-                "This metric takes the mean temperature across each heatwave's full duration, not just its hottest moment, guarding against a single extreme afternoon skewing the intensity picture. Like peak temperature, it shows no meaningful long-term trend (p = 0.253). Heatwaves aren't measurably hotter on average today than in 1980, despite occurring far more often. The city ranking reinforces this: it's led by essentially the same Rhine valley cities as the peak-temperature list (Ludwigshafen, Karlsruhe, Mainz, Frankfurt), evidence that heatwave intensity is shaped mainly by regional climate rather than a warming trend over time."
-                )
-        if metric == "Duration":
-            st.caption(
-                "Duration averages the length in days of every detected heatwave per year, again smoothed over a five-year window. Unlike the two temperature metrics, this one shows a real upward trend, confirmed at p = 0.0107: after hovering close to the 3-day minimum for two decades, average duration climbs steadily from around 2010 onward, passing 4.3 days by 2025. That matters beyond the statistics too, since prolonged heat exposure, not a single hot day, drives most heat-related health risk, connecting this result directly to the project's later public-health questions. The cities with the longest-lasting heatwaves (Bremen, Hamburg, Hannover) cluster in the north, a different group from the Rhine valley cities dominating the temperature rankings, suggesting duration is governed by different regional factors than intensity."
-                )
+        st.markdown(f"#### Development from {start_year} to {end_year}")
+        plot_yearly_trend(yearly_filtered, metric)
 
+        trend = calculate_trend(yearly_filtered, metric)
 
+        if trend is not None:
+            p_text = (
+                "<0.0001"
+                if trend["p_value"] < 0.0001
+                else f"{trend['p_value']:.4f}"
+            )
+            significance_text = (
+                "statistically significant"
+                if trend["significant"]
+                else "not statistically significant"
+            )
+
+            
+        else:
+            st.caption(
+                "Not enough annual observations are available to calculate "
+                "a reliable trend for the current selection."
+            )
 
     with tab2:
         st.markdown("#### Comparison between cities")
-        plot_city_comparison(df, metric)
-        
-        if metric == "Frequency":
+        plot_city_comparison(
+            df_filtered,
+            metric,
+            start_year=start_year,
+            end_year=end_year,
+        )
+
+        if df_filtered.empty:
             st.caption(
-                "Every year, we count how many heatwaves occurred across all 57 cities and track that number from 1980 to 2025, smoothed with a five-year moving average to see past ordinary weather noise. After three decades holding fairly steady around 10-30 heatwaves a year, frequency breaks sharply upward from the mid-2010s onward, reaching over 100 a year by the end of the decade, a rise confirmed statistically (p < 0.0001) rather than just a visual impression. Ranking cities by their total heatwave count shows the increase isn't concentrated in one region: Münster, Ludwigshafen am Rhein, Munich, and Berlin all sit near the top despite very different climates, suggesting a nationwide pattern rather than a local anomaly."
-                )
-        if metric == "Peak temperature":
-            st.caption(
-                "For each detected heatwave we record its hottest single day, then average those peaks per year across all cities, testing whether individual events are getting more extreme over time. The yearly average oscillates between roughly 31°C and 33°C across four decades without settling into a direction, and the regression confirms no statistically reliable trend (p = 0.110). Ranking cities by their average peak instead reveals a geographic rather than temporal pattern: Ludwigshafen am Rhein, Karlsruhe, Mainz, and other Rhine valley cities dominate regardless of how often they experience heatwaves, pointing to climate zone, not long-term warming, as the main driver of intensity."
-                )
-        if metric == "Average temperature":
-            st.caption(
-                "This metric takes the mean temperature across each heatwave's full duration, not just its hottest moment, guarding against a single extreme afternoon skewing the intensity picture. Like peak temperature, it shows no meaningful long-term trend (p = 0.253). Heatwaves aren't measurably hotter on average today than in 1980, despite occurring far more often. The city ranking reinforces this: it's led by essentially the same Rhine valley cities as the peak-temperature list (Ludwigshafen, Karlsruhe, Mainz, Frankfurt), evidence that heatwave intensity is shaped mainly by regional climate rather than a warming trend over time."
-                )
-        if metric == "Duration":
-            st.caption(
-                "Duration averages the length in days of every detected heatwave per year, again smoothed over a five-year window. Unlike the two temperature metrics, this one shows a real upward trend, confirmed at p = 0.0107: after hovering close to the 3-day minimum for two decades, average duration climbs steadily from around 2010 onward, passing 4.3 days by 2025. That matters beyond the statistics too, since prolonged heat exposure, not a single hot day, drives most heat-related health risk, connecting this result directly to the project's later public-health questions. The cities with the longest-lasting heatwaves (Bremen, Hamburg, Hannover) cluster in the north, a different group from the Rhine valley cities dominating the temperature rankings, suggesting duration is governed by different regional factors than intensity."
-                )
-        
+                "No heatwave events are available for the current selection."
+            )
 
 
     st.divider()

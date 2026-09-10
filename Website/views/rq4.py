@@ -92,7 +92,7 @@ def load_events():
     return df
 
 
-def build_yearly(events):
+def build_yearly(events, start_year=1980, end_year=2025, selected_classes=None):
     if events is None or events.empty:
         return None
 
@@ -106,6 +106,13 @@ def build_yearly(events):
     if not required.issubset(events.columns):
         return None
 
+    active_classes = selected_classes if selected_classes else CLASS_ORDER
+
+    events = events[
+        events["year"].between(start_year, end_year, inclusive="both")
+        & events["size_class"].isin(active_classes)
+    ].copy()
+
     yearly = (
         events.groupby(["year", "size_class"], observed=False)
         .agg(
@@ -118,7 +125,7 @@ def build_yearly(events):
     )
 
     all_years = pd.MultiIndex.from_product(
-        [range(1980, 2026), CLASS_ORDER],
+        [range(start_year, end_year + 1), active_classes],
         names=["year", "size_class"],
     ).to_frame(index=False)
 
@@ -190,7 +197,7 @@ def render_summary_cards():
     c4.metric("Heatwave definition", "≥ 3 days")
 
 
-def render_overview_chart(metric):
+def render_overview_chart(metric, events=None, start_year=1980, end_year=2025, selected_classes=None):
     metric_config = {
         "Frequency": (
             "heatwaves_per_place_year",
@@ -212,7 +219,40 @@ def render_overview_chart(metric):
 
     column, y_title = metric_config[metric]
 
-    chart_df = SUMMARY.copy()
+    active_classes = selected_classes if selected_classes else CLASS_ORDER
+
+    if events is not None and not events.empty:
+        filtered = events[
+            events["year"].between(start_year, end_year, inclusive="both")
+            & events["size_class"].isin(active_classes)
+        ].copy()
+
+        if filtered.empty:
+            st.info("No heatwave events are available for the current selection.")
+            return
+
+        chart_df = (
+            filtered.groupby("size_class", observed=False)
+            .agg(
+                total_heatwaves=("year", "size"),
+                mean_peak_temp=("max_temp", "mean"),
+                mean_avg_temp=("avg_temp", "mean"),
+                mean_duration=("duration_days", "mean"),
+            )
+            .reset_index()
+        )
+
+        n_years = end_year - start_year + 1
+        chart_df["heatwaves_per_place_year"] = chart_df.apply(
+            lambda row: row["total_heatwaves"]
+            / (N_PLACES[row["size_class"]] * n_years),
+            axis=1,
+        )
+    else:
+        chart_df = SUMMARY[
+            SUMMARY["size_class"].isin(active_classes)
+        ].copy()
+
     chart_df["City size"] = chart_df["size_class"].map(CLASS_LABELS)
 
     if px is None:
@@ -248,7 +288,7 @@ def render_overview_chart(metric):
     st.plotly_chart(fig, use_container_width=True)
 
 
-def render_trend_chart(yearly, metric):
+def render_trend_chart(yearly, metric, selected_classes=None):
     metric_config = {
         "Frequency": (
             "heatwaves_per_place_smooth",
@@ -270,7 +310,10 @@ def render_trend_chart(yearly, metric):
 
     column, y_title = metric_config[metric]
 
-    plot_df = yearly.copy()
+    active_classes = selected_classes if selected_classes else CLASS_ORDER
+    plot_df = yearly[
+        yearly["size_class"].isin(active_classes)
+    ].copy()
     plot_df["City size"] = plot_df["size_class"].map(CLASS_LABELS)
 
     if px is None:
@@ -400,12 +443,38 @@ def _render_rq4_content():
     st.write("")
     st.subheader("Explore the results")
 
+    st.markdown(
+        "Change the analysis period, select city-size classes, and switch "
+        "between heatwave metrics. The charts update automatically."
+    )
+
+    events = load_events()
+
+    selected_years = st.slider(
+        "Select analysis period",
+        min_value=1980,
+        max_value=2025,
+        value=(1980, 2025),
+        step=1,
+        key="rq4_year_range",
+    )
+    start_year, end_year = selected_years
+
+    selected_classes = st.multiselect(
+        "Select city-size classes",
+        options=CLASS_ORDER,
+        default=CLASS_ORDER,
+        format_func=lambda x: CLASS_LABELS[x],
+        key="rq4_class_filter",
+    )
+
+    if not selected_classes:
+        selected_classes = CLASS_ORDER
+
     metric = st.segmented_control(
-        "Metric",
+        "Select heatwave metric",
         options=[
             "Frequency",
-            "Peak temperature",
-            "Average temperature",
             "Duration",
         ],
         default="Frequency",
@@ -415,6 +484,19 @@ def _render_rq4_content():
     if metric is None:
         metric = "Frequency"
 
+    yearly_filtered = build_yearly(
+        events,
+        start_year=start_year,
+        end_year=end_year,
+        selected_classes=selected_classes,
+    )
+
+    st.caption(
+        f"Current selection: {start_year}–{end_year} · "
+        f"{len(selected_classes)} city-size class"
+        + ("" if len(selected_classes) == 1 else "es")
+    )
+
     tab1, tab2, tab3 = st.tabs(
         [
             "Long-term trend",
@@ -423,49 +505,41 @@ def _render_rq4_content():
         ]
     )
 
-    events = load_events()
-    yearly = build_yearly(events)
-
     with tab1:
-        st.markdown("#### Development from 1980 to 2025")
+        st.markdown(
+            f"#### Development from {start_year} to {end_year}"
+        )
 
-        if yearly is not None:
-            render_trend_chart(yearly, metric)
+        if yearly_filtered is not None:
+            render_trend_chart(
+                yearly_filtered,
+                metric,
+                selected_classes=selected_classes,
+            )
         else:
             st.info(
                 "Add `RQ4_Italy_heatwaves_events.csv` to the `data/` folder "
                 "to display the interactive yearly trend chart."
             )
 
-        if metric == "Frequency":
-            st.markdown(
-                "**Interpretation:** Heatwave frequency increased significantly "
-                "in all four city-size classes."
-            )
-        elif metric == "Duration":
-            st.markdown(
-                "**Interpretation:** Heatwave duration increased significantly "
-                "in all four city-size classes."
-            )
-        elif metric == "Peak temperature":
-            st.markdown(
-                "**Interpretation:** Peak temperature increased significantly "
-                "only in large cities over 1980–2025."
-            )
-        else:
-            st.markdown(
-                "**Interpretation:** The long-term trend in average heatwave "
-                "temperature was not statistically significant in any city-size class."
-            )
+        
 
     with tab2:
-        st.markdown("#### Average values across the full analysis period")
-        render_overview_chart(metric)
+        st.markdown(
+            f"#### Average values for {start_year}–{end_year}"
+        )
+
+        render_overview_chart(
+            metric,
+            events=events,
+            start_year=start_year,
+            end_year=end_year,
+            selected_classes=selected_classes,
+        )
 
     with tab3:
-        st.markdown("#### Linear trend statistics, 1980–2025")
-        st.caption(
-            "A result is treated as statistically significant when p < 0.05."
+        st.markdown(
+            "#### Published full-period trend statistics, 1980–2025"
         )
         render_trend_table(metric)
 
