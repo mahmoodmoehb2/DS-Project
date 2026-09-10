@@ -1,14 +1,12 @@
 from views import rq_placeholder
-from pathlib import Path
 import streamlit as st
 import pandas as pd
 import plotly.express as px
 from scipy.stats import linregress
+from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 DATA_DIR = BASE_DIR / "data"
-
-
 
 
 def _render_rq5_content():
@@ -23,7 +21,7 @@ def _render_rq5_content():
         """
     )
     st.subheader("UV Index in the European cities")
-    df = pd.read_csv(DATA_DIR / "RQ5_uvIndex.csv")
+    df = pd.read_csv("DATA_DIR / "RQ5_uvIndex.csv"")
    
     result = [] 
     
