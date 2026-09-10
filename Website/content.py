@@ -224,6 +224,6 @@ RQ_META = {
             "What are the public health implications of rising UV Index trends "
             "in highly affected European regions, particularly regarding sunburn risk?"
         ),
-        "status": "planned",
+        "status": "ready",
     },
 }
