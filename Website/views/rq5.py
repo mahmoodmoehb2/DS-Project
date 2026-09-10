@@ -293,9 +293,7 @@ def _render_rq5_content():
 
             render_new_container(cointainer_visualisation, 2019, result, information_about_uv_box)
 
-    # --------------------------------------------------
-    # TREND UV
-    # --------------------------------------------------
+
 
     st.subheader("Trend UV")
 
@@ -345,9 +343,7 @@ def _render_rq5_content():
 
         st.plotly_chart(fig, use_container_width=True, key="rq5_trend_plot")
 
-        # --------------------------------------------------
-        # STATISTICAL SIGNIFICANCE
-        # --------------------------------------------------
+        
 
         st.markdown(
             """
@@ -369,9 +365,7 @@ def _render_rq5_content():
             unsafe_allow_html=True
         )
 
-        # --------------------------------------------------
-        # INTERPRETATION
-        # --------------------------------------------------
+     
 
         st.markdown(
             """
