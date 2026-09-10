@@ -42,13 +42,13 @@ country_pages = {
     "germany": st.Page(
         rq2.render,
         title="Germany",
-        icon="",
+        icon="🇩🇪",
         url_path="germany",
     ),
     "italy": st.Page(
         rq4.render,
         title="Italy",
-        icon="",
+        icon="🇮🇹",
         url_path="italy",
     ),
 }
