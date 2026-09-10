@@ -1,123 +1,228 @@
 """Content/config for all six research questions.
 
-IMPORTANT: only RQ2 (Germany) and RQ4 (Italy) have an actual finished
-analysis behind them in this project so far. RQ1, RQ3, RQ5 and RQ6 are kept
-here as placeholders that match the navigation structure of the team's
-mockup, but they intentionally show NO numbers, charts or "key findings" —
-inventing those would misrepresent results nobody has computed yet
-(RQ5/RQ6 in particular would need UV radiation data, which this project
-has not analysed at all so far). Fill each one in once that analysis
-exists, following the RQ2/RQ4 pattern below.
+RQ1–RQ4 now have completed heatwave analyses behind them.
+RQ5–RQ6 remain planned until the UV analyses are completed.
 """
 
-# Metrics shown via the pill selector on a finished RQ page. The `file`
-# fields are filled in per-country inside RQ_META below.
+# Metrics used on heatwave research pages.
 METRICS = [
-    {"key": "frequency", "label": "Heatwave frequency", "suffix": "frequency",
-     "chart_title": "Average heatwave frequency by city size"},
-    {"key": "peak_temp", "label": "Peak temperature", "suffix": "peak_temp",
-     "chart_title": "Average peak temperature by city size"},
-    {"key": "avg_temp", "label": "Average temperature", "suffix": "avg_temp",
-     "chart_title": "Average temperature by city size"},
-    {"key": "duration", "label": "Duration", "suffix": "duration",
-     "chart_title": "Average heatwave duration by city size"},
+    {
+        "key": "frequency",
+        "label": "Heatwave frequency",
+        "suffix": "frequency",
+        "chart_title": "Heatwave frequency",
+    },
+    {
+        "key": "peak_temp",
+        "label": "Peak temperature",
+        "suffix": "peak_temp",
+        "chart_title": "Average peak temperature",
+    },
+    {
+        "key": "avg_temp",
+        "label": "Average temperature",
+        "suffix": "avg_temp",
+        "chart_title": "Average heatwave temperature",
+    },
+    {
+        "key": "duration",
+        "label": "Duration",
+        "suffix": "duration",
+        "chart_title": "Average heatwave duration",
+    },
 ]
+
 
 RQ_META = {
     "rq1": {
         "code": "RQ1",
-        "icon": "trending_up",
-        "short": "German cities over time",
-        "title": "How have heatwaves in German cities changed over time?",
-        "status": "planned",
-    },
-    "rq2": {
-        "code": "RQ2",
-        "icon": "location_city",
-        "short": "Germany: City sizes",
-        "title": "How do heatwaves differ across city sizes in Germany?",
+        "short": "German heatwave trends",
+        "title": (
+            "Have German major cities experienced more, longer, "
+            "and hotter heatwaves since 1980?"
+        ),
         "description": (
-            "We compare heatwave frequency, intensity (peak and average temperature), "
-            "and duration from large cities to rural municipalities within the same region."
+            "We analyse long-term changes in heatwave frequency, peak temperature, "
+            "average temperature and duration across 56 major German cities."
         ),
         "status": "ready",
         "country": "Germany",
-        "image_prefix": "RQ2_heatwaves_yearly_trend",
-        "stats_csv": "RQ2_heatwaves_summary_by_sizeclass.csv",
-        "trend_csv": "RQ2_trend_statistics.csv",
+        "events_csv": "RQ1_heatwaves_events.csv",
         "key_findings": {
-            "frequency": "Add the regression result for heatwave frequency here once it is available "
-                         "(e.g. slope per year and significance per city-size class).",
-            "peak_temp": "Add the regression result for peak temperature here once it is available.",
-            "avg_temp": "Add the regression result for average temperature here once it is available.",
-            "duration": "Add the regression result for duration here once it is available.",
+            "frequency": (
+                "Heatwave frequency increased significantly across the studied "
+                "German major cities between 1980 and 2025."
+            ),
+            "peak_temp": (
+                "No statistically significant full-period increase in average "
+                "heatwave peak temperature was detected."
+            ),
+            "avg_temp": (
+                "No statistically significant full-period increase in average "
+                "heatwave temperature was detected."
+            ),
+            "duration": (
+                "Heatwave duration increased significantly over the study period."
+            ),
         },
         "methodology": (
-            "**Vorgehen in zwei Teilen:** Für jede der 56 deutschen Großstädte (≥150.000 Einwohner) "
-            "wird der jeweils nächstgelegene Vergleichsort dreier Größenklassen gesucht: eine "
-            "Mittelstadt (20.000–149.999), eine Kleinstadt (5.000–19.999) und eine Gemeinde "
-            "(1.000–4.999, ohne Stadtrecht). Auf alle gefundenen Orte wird die DWD-Hitzewellen-"
-            "Definition angewendet (≥3 aufeinanderfolgende Tage über dem ortsspezifischen "
-            "98.-Perzentil-Schwellenwert **und** über 28 °C).\n\n"
-            "Pro Kennzahl wurde ein Kruskal-Wallis-Test über die vier Größenklassen gerechnet — "
-            "getestet auf Ebene der eindeutigen Orte, nicht der Einzelereignisse. `p < 0.05` gilt "
-            "als Signifikanzschwelle."
+            "Major German cities were selected using a population threshold of "
+            "at least 150,000 inhabitants. Heatwaves were identified for 1980–2025 "
+            "using a city-specific 98th-percentile threshold based on the 1961–1990 "
+            "reference period together with an absolute threshold above 28 °C. "
+            "A heatwave required at least 3 consecutive qualifying days."
         ),
     },
+
+    "rq2": {
+        "code": "RQ2",
+        "short": "Germany: Urban vs. rural",
+        "title": (
+            "How do heatwave frequency, intensity (peak and average temperature), "
+            "and duration differ across city sizes, from large cities to rural "
+            "municipalities, within the same region in Germany?"
+        ),
+        "description": (
+            "We compare large cities, medium-sized cities, small towns and rural "
+            "municipalities using the same heatwave definition."
+        ),
+        "status": "ready",
+        "country": "Germany",
+        "events_csv": "RQ2_heatwaves_events.csv",
+        "key_findings": {
+            "frequency": (
+                "Since 1980, heatwave frequency has increased significantly across "
+                "all four city-size classes in Germany, at roughly +0.03 heatwaves "
+                "per place per year."
+            ),
+            "peak_temp": (
+                "No statistically significant increase in heatwave peak temperature "
+                "was observed in any city-size class."
+            ),
+            "avg_temp": (
+                "No statistically significant increase in average heatwave "
+                "temperature was observed in any city-size class."
+            ),
+            "duration": (
+                "Heatwave duration increased significantly only in large and "
+                "medium-sized cities."
+            ),
+        },
+        "methodology": (
+            "Locations were grouped into four population classes: large cities "
+            "(≥150,000), medium-sized cities (20,000–149,999), small towns "
+            "(5,000–19,999) and rural municipalities (1,000–4,999). Rural "
+            "municipalities were operationally required to be at least 15 km from "
+            "a large-city centre. Heatwaves were defined as at least 3 consecutive "
+            "days above both the location-specific 98th-percentile threshold "
+            "(1961–1990 reference period) and 28 °C. The analysis covers 1980–2025."
+        ),
+    },
+
     "rq3": {
         "code": "RQ3",
-        "icon": "public",
-        "short": "European cities",
-        "title": "How do heatwave trends differ across European cities?",
-        "status": "planned",
+        "short": "Europe heatwave trends",
+        "title": (
+            "How have the frequency, intensity, and duration of heatwaves changed "
+            "across major European cities since 1980, and which country is most "
+            "strongly affected?"
+        ),
+        "description": (
+            "We analyse 99 European cities across 50 countries, including cities "
+            "with at least 500,000 inhabitants and national capitals."
+        ),
+        "status": "ready",
+        "country": "Europe",
+        "events_csv": "RQ3_heatwaves_events.csv",
+        "country_trends_csv": "RQ3_country_trends.csv",
+        "key_findings": {
+            "frequency": (
+                "Across the studied European cities, heatwave frequency increased "
+                "significantly by about +4.0 events per year between 1980 and 2025."
+            ),
+            "peak_temp": (
+                "Peak heatwave temperature did not show a statistically significant "
+                "full-period trend."
+            ),
+            "avg_temp": (
+                "Average heatwave temperature did not show a statistically "
+                "significant full-period trend."
+            ),
+            "duration": (
+                "Average heatwave duration increased significantly by about "
+                "+0.04 days per year."
+            ),
+        },
+        "methodology": (
+            "The sample contains European cities with at least 500,000 inhabitants "
+            "plus national capitals even when below that threshold. After excluding "
+            "historical duplicate entries for Pest and Buda, 99 cities in 50 "
+            "countries remained. Heatwaves were detected for 1980–2025 using a "
+            "city-specific 98th-percentile threshold based on 1961–1990 together "
+            "with an absolute threshold above 28 °C, for at least 3 consecutive days."
+        ),
     },
+
     "rq4": {
         "code": "RQ4",
-        "icon": "🇮🇹",
         "short": "Italy: Urban vs. rural",
-        "title": "Are rising heatwave trends in Italy concentrated in large cities?",
+        "title": (
+            "In the European country most strongly affected by rising heatwave "
+            "trends, does this effect concentrate in large cities, or is it equally "
+            "present in smaller cities and rural municipalities?"
+        ),
         "description": (
-            "Italy applies the same DWD heatwave definition and methodology as RQ2, adapted for "
-            "Italian comuni. We test whether rising trends are limited to large cities or present "
-            "across all size classes."
+            "Italy was identified in RQ3 as the country with the strongest median "
+            "city-level increase in heatwave frequency. We compare trends across "
+            "four population classes."
         ),
         "status": "ready",
         "country": "Italy",
-        "image_prefix": "RQ2_Italy_heatwaves_yearly_trend",
-        "stats_csv": "RQ2_Italy_heatwaves_summary_by_sizeclass.csv",
-        "trend_csv": "RQ2_Italy_trend_statistics.csv",
+        "events_csv": "RQ4_Italy_heatwaves_events.csv",
         "key_findings": {
-            "frequency": "Add the regression result for heatwave frequency here once it is available.",
-            "peak_temp": "Add the regression result for peak temperature here once it is available.",
-            "avg_temp": "Add the regression result for average temperature here once it is available.",
-            "duration": "Add the regression result for duration here once it is available.",
+            "frequency": (
+                "Since 1980, heatwave frequency increased significantly across all "
+                "city sizes in Italy, at roughly +0.07 heatwaves per place per year."
+            ),
+            "peak_temp": (
+                "Peak temperature increased significantly only in the large-city "
+                "class; the other size classes showed no significant trend."
+            ),
+            "avg_temp": (
+                "Average heatwave temperature did not increase significantly in "
+                "any city-size class."
+            ),
+            "duration": (
+                "Heatwave duration increased significantly across all four "
+                "city-size classes, at roughly +0.06 days per year."
+            ),
         },
         "methodology": (
-            "Diese Version wendet exakt dieselbe Methodik wie die Deutschland-Analyse (RQ2) auf "
-            "Italien an — gleiche Hitzewellen-Definition, gleiche Bevölkerungsschwellen, gleicher "
-            "Ablauf. Angepasst werden nur die länderspezifischen Teile: Datenabfrage (italienische "
-            "Gemeinden, ISTAT-Gemeindeschlüssel) und Kartengrundlage (italienische Regionen).\n\n"
-            "**Wichtige methodische Anpassung:** Italien kennt kein dem deutschen Stadtrecht "
-            "vergleichbares Konzept — alle italienischen Orte sind rechtlich gleichgestellte "
-            "*comuni*. Die Größenklassen werden hier deshalb ausschließlich über die Einwohnerzahl "
-            "bestimmt, bei identischen Schwellenwerten wie in der Deutschland-Version.\n\n"
-            "Anders als bei Deutschland zeigt das Häufigkeits-Diagramm hier keine Rohdaten oder "
-            "Zoom-Ausschnitt: In den italienischen Daten gab es praktisch in jedem Jahr und jeder "
-            "Größenklasse mindestens eine Hitzewelle."
+            "The Italy analysis applies the same heatwave definition and population "
+            "thresholds as the Germany city-size analysis. Because Italy does not "
+            "use a city-status distinction equivalent to the German system, the "
+            "classes are defined only by population. The analysis covers 1980–2025 "
+            "with a 1961–1990 reference period."
         ),
     },
+
     "rq5": {
         "code": "RQ5",
-        "icon": "wb_sunny",
-        "short": "UV trends",
-        "title": "How has UV exposure changed across Europe?",
+        "short": "UV trends across Europe",
+        "title": (
+            "How has the UV Index across Europe changed over the past 20 years, "
+            "and are there significant temporal and regional trends?"
+        ),
         "status": "planned",
     },
+
     "rq6": {
         "code": "RQ6",
-        "icon": "monitor_heart",
-        "short": "UV and health",
-        "title": "How are UV exposure and health outcomes related?",
+        "short": "UV exposure & health",
+        "title": (
+            "What are the public health implications of rising UV Index trends "
+            "in highly affected European regions, particularly regarding sunburn risk?"
+        ),
         "status": "planned",
     },
 }

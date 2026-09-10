@@ -1,11 +1,10 @@
 import streamlit as st
 
 from content import RQ_META
-from theme import stat_cards
 from utils import rq_card
 
 
-def render(pages):
+def _render_home_content(pages):
     # ---------- Hero ----------
     st.markdown(
         """
@@ -30,7 +29,7 @@ def render(pages):
             use_container_width=True,
             key="home_heatwaves",
         ):
-            st.switch_page(pages["rq2"])
+            st.switch_page(pages["rq1"])
 
     with c2:
         if st.button(
@@ -39,17 +38,6 @@ def render(pages):
             key="home_uv",
         ):
             st.switch_page(pages["rq5"])
-
-    # ---------- Project snapshot ----------
-    st.write("")
-    stat_cards(
-        [
-            ("bar_chart", "6", "Research questions"),
-            ("public", "2", "Focus countries: Germany & Italy"),
-            ("calendar_month", "1980–2025", "Long-term climate trends"),
-            ("diversity_1", "2", "Climate & public-health perspectives"),
-        ]
-    )
 
     # ---------- Research questions ----------
     st.write("")
@@ -65,8 +53,8 @@ def render(pages):
         "city sizes and European regions."
     )
 
-    heatwave_row_1 = st.columns(2)
-    heatwave_row_2 = st.columns(2)
+    heatwave_row_1 = st.columns(2, gap="medium")
+    heatwave_row_2 = st.columns(2, gap="medium")
 
     for col, key in zip(
         heatwave_row_1 + heatwave_row_2,
@@ -76,9 +64,9 @@ def render(pages):
         with col:
             rq_card(
                 pages[key],
-                meta["icon"],
+                "",
                 meta["code"],
-                meta["short"],
+                meta["title"],
                 meta["status"],
             )
 
@@ -91,24 +79,23 @@ def render(pages):
         "for public health."
     )
 
-    uv_row = st.columns(2)
+    uv_row = st.columns(2, gap="medium")
 
     for col, key in zip(uv_row, ["rq5", "rq6"]):
         meta = RQ_META[key]
         with col:
             rq_card(
                 pages[key],
-                meta["icon"],
+                "",
                 meta["code"],
-                meta["short"],
+                meta["title"],
                 meta["status"],
             )
 
-    # ---------- Closing banner ----------
-    st.write("")
-    st.markdown(
-        '<div class="quote-banner">'
-        '"Hotter days. Brighter risks. A cooler future through knowledge."'
-        "</div>",
-        unsafe_allow_html=True,
-    )
+
+
+
+def render(pages):
+    # Same padded page shell concept as RQ1–RQ4
+    with st.container(key="home_page_shell"):
+        _render_home_content(pages)

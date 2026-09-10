@@ -1,0 +1,8 @@
+country,frequency_slope,n_cities_frequency,duration_slope,temperature_slope,n_cities_duration,n_cities_temperature
+Italy,0.068239,6,0.052048,0.015644,6,6
+Ukraine,0.065865,9,-0.007232,0.015019,9,9
+Spain,0.06087,6,0.019569,0.00984,6,6
+Poland,0.044712,5,-0.00706,-0.003568,5,5
+France,0.041505,4,0.022577,0.013112,4,4
+Germany,0.037064,15,0.020322,0.016241,15,15
+United Kingdom,0.00481,5,0.013524,0.035813,1,1

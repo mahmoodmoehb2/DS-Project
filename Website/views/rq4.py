@@ -3,7 +3,6 @@ from pathlib import Path
 import pandas as pd
 import streamlit as st
 
-from theme import key_finding
 
 try:
     import plotly.express as px
@@ -11,9 +10,7 @@ except ImportError:
     px = None
 
 
-# -------------------------------------------------------------------
-# RQ4 – Italy: city-size comparison
-# -------------------------------------------------------------------
+
 
 DATA_DIR = Path(__file__).resolve().parents[1] / "data"
 
@@ -365,15 +362,7 @@ def _render_rq4_content():
         """
     )
 
-    render_summary_cards()
 
-    st.write("")
-    key_finding(
-        "Italy was identified as the European country most strongly affected by rising "
-        "heatwave trends. Since 1980, heatwave frequency (~+0.07/year) and duration "
-        "(~+0.06 days/year) have increased significantly across all city sizes. "
-        "Thus, rising heatwave trends are not limited to large cities."
-    )
 
     st.write("")
     st.subheader("Explore the results")
@@ -513,7 +502,5 @@ def _render_rq4_content():
 
 
 def render():
-    # Same schema as RQ2: a dedicated page wrapper with a stable Streamlit key.
-    # The theme can target this page specifically via `.st-key-rq4_page_shell`.
     with st.container(key="rq4_page_shell"):
         _render_rq4_content()

@@ -33,7 +33,6 @@ rq_pages = {
     key: st.Page(
         _rq_renderers[key],
         title=f"{meta['code']}  {meta['short']}",
-        icon=nav_icon(meta["icon"]),
         url_path=key,
     )
     for key, meta in RQ_META.items()
@@ -43,13 +42,13 @@ country_pages = {
     "germany": st.Page(
         rq2.render,
         title="Germany",
-        icon="🇩🇪",
+        icon="",
         url_path="germany",
     ),
     "italy": st.Page(
         rq4.render,
         title="Italy",
-        icon="🇮🇹",
+        icon="",
         url_path="italy",
     ),
 }
@@ -124,8 +123,7 @@ with st.sidebar:
         st.page_link(
             rq_pages[key],
             label=f"{meta['code']}   {meta['short']}",
-            icon=nav_icon(meta["icon"]),
-            use_container_width=True,
+                use_container_width=True,
         )
 
     st.markdown('<div class="sidebar-subsection-title sidebar-subsection-uv">UV</div>', unsafe_allow_html=True)
@@ -134,14 +132,9 @@ with st.sidebar:
         st.page_link(
             rq_pages[key],
             label=f"{meta['code']}   {meta['short']}",
-            icon=nav_icon(meta["icon"]),
-            use_container_width=True,
+                use_container_width=True,
         )
 
-    st.markdown('<div class="sidebar-divider"></div>', unsafe_allow_html=True)
-    st.markdown('<div class="sidebar-section-title">Countries</div>', unsafe_allow_html=True)
-    st.page_link(country_pages["germany"], label="Germany", icon="🇩🇪", use_container_width=True)
-    st.page_link(country_pages["italy"], label="Italy", icon="🇮🇹", use_container_width=True)
 
     st.markdown('<div class="sidebar-divider"></div>', unsafe_allow_html=True)
     st.markdown('<div class="sidebar-section-title">About</div>', unsafe_allow_html=True)

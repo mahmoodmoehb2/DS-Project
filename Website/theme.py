@@ -1,8 +1,4 @@
-"""Purple design system used across all pages, based on the team's UI mockup
-("Heatwaves & UV in Europe"). Everything here is plain CSS/HTML injected via
-st.markdown — no reliance on undocumented Streamlit internals — so it stays
-robust across Streamlit versions.
-"""
+
 
 import streamlit as st
 
@@ -478,6 +474,7 @@ def inject_theme():
         /* ---------- RQ2 page shell ----------
            The outer white RQ2 surface stays where it is; all RQ2 content is
            inset inside it, matching the inner frame the user marked. */
+        .st-key-home_page_shell,
         .st-key-rq1_page_shell,
         .st-key-rq2_page_shell,
         .st-key-rq3_page_shell,
@@ -491,15 +488,28 @@ def inject_theme():
             box-shadow: 0 6px 24px rgba(34, 24, 70, 0.04) !important;
         }}
 
-        /* Avoid an extra white/card layer inside the RQ2 shell. */
+        /* Keep the inner layout aligned inside Home and all RQ page shells. */
+        .st-key-home_page_shell > div,
+        .st-key-home_page_shell [data-testid="stVerticalBlock"],
+        .st-key-rq1_page_shell > div,
+        .st-key-rq1_page_shell [data-testid="stVerticalBlock"],
         .st-key-rq2_page_shell > div,
-        .st-key-rq2_page_shell [data-testid="stVerticalBlock"] {{
+        .st-key-rq2_page_shell [data-testid="stVerticalBlock"],
+        .st-key-rq3_page_shell > div,
+        .st-key-rq3_page_shell [data-testid="stVerticalBlock"],
+        .st-key-rq4_page_shell > div,
+        .st-key-rq4_page_shell [data-testid="stVerticalBlock"],
+        .st-key-rq5_page_shell > div,
+        .st-key-rq5_page_shell [data-testid="stVerticalBlock"],
+        .st-key-rq6_page_shell > div,
+        .st-key-rq6_page_shell [data-testid="stVerticalBlock"] {{
             box-sizing: border-box !important;
         }}
 
         @media (max-width: 900px) {{
+            .st-key-home_page_shell,
             .st-key-rq1_page_shell,
-        .st-key-rq2_page_shell,
+            .st-key-rq2_page_shell,
         .st-key-rq3_page_shell,
         .st-key-rq4_page_shell,
         .st-key-rq5_page_shell,

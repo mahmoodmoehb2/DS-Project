@@ -6,7 +6,6 @@ import streamlit as st
 import plotly.express as px
 from scipy import stats
 
-from theme import key_finding
 
 
 DATA_DIR = Path(__file__).resolve().parents[1] / "data"
@@ -14,7 +13,7 @@ EVENT_FILE = DATA_DIR / "RQ1_heatwaves_events.csv"
 
 ANALYSIS_START = 1980
 ANALYSIS_END = 2025
-REFERENCE_PERIOD = "1961–1990"
+REFERENCE_PERIOD = "1961-1990"
 
 METRICS = {
     "Frequency": {
@@ -337,7 +336,7 @@ def render_method():
             A heatwave consists of at least **3 consecutive days**
             where daily maximum temperature is:
 
-            - above the city-specific **98th percentile** based on 1961–1990, and
+            - above the city-specific **98th percentile** based on 1961-1990, and
             - above **28°C**.
             """
         )
@@ -390,7 +389,7 @@ def _render_rq1_content():
         df["year"].between(ANALYSIS_START, ANALYSIS_END, inclusive="both")
     ].copy()
 
-    render_summary_cards(df)
+
 
     st.write("")
 
@@ -420,7 +419,7 @@ def _render_rq1_content():
             "RQ1 heatwave event table."
         )
 
-    key_finding(finding)
+
 
     st.write("")
     st.subheader("Explore the results")

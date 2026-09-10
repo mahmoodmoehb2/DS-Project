@@ -3,23 +3,13 @@ from pathlib import Path
 import pandas as pd
 import streamlit as st
 
-from theme import key_finding
+
 
 try:
     import plotly.express as px
 except ImportError:
     px = None
 
-
-# -------------------------------------------------------------------
-# RQ2 - Germany: city-size comparison
-#
-# All numbers below (SUMMARY, TREND_STATS, the Kruskal-Wallis p-values in
-# the "Statistical note" expander) are copied from the executed outputs of
-# RQ2_final.ipynb (sections 15, 16c and 17) - not placeholders. If the
-# notebook is re-run with updated data, re-copy those cells' outputs here,
-# or point load_events()/DATA_DIR at a fresh export instead.
-# -------------------------------------------------------------------
 
 DATA_DIR = Path(__file__).resolve().parents[1] / "data"
 
@@ -32,15 +22,7 @@ CLASS_LABELS = {
     "rural": "Rural municipality (1–4,999)",
 }
 
-# Categorical colors for the four (fixed-order) size classes. Taken as-is
-# from the design system's validated default categorical palette (slots
-# 1-4: blue/orange/aqua/yellow) rather than eyeballed - `node
-# validate_palette.js` confirms this 4-color subset clears the
-# colorblind-separation and lightness-band checks for both light and dark
-# chart surfaces. Bars carry a direct value label and the "Trend
-# statistics" tab offers the same data as a table, satisfying the relief
-# requirement for the two slots that read under 3:1 contrast on a light
-# surface (aqua, yellow).
+
 CLASS_COLORS = {
     CLASS_LABELS["large"]: "#2a78d6",
     CLASS_LABELS["medium"]: "#eb6834",
@@ -300,15 +282,9 @@ def _render_rq2_content():
         """
     )
 
-    render_summary_cards()
+    
 
-    st.write("")
-    key_finding(
-        "Since 1980, heatwave frequency has increased significantly across all city sizes "
-        "in Germany (~+0.03/year). Heatwave duration increased significantly only in large "
-        "and medium-sized cities, while no significant increase in heatwave intensity was "
-        "observed."
-    )
+
 
     st.write("")
     st.subheader("Explore the results")
@@ -420,8 +396,5 @@ def _render_rq2_content():
 
 
 def render():
-    # Dedicated RQ2 wrapper.
-    # Streamlit creates the CSS class `.st-key-rq2_page_shell` for this
-    # container, so theme.py can give RQ2 its own inner padding.
     with st.container(key="rq2_page_shell"):
         _render_rq2_content()
