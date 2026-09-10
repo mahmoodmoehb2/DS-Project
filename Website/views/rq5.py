@@ -221,39 +221,96 @@ def _render_rq5_content():
     st.subheader("Trend UV")
     
     df_trends = pd.read_csv(DATA_DIR / "RQ5_trends.csv")
-    regional = (df.groupby(["region", "year"])["mean_uvi"].mean().reset_index())
-    europe_data = (df.groupby("year")["mean_uvi"].mean().reset_index())
-    cointainer_visualisation_trends = st.empty()
-    with cointainer_visualisation_trends: 
-        fig = px.line(europe_data,x="year",y="mean_uvi",markers=True,title="UV Index Trend in Europe")
-        st.plotly_chart(fig, use_container_width=True)
-    
-      
-      
-       
-    
-    europe,north_europe,east_europe,south_europe,west_europe=st.columns(5)
-    with europe:
-       if st.button("Europe"):
-        europe_plot = px.line(europe_data,x="year",y="mean_uvi",markers=True,title="UV Index Trend in Europe")
-        st.plotly_chart(europe_plot, use_container_width=True)
-    with north_europe:
-            if st.button("North-Europe"):
-               north_europe_plot = px.line(regional[regional["region"] == "Northern Europe"],x="year",y="mean_uvi",markers=True,title="UV Index Trend in Northern Europe")
-               st.plotly_chart(north_europe_plot,use_container_width=True)
-                
-    with east_europe:
-            if st.button("East-Europe"):
-                east_europe_plot = px.line(regional[regional["region"] == "Eastern Europe"],x="year",y="mean_uvi",markers=True,title="UV Index Trend in Eastern Europe")
-                st.plotly_chart(east_europe_plot,use_container_width=True)
-    with south_europe:
-               if st.button("South-Europe"):
-                    south_europe_plot = px.line(regional[regional["region"] == "Southernstern Europe"],x="year",y="mean_uvi",markers=True,title="UV Index Trend in Southern Europe")
-                    st.plotly_chart(south_europe_plot,use_container_width=True)
-    with west_europe:
-            if st.button("West-Europe"):
-                west_europe_plot = px.line(regional[regional["region"] == "Western Europe"],x="year",y="mean_uvi",markers=True,title="UV Index Trend in Western Europe")
-                st.plotly_chart(west_europe_plot,use_container_width=True)
+    regional = df.groupby(["region", "year"])["mean_uvi"].mean().reset_index()
+    europe_data = df.groupby("year")["mean_uvi"].mean().reset_index()
+
+    if "selected_region" not in st.session_state:
+        st.session_state.selected_region = "Europe"
+
+    with st.container():
+        st.markdown("### Select region")
+
+        # Region buttons
+        col1, col2, col3, col4 = st.columns(4)
+
+        with col1:
+            if st.button("Europe", key="trend_europe"):
+                st.session_state.selected_region = "Europe"
+
+        with col2:
+            if st.button("East Europe", key="trend_east"):
+                st.session_state.selected_region = "Eastern Europe"
+
+        with col3:
+            if st.button("South Europe", key="trend_south"):
+                st.session_state.selected_region = "Southern Europe"
+
+        with col4:
+            if st.button("West Europe", key="trend_west"):
+                st.session_state.selected_region = "Western Europe"
+
+        selected_region = st.session_state.selected_region
+
+        # Select data
+        if selected_region == "Europe":
+            plot_data = europe_data
+            plot_title = "UV Index Trend in Europe"
+
+        else:
+            plot_data = regional[regional["region"] == selected_region]
+            plot_title = f"UV Index Trend in {selected_region}"
+
+        # Trend plot
+        fig = px.line(plot_data, x="year", y="mean_uvi", markers=True, title=plot_title)
+
+        st.plotly_chart(fig, use_container_width=True, key="rq5_trend_plot")
+
+        
+
+        st.markdown(
+            """
+            <div style="
+                background-color: #ffebee;
+                border: 2px solid #d32f2f;
+                border-radius: 12px;
+                padding: 20px;
+                margin-top: 25px;
+            ">
+                <strong style="color: #b71c1c;">
+                    Statistical Significance
+                </strong>
+                <p style="margin-bottom: 0;">
+                    The observed trend is not statistically significant.
+                </p>
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
+
+     
+
+        st.markdown(
+            """
+            <div style="
+                background-color: #f5f5f5;
+                border: 1px solid #cccccc;
+                border-radius: 12px;
+                padding: 20px;
+                margin-top: 15px;
+            ">
+                <strong>
+                    Interpretation
+                </strong>
+                <p style="margin-bottom: 0;">
+                    The charts illustrate the temporal and regional development of the UV Index across European cities.
+                The Mean UV Index represents the average UV Index for a city over the respective year. It provides an overall measure of typical UV exposure rather than showing individual daily peaks.
+                For the Europe-wide chart, these city-level mean UV Index values were averaged across all included European cities for each year. For the regional charts, they were averaged across all cities belonging to the selected region for each year.
+                The UV Index data were obtained from TEMIS, while GeoNames was used to identify European cities and provide their geographic information.
+                </p>
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
     
    
         
