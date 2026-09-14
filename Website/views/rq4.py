@@ -1,3 +1,9 @@
+""" Streamlit page for RQ4 about heatwaves and city size.
+
+The page loads the heatwave data and shows the RQ4 results.
+It compares different city-size groups in italy.
+"""
+
 from pathlib import Path
 import pandas as pd
 import streamlit as st
@@ -12,10 +18,13 @@ except ImportError:
 
 
 
+# Set the path to the data folder.
 DATA_DIR = Path(__file__).resolve().parents[1] / "data"
 
+# Set the order of the city-size classes.
 CLASS_ORDER = ["large", "medium", "small", "rural"]
 
+# Names that are shown for each city-size class.
 CLASS_LABELS = {
     "large": "Large city (≥150,000)",
     "medium": "Medium-sized city (20,000–149,999)",
@@ -23,6 +32,7 @@ CLASS_LABELS = {
     "rural": "Rural municipality (1–4,999)",
 }
 
+# Set one color for each city-size class.
 CLASS_COLORS = {
     CLASS_LABELS["large"]: "#2a78d6",
     CLASS_LABELS["medium"]: "#eb6834",
@@ -30,6 +40,7 @@ CLASS_COLORS = {
     CLASS_LABELS["rural"]: "#eda100",
 }
 
+# Number of places in each city-size class.
 N_PLACES = {
     "large": 25,
     "medium": 24,
@@ -37,6 +48,7 @@ N_PLACES = {
     "rural": 25,
 }
 
+# Store the main results for the full analysis period.
 SUMMARY = pd.DataFrame(
     {
         "size_class": ["large", "medium", "small", "rural"],
@@ -49,6 +61,7 @@ SUMMARY = pd.DataFrame(
     }
 )
 
+# Store the trend results and p-values.
 TREND_STATS = pd.DataFrame(
     [
         ("large", "Frequency", 0.0716, 0.0000, True),
@@ -77,13 +90,17 @@ TREND_STATS = pd.DataFrame(
 
 @st.cache_data
 def load_events():
-    """Load the event-level CSV exported by the Italy notebook."""
+    # Load the heatwave events from the CSV file.
+    # Create the path to the CSV file.
     path = DATA_DIR / "RQ4_Italy_heatwaves_events.csv"
+    # Stop if the file does not exist.
     if not path.exists():
         return None
 
+    # Read the CSV file.
     df = pd.read_csv(path)
 
+    # Convert the start date and create the year if needed.
     if "start" in df.columns:
         df["start"] = pd.to_datetime(df["start"], errors="coerce")
         if "year" not in df.columns:
@@ -93,9 +110,11 @@ def load_events():
 
 
 def build_yearly(events, start_year=1980, end_year=2025, selected_classes=None):
+    # Prepare yearly values for the trend chart.
     if events is None or events.empty:
         return None
 
+    # These columns are needed for the analysis.
     required = {
         "year",
         "size_class",
@@ -106,13 +125,16 @@ def build_yearly(events, start_year=1980, end_year=2025, selected_classes=None):
     if not required.issubset(events.columns):
         return None
 
+    # Use the selected classes or all classes by default.
     active_classes = selected_classes if selected_classes else CLASS_ORDER
 
+    # Filter the data by year and city-size class.
     events = events[
         events["year"].between(start_year, end_year, inclusive="both")
         & events["size_class"].isin(active_classes)
     ].copy()
 
+    # Calculate yearly values for each city-size class.
     yearly = (
         events.groupby(["year", "size_class"], observed=False)
         .agg(
@@ -124,6 +146,7 @@ def build_yearly(events, start_year=1980, end_year=2025, selected_classes=None):
         .reset_index()
     )
 
+    # Create all year and class combinations.
     all_years = pd.MultiIndex.from_product(
         [range(start_year, end_year + 1), active_classes],
         names=["year", "size_class"],
@@ -135,12 +158,15 @@ def build_yearly(events, start_year=1980, end_year=2025, selected_classes=None):
         how="left",
     )
 
+    # Years without heatwaves get a value of zero.
     yearly["n_heatwaves"] = yearly["n_heatwaves"].fillna(0)
+    # Divide the number of heatwaves by the number of places.
     yearly["heatwaves_per_place"] = yearly.apply(
         lambda row: row["n_heatwaves"] / N_PLACES[row["size_class"]],
         axis=1,
     )
 
+    # Use a 5-year mean to make the trends easier to see.
     for column in [
         "heatwaves_per_place",
         "mean_max_temp",
@@ -162,16 +188,21 @@ def build_yearly(events, start_year=1980, end_year=2025, selected_classes=None):
 
 
 def _themed_layout(fig, height, y_title, x_title=""):
+    # Set the general design of the chart.
     fig.update_layout(
+        # Make the chart background transparent.
         paper_bgcolor="rgba(0,0,0,0)",
         plot_bgcolor="rgba(0,0,0,0)",
+        # Set the font for the chart.
         font=dict(
             family="-apple-system, Segoe UI, Roboto, sans-serif",
             color="#1F2937",
             size=13,
         ),
+        # Set the axis titles.
         xaxis_title=x_title,
         yaxis_title=y_title,
+        # Place the legend above the chart.
         legend=dict(
             title="City size",
             orientation="h",
@@ -180,15 +211,19 @@ def _themed_layout(fig, height, y_title, x_title=""):
             xanchor="left",
             x=0,
         ),
+        # Set the spacing around the chart.
         margin=dict(l=10, r=10, t=10, b=10),
         height=height,
     )
+    # Hide the grid on the x-axis.
     fig.update_xaxes(showgrid=False, zeroline=False)
+    # Add light grid lines to the y-axis.
     fig.update_yaxes(gridcolor="#EDE9FE", zeroline=False)
     return fig
 
 
 def render_summary_cards():
+    # Show the main information in four cards.
     c1, c2, c3, c4 = st.columns(4)
 
     c1.metric("Places analysed", "98")
@@ -198,6 +233,7 @@ def render_summary_cards():
 
 
 def render_overview_chart(metric, events=None, start_year=1980, end_year=2025, selected_classes=None):
+    # Create the bar chart for the selected metric.
     metric_config = {
         "Frequency": (
             "heatwaves_per_place_year",
@@ -219,8 +255,10 @@ def render_overview_chart(metric, events=None, start_year=1980, end_year=2025, s
 
     column, y_title = metric_config[metric]
 
+    # Use the selected classes or all classes by default.
     active_classes = selected_classes if selected_classes else CLASS_ORDER
 
+    # Use the event data when it is available.
     if events is not None and not events.empty:
         filtered = events[
             events["year"].between(start_year, end_year, inclusive="both")
@@ -242,6 +280,7 @@ def render_overview_chart(metric, events=None, start_year=1980, end_year=2025, s
             .reset_index()
         )
 
+        # Calculate the number of selected years.
         n_years = end_year - start_year + 1
         chart_df["heatwaves_per_place_year"] = chart_df.apply(
             lambda row: row["total_heatwaves"]
@@ -255,6 +294,7 @@ def render_overview_chart(metric, events=None, start_year=1980, end_year=2025, s
 
     chart_df["City size"] = chart_df["size_class"].map(CLASS_LABELS)
 
+    # Use a simple Streamlit chart if Plotly is not available.
     if px is None:
         st.bar_chart(
             chart_df.set_index("City size")[column],
@@ -262,6 +302,7 @@ def render_overview_chart(metric, events=None, start_year=1980, end_year=2025, s
         )
         return
 
+    # Create the Plotly bar chart.
     fig = px.bar(
         chart_df,
         x="City size",
@@ -289,6 +330,7 @@ def render_overview_chart(metric, events=None, start_year=1980, end_year=2025, s
 
 
 def render_trend_chart(yearly, metric, selected_classes=None):
+    # Create the line chart for the long-term trend.
     metric_config = {
         "Frequency": (
             "heatwaves_per_place_smooth",
@@ -310,12 +352,14 @@ def render_trend_chart(yearly, metric, selected_classes=None):
 
     column, y_title = metric_config[metric]
 
+    # Use the selected classes or all classes by default.
     active_classes = selected_classes if selected_classes else CLASS_ORDER
     plot_df = yearly[
         yearly["size_class"].isin(active_classes)
     ].copy()
     plot_df["City size"] = plot_df["size_class"].map(CLASS_LABELS)
 
+    # Use a simple Streamlit chart if Plotly is not available.
     if px is None:
         pivot = plot_df.pivot(
             index="year",
@@ -325,6 +369,7 @@ def render_trend_chart(yearly, metric, selected_classes=None):
         st.line_chart(pivot, use_container_width=True)
         return
 
+    # Create the Plotly line chart.
     fig = px.line(
         plot_df,
         x="year",
@@ -354,6 +399,7 @@ def render_trend_chart(yearly, metric, selected_classes=None):
 
 
 def render_trend_table(metric):
+    # Show the trend statistics for the selected metric.
     table = TREND_STATS[TREND_STATS["metric"] == metric].copy()
 
     table["City size"] = table["size_class"].map(CLASS_LABELS)
@@ -365,6 +411,7 @@ def render_trend_table(metric):
         {True: "Yes", False: "No"}
     )
 
+    # Add a button to download the trend data.
     top = st.columns([5, 1])
     with top[1]:
         st.download_button(
@@ -390,6 +437,7 @@ def render_trend_table(metric):
 
 
 def _render_rq4_content():
+    # Build the content of the RQ4 page.
     st.markdown(
         '<div class="eyebrow">RQ4 · HEATWAVES · ITALY</div>',
         unsafe_allow_html=True,
@@ -448,8 +496,10 @@ def _render_rq4_content():
         "between heatwave metrics. The charts update automatically."
     )
 
+    # Load the heatwave data.
     events = load_events()
 
+    # Let the user select the analysis period.
     selected_years = st.slider(
         "Select analysis period",
         min_value=1980,
@@ -460,6 +510,7 @@ def _render_rq4_content():
     )
     start_year, end_year = selected_years
 
+    # Let the user select city-size classes.
     selected_classes = st.multiselect(
         "Select city-size classes",
         options=CLASS_ORDER,
@@ -471,6 +522,7 @@ def _render_rq4_content():
     if not selected_classes:
         selected_classes = CLASS_ORDER
 
+    # Let the user select the heatwave metric.
     metric = st.segmented_control(
         "Select heatwave metric",
         options=[
@@ -484,6 +536,7 @@ def _render_rq4_content():
     if metric is None:
         metric = "Frequency"
 
+    # Prepare the data for the selected filters.
     yearly_filtered = build_yearly(
         events,
         start_year=start_year,
@@ -497,6 +550,7 @@ def _render_rq4_content():
         + ("" if len(selected_classes) == 1 else "es")
     )
 
+    # Split the results into three tabs.
     tab1, tab2, tab3 = st.tabs(
         [
             "Long-term trend",
@@ -568,5 +622,6 @@ def _render_rq4_content():
 
 
 def render():
+    # Show the complete RQ4 page.
     with st.container(key="rq4_page_shell"):
         _render_rq4_content()
