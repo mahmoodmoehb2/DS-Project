@@ -261,7 +261,7 @@ def render_info():
 
         with col2:
             with st.container(border=True):
-                st.markdown("##### Heatwaves")
+                st.markdown("##### UV exposure and health")
 
                 st.markdown(
                     """
