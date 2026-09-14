@@ -516,7 +516,7 @@ def _render_rq1_content():
         scope_label = f"all {len(all_cities)} cities"
 
     st.caption(
-        f"Current selection: {start_year}–{end_year} · {scope_label}"
+        f"Current selection: {start_year}-{end_year} · {scope_label}"
     )
 
     tab1, tab2 = st.tabs(
