@@ -33,7 +33,7 @@ def render_methods():
 
         with c1:
             with st.container(border=True):
-                _card_title("calendar_month", "Analysis periods")
+                _card_title("Analysis", "persiods")
 
                 st.markdown(
                     """
@@ -66,7 +66,8 @@ def render_methods():
 
         with c3:
             with st.container(border=True):
-                _card_title("science", "Statistical methods")
+                _card_title("Statistical", "methods")
+                
 
                 st.markdown(
                     """
@@ -130,20 +131,6 @@ def render_methods():
 
 
 
-        st.subheader("European city selection")
-
-        st.markdown(
-            """
-            For the European analysis in **RQ3**, cities with at least
-            **500,000 inhabitants** were included. National capitals were also
-            included when their population was below this threshold.
-
-            Country-level heatwave-frequency trends were calculated from the
-            median of the corresponding city-level trends. Countries represented
-            by fewer than **3 analysed cities** were excluded from the frequency
-            ranking.
-            """
-        )
 
 
         st.subheader("UV and health analysis")
@@ -172,33 +159,19 @@ def render_methods():
 
         with d1:
             with st.container(border=True):
-                _card_title("database", "Climate and geographic data")
 
                 st.markdown(
                     """
+                    - **Open-Meteo** — daily maximum temperature data used for the
+                        heatwave detection
                     - **Wikidata** — city and population metadata used in city
-                      selection
+                        selection
                     - **GeoNames** — geographic and population information used
-                      in the German UV analysis
+                        in the German UV analysis
                     - **TEMIS** — UV Index data used for the UV analysis
                     """
                 )
 
-        with d2:
-            with st.container(border=True):
-                _card_title("health_and_safety", "Health data")
-
-                st.markdown(
-                    """
-                    - **Destatis GENESIS** — German health statistics used in the
-                      health-related analysis
-
-                    Detailed preprocessing steps, selection criteria and
-                    analysis-specific limitations are described on the
-                    corresponding research-question pages and in the project
-                    notebooks.
-                    """
-                )
 
 
 
@@ -302,57 +275,34 @@ def render_info():
 
 
 
-        st.subheader("How to use this website")
 
-        st.markdown(
+
+
+        st.write("")
+
+        st.subheader("Imprint")
+
+        with st.container(border=True):
+            st.markdown("##### Responsible institution")
+
+            st.markdown(
             """
-            Each research-question page presents the corresponding analysis using
-            interactive visualisations, statistical results and a short conclusion.
+            **Christian-Albrechts-Universität zu Kiel**  
+            Christian-Albrechts-Platz 4  
+            24118 Kiel  
+            Germany
 
-            Use the navigation menu to move between the six research questions.
-            Controls above the charts allow you to explore different metrics such
-            as heatwave frequency, temperature and duration.
-
-            The **Data and methods** section provides an overview of the common
-            methodology and data sources used throughout the project.
+            This website was created as part of a student project in the  
+            **BSc Data Science programme at Kiel University (CAU Kiel).**
             """
         )
 
+        st.markdown("##### Contact")
 
-
-        st.subheader("Project team")
-
-        with st.container(border=True):
-            st.markdown("##### Team members")
-
-            st.markdown(
-                """
-                1. Ahmad-Masih Soltany<br>
-                2. Paul Clausen<br>
-                3. Timo Stalschus<br>
-                4. Mahmood Gutschmidt<br>
-
-        <strong>Course:</strong> Data Science Projekt SS 2026<br>
-        <strong>Programme:</strong> BSc Data Science
-        """,
-        unsafe_allow_html=True,
-    )
-
-
-
-        st.subheader("Course supervisors")
-
-        with st.container(border=True):
-            _card_title("school", "Supervision")
-
-            st.markdown(
-                """
-                Prof. Peer Kröger  
-                Dr. Rükiye Altin  
-                Sweety Mohanty  
-                Mirjam Bayer
-
-                **Project period:** 17.08.2026 – 11.09.2026
-                """
-            )
+        st.markdown(
+            """
+            **Mirjam Bayer**(Supervisor)  
+            miba@informatik.uni-kiel.de
+            """
+        )
 
