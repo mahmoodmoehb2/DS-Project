@@ -8,35 +8,42 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 DATA_DIR = BASE_DIR / "data"
 
-
+# Function renders the content for the researchquestion 5
 def _render_rq5_content():
+    # Sets the topic and the region with 
     st.markdown('<div class="eyebrow">RQ5 · UV Index · Europe</div>', unsafe_allow_html=True)
-
-    st.title("Do heatwaves differ by city size in Germany?")
-
+    # Sets the title 
+    st.title("UV Index Trends Across Europe")
+    # Sets the Rearchquestion in the header
     st.markdown(
         """
         **Research question:** How has the UV Index across Europe changed over the past 20
         years, and are there significant temporal and regional trends?
         """
     )
+    #sets the Header for the first figure of the page
     st.subheader("UV Index in the European cities")
+    #reads the data of the CSV for the first figure of the page
     df = pd.read_csv(DATA_DIR / "RQ5_uvIndex.csv")
    
+    # Creates the Array for the results by clicking the button of the selected year
     result = [] 
-    
+    # Sets the statndard content of the first figure of the page (Year 2000)
     cointainer_visualisation = st.empty()
-   
+    # Sets the information of the standard year
     information_about_uv_box = st.empty()
+    
     with information_about_uv_box:
+         # sets the header for the information box
          st.subheader(f"Information on the UV-Index in 2000")
+    # takes the information for the year 2000 
     with cointainer_visualisation:
        for _, row in df.iterrows():
             if row["year"]==2000:
                 result.append(row)
        render_new_container(cointainer_visualisation, 2000,result,information_about_uv_box)
     
-    #creates ten columnes
+    #creates ten columnes (10x3 Field for the buttons)
     col0,col1,col2,col3,col4,col5,col6,col7,col8,col9= st.columns(10)
     #buttons for the years with ending 0
     with col0:
@@ -218,40 +225,48 @@ def _render_rq5_content():
                 if row["year"]==2019:
                     result.append(row)
              render_new_container(cointainer_visualisation, 2019,result,information_about_uv_box)
+    #sets the header for the second figure on the page
     st.subheader("Trend UV")
-    
+    # Read the Date for the Trend UV
     df_trends = pd.read_csv(DATA_DIR / "RQ5_trends.csv")
+    # Take the data of the UV Trend and seperate it into groups of regions in europe (north-europe,east-europe,south-europe,west-europe)
     regional = df.groupby(["region", "year"])["mean_uvi"].mean().reset_index()
+    # select the data for the years of a european region
     europe_data = df.groupby("year")["mean_uvi"].mean().reset_index()
-
+   # Set Europe as the default region if no region has been selected yet
     if "selected_region" not in st.session_state:
         st.session_state.selected_region = "Europe"
-
+    # design the container for the second figure on the page 
     with st.container():
         st.markdown("### Select region")
 
         # Region buttons
         col1, col2, col3, col4 = st.columns(4)
 
+        # creates the column for the button Europe
         with col1:
+            # sets the selected_region to Europe if the button was clicked
             if st.button("Europe", key="trend_europe"):
                 st.session_state.selected_region = "Europe"
-
+         # creates the column for the button East Europe
         with col2:
+             # sets the selected_region to East Europe if the button was clicked
             if st.button("East Europe", key="trend_east"):
                 st.session_state.selected_region = "Eastern Europe"
-
+        # creates the column for the button South Europe
         with col3:
+            # sets the selected_region to South  Europe if the button was clicked
             if st.button("South Europe", key="trend_south"):
                 st.session_state.selected_region = "Southern Europe"
-
+         # creates the column for the button West  Europe
         with col4:
+            # sets the selected_region to West  Europe if the button was clicked
             if st.button("West Europe", key="trend_west"):
                 st.session_state.selected_region = "Western Europe"
 
         selected_region = st.session_state.selected_region
 
-        # Select data
+        # Select the title and data for the specific region
         if selected_region == "Europe":
             plot_data = europe_data
             plot_title = "UV Index Trend in Europe"
@@ -262,11 +277,11 @@ def _render_rq5_content():
 
         # Trend plot
         fig = px.line(plot_data, x="year", y="mean_uvi", markers=True, title=plot_title)
-
+        # draw the plot for the specific european region
         st.plotly_chart(fig, use_container_width=True, key="rq5_trend_plot")
 
         
-
+        #Sets the red block for the statisican data 
         st.markdown(
             """
             <div style="
@@ -288,7 +303,7 @@ def _render_rq5_content():
         )
 
      
-
+        # Sets the informationblock on the end of the page
         st.markdown(
             """
             <div style="
@@ -312,45 +327,29 @@ def _render_rq5_content():
             unsafe_allow_html=True
         )
     
-   
-        
-    
-        
-    
-    
-    
-    
-    
-  
-        
-            
-        
-    
-        
-        
-        
 # This Function creates a Container and render the context of the page inside of it 
 def render():
     with st.container(key="rq5_page_shell"):
         _render_rq5_content()
-
+# 
 def render_new_container(container, year,dataframe,information_box):
     with container.container():
         st.write(f"Informatiion on UV Index in {year}")
         data= pd.DataFrame(dataframe)
-        
+        # draw the plot for the selected year of the first figure on the page
         st.bar_chart(data,x="city",y="mean_uvi")
     with information_box.container():
         st.subheader(f"UV Index {year}")
         title,information=st.columns(2)
         
-        
+        # Sets the Titles for the information block of the first figure on the page 
         with title:
             st.write("MEAN UV:")
             st.write("MAX MEAN UV: ")
             st.write("MIN MEAN UV: ")
+        # Sets the data for the information block for the first figure on the page
         with information:
-            
+        
             data= pd.DataFrame(dataframe)
             st.write(f"{data['mean_uvi'].mean():.2f}")
             st.write(f"{data['mean_uvi'].max():.2f}")
