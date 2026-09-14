@@ -1,0 +1,5 @@
+﻿size_class,n_orte,gesamt_hitzewellen,mean_hitzewellen_pro_ort,mean_max_temp,mean_avg_temp,mean_duration,hitzewellen_pro_ort_und_jahr
+large,25,1719,68.76,34.388,33.2,5.156,1.495
+medium,24,1701,70.875,34.328,33.133,5.3,1.541
+small,24,1688,70.333,34.389,33.202,5.205,1.529
+rural,25,1646,65.84,33.925,32.776,5.147,1.431
