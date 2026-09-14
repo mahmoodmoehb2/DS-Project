@@ -1,3 +1,7 @@
+"""RQ3 page: how are heatwaves changing across European cities?
+Loads the heatwave event and country trend data, computes yearly
+trends, and renders the charts and tables for the Streamlit page."""
+
 from pathlib import Path
 
 import pandas as pd
@@ -17,8 +21,7 @@ ANALYSIS_START = 1980
 ANALYSIS_END = 2025
 
 
-
-
+# Pre-computed Europe-wide trend stats, full period and 1991-2025 check.
 EUROPE_TRENDS = pd.DataFrame(
     [
         ("Frequency", 3.995, 0.0000, True),
@@ -44,6 +47,8 @@ EUROPE_TRENDS_1991 = pd.DataFrame(
 
 @st.cache_data
 def load_country_trends():
+    """Load the country-level trend table from the CSV file.
+    Returns None if the file does not exist."""
     if not COUNTRY_TRENDS_FILE.exists():
         return None
 
@@ -52,6 +57,9 @@ def load_country_trends():
 
 @st.cache_data
 def load_events():
+    """Load the heatwave event table from the CSV file.
+    Also parses the date columns and adds a year column if missing.
+    Returns None if the file does not exist."""
     if not EVENT_FILE.exists():
         return None
 
@@ -71,6 +79,9 @@ def load_events():
 
 
 def build_yearly(events, start_year=ANALYSIS_START, end_year=ANALYSIS_END, selected_countries=None):
+    """Group the events by year and compute yearly averages.
+    Can filter to a year range and a list of countries first.
+    Fills in missing years and adds a smoothed 5-year rolling average."""
     if events is None or events.empty:
         return None
 
@@ -127,6 +138,8 @@ def build_yearly(events, start_year=ANALYSIS_START, end_year=ANALYSIS_END, selec
 
 
 def apply_plot_style(fig, y_title):
+    """Apply the shared look and feel to a Plotly chart.
+    Sets colors, fonts, axis titles, and grid style, then returns the figure."""
     fig.update_layout(
         paper_bgcolor="rgba(0,0,0,0)",
         plot_bgcolor="rgba(0,0,0,0)",
@@ -163,6 +176,7 @@ def apply_plot_style(fig, y_title):
 
 
 def render_summary_cards():
+    """Show four fixed summary numbers at the top of the page."""
     c1, c2, c3, c4 = st.columns(4)
 
     c1.metric(
@@ -189,6 +203,8 @@ def render_summary_cards():
 
 
 def render_yearly_chart(yearly, metric):
+    """Draw the yearly trend line chart for one metric.
+    Falls back to a text summary if no yearly data is available."""
     if yearly is None:
         st.info(
             "The yearly event data could not be loaded. "
@@ -253,6 +269,8 @@ def render_yearly_chart(yearly, metric):
 
 
 def render_europe_trend_summary(metric):
+    """Show the pre-computed Europe-wide trend for one metric as a fallback.
+    Used when the raw yearly chart data is not available."""
     row = EUROPE_TRENDS[
         EUROPE_TRENDS["metric"] == metric
     ].iloc[0]
@@ -283,6 +301,8 @@ def render_europe_trend_summary(metric):
 
 
 def render_country_comparison(country_df, metric):
+    """Draw a bar chart ranking countries by one metric.
+    Shows an error with helpful info if the country data is missing or invalid."""
     if country_df is None or country_df.empty:
         st.error(
             "Missing `data/RQ3_country_trends.csv`."
@@ -434,6 +454,8 @@ def render_country_comparison(country_df, metric):
 
 
 def render_trend_statistics():
+    """Show the Europe-wide trend stats as two tables.
+    One table covers the full period, the other the 1991-2025 sensitivity check."""
     display = EUROPE_TRENDS.copy()
 
     display["Slope / year"] = display["slope"].map(
@@ -526,6 +548,8 @@ def render_trend_statistics():
 
 
 def render_method():
+    """Show the study design and heatwave definition as text.
+    Note: this is overwritten by the second render_method below."""
     st.markdown(
         """
         **Study population.** European cities with at least 500,000 inhabitants,
@@ -556,6 +580,8 @@ def render_method():
 
 
 def _render_rq3_content():
+    """Build the whole RQ3 page.
+    Loads the data, shows the filters, and draws the charts and tables."""
     st.markdown(
         '<div class="eyebrow">RQ3 · HEATWAVES · EUROPE</div>',
         unsafe_allow_html=True,
@@ -704,6 +730,8 @@ def _render_rq3_content():
     render_trend_statistics()
 
 def render_method():
+    """Show the study design as a numbered list of four steps.
+    This is the version actually used, since it replaces the first one."""
     st.markdown(
         """
         The analysis follows four main steps:
@@ -733,6 +761,7 @@ def render_method():
     )
 
 def render():
+    """Entry point for the RQ3 page, called by the main app."""
     with st.container(
         key="rq3_page_shell"
     ):

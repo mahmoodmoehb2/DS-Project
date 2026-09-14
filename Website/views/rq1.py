@@ -1,3 +1,7 @@
+"""RQ1 page: are heatwaves in German cities becoming more common?
+Loads the heatwave event data, computes yearly trends, and renders
+the charts and tables for the Streamlit page."""
+
 from pathlib import Path
 
 import numpy as np
@@ -16,6 +20,7 @@ ANALYSIS_START = 1980
 ANALYSIS_END = 2025
 REFERENCE_PERIOD = "1961-1990"
 
+# Column names and chart labels for each heatwave metric.
 METRICS = {
     "Frequency": {
         "raw": "n_heatwaves",
@@ -48,6 +53,7 @@ METRICS = {
 }
 
 
+# Pre-computed trend stats for the 1991-2025 sensitivity check.
 RQ1_TRENDS_1991 = pd.DataFrame(
     [
         ("Frequency", 2.2936, 0.0005, True),
@@ -61,7 +67,9 @@ RQ1_TRENDS_1991 = pd.DataFrame(
 
 @st.cache_data
 def load_events():
-    """Load the event-level heatwave table exported from the RQ1 notebook."""
+    """Load the heatwave event table from the CSV file.
+    Also parses the date columns and adds a year column if missing.
+    Returns None if the file does not exist."""
     if not EVENT_FILE.exists():
         return None
 
@@ -83,6 +91,8 @@ def load_events():
 
 
 def validate_events(df):
+    """Check that the event table has all the columns we need.
+    Returns the set of missing column names, empty if nothing is missing."""
     required = {
         "city",
         "year",
@@ -98,13 +108,9 @@ def validate_events(df):
 
 
 def build_yearly(df, start_year=ANALYSIS_START, end_year=ANALYSIS_END):
-    """
-    Same annual aggregation as the notebook:
-    - frequency: total detected heatwaves across all cities per year
-    - peak temperature: mean max_temp across events per year
-    - average temperature: mean avg_temp across events per year
-    - duration: mean duration_days across events per year
-    """
+    """Group the events by year and compute yearly averages.
+    Fills in missing years and adds a smoothed 5-year rolling average
+    for each metric, so the trend lines look less noisy."""
     yearly = (
         df.groupby("year")
         .agg(
@@ -139,6 +145,9 @@ def build_yearly(df, start_year=ANALYSIS_START, end_year=ANALYSIS_END):
 
 
 def calculate_trend(yearly, metric):
+    """Run a linear regression on one metric over the years.
+    Returns the slope, p-value, and whether the trend is significant.
+    Returns None if there are fewer than 3 valid data points."""
     col = METRICS[metric]["raw"]
     valid = yearly.dropna(subset=[col])
 
@@ -156,6 +165,8 @@ def calculate_trend(yearly, metric):
 
 
 def all_trend_stats(yearly):
+    """Calculate the trend for every metric in METRICS.
+    Returns a table with one row per metric, ready to display."""
     rows = []
 
     for metric in METRICS:
@@ -177,6 +188,8 @@ def all_trend_stats(yearly):
 
 
 def plot_yearly_trend(yearly, metric):
+    """Draw a line chart of the smoothed metric over time.
+    Plots the yearly trend for one metric, like frequency or duration."""
     cfg = METRICS[metric]
 
     plot_df = yearly.dropna(subset=[cfg["smooth"]]).copy()
@@ -220,6 +233,8 @@ def plot_yearly_trend(yearly, metric):
 
 
 def plot_city_comparison(df, metric, start_year=None, end_year=None):
+    """Draw a bar chart comparing cities on one metric.
+    Shows the top 15 cities, sorted from highest to lowest value."""
     if metric == "Frequency":
         city_df = (
             df.groupby("city")
@@ -286,6 +301,8 @@ def plot_city_comparison(df, metric, start_year=None, end_year=None):
 
 
 def render_trend_statistics(yearly):
+    """Show the trend statistics as a table on the page.
+    Formats the numbers nicely before displaying them."""
     stats_df = all_trend_stats(yearly)
 
     if stats_df.empty:
@@ -311,6 +328,8 @@ def render_trend_statistics(yearly):
     
 
 def render_summary_cards(df):
+    """Show four quick summary numbers at the top of the page.
+    These are the city count, event count, year range, and definition."""
     n_cities = df["city"].nunique()
     n_events = len(df)
 
@@ -326,6 +345,7 @@ def render_summary_cards(df):
 
 
 def render_method():
+    """Show the study design and heatwave definition side by side."""
     left, right = st.columns(2)
 
     with left:
@@ -355,6 +375,8 @@ def render_method():
 
 
 def _render_rq1_content():
+    """Build the whole RQ1 page.
+    Loads the data, shows the filters, and draws the charts and tables."""
     st.markdown(
         '<div class="eyebrow">RQ1 · HEATWAVES · GERMANY</div>',
         unsafe_allow_html=True,
@@ -559,7 +581,7 @@ def _render_rq1_content():
     render_trend_statistics(yearly)
     
     st.markdown(
-    "**Sensitivity check: 1991–2025**"
+    "**Sensitivity check: 1991-2025**"
     )
 
     sensitivity = RQ1_TRENDS_1991.copy()
@@ -610,5 +632,6 @@ def _render_rq1_content():
         )
 
 def render():
+    """Entry point for the RQ1 page, called by the main app."""
     with st.container(key="rq1_page_shell"):
         _render_rq1_content()
