@@ -1,0 +1,801 @@
+year,state,icd10_code,diagnosis,cases
+2019,Brandenburg,ICD10-T67,Schäden durch Hitze und Sonnenlicht,51.0
+2021,Thüringen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,19.0
+2008,Hessen,ICD10-L55,Dermatitis solaris acuta,10.0
+2001,Niedersachsen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,140.0
+2002,Saarland,ICD10-T67,Schäden durch Hitze und Sonnenlicht,24.0
+2006,Saarland,ICD10-L55,Dermatitis solaris acuta,1.0
+2004,Niedersachsen,ICD10-L55,Dermatitis solaris acuta,21.0
+2006,Mecklenburg-Vorpommern,ICD10-T67,Schäden durch Hitze und Sonnenlicht,65.0
+2023,Bayern,ICD10-L55,Dermatitis solaris acuta,12.0
+2020,Mecklenburg-Vorpommern,ICD10-L55,Dermatitis solaris acuta,5.0
+2018,Nordrhein-Westfalen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,319.0
+2014,Hamburg,ICD10-T67,Schäden durch Hitze und Sonnenlicht,11.0
+2009,Bayern,ICD10-T67,Schäden durch Hitze und Sonnenlicht,259.0
+2005,Hessen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,87.0
+2024,Thüringen,ICD10-L55,Dermatitis solaris acuta,7.0
+2009,Hessen,ICD10-L55,Dermatitis solaris acuta,11.0
+2020,Thüringen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,26.0
+2018,Hamburg,ICD10-L55,Dermatitis solaris acuta,2.0
+2003,Saarland,ICD10-T67,Schäden durch Hitze und Sonnenlicht,51.0
+2005,Saarland,ICD10-L55,Dermatitis solaris acuta,7.0
+2022,Bayern,ICD10-L55,Dermatitis solaris acuta,5.0
+2000,Niedersachsen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,104.0
+2008,Bayern,ICD10-T67,Schäden durch Hitze und Sonnenlicht,270.0
+2018,Brandenburg,ICD10-T67,Schäden durch Hitze und Sonnenlicht,51.0
+2020,Hessen,ICD10-L55,Dermatitis solaris acuta,4.0
+2013,Hamburg,ICD10-T67,Schäden durch Hitze und Sonnenlicht,13.0
+2022,Thüringen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,47.0
+2020,Bayern,ICD10-T67,Schäden durch Hitze und Sonnenlicht,114.0
+2003,Niedersachsen,ICD10-L55,Dermatitis solaris acuta,23.0
+2006,Hessen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,141.0
+2008,Mecklenburg-Vorpommern,ICD10-L55,Dermatitis solaris acuta,5.0
+2007,Bayern,ICD10-T67,Schäden durch Hitze und Sonnenlicht,293.0
+2003,Hessen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,174.0
+2012,Hamburg,ICD10-T67,Schäden durch Hitze und Sonnenlicht,11.0
+2021,Bayern,ICD10-T67,Schäden durch Hitze und Sonnenlicht,124.0
+2019,Hamburg,ICD10-L55,Dermatitis solaris acuta,5.0
+2019,Nordrhein-Westfalen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,339.0
+2015,Hamburg,ICD10-L55,Dermatitis solaris acuta,1.0
+2024,Bayern,ICD10-L55,Dermatitis solaris acuta,6.0
+2023,Thüringen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,18.0
+2008,Saarland,ICD10-L55,Dermatitis solaris acuta,8.0
+2008,Mecklenburg-Vorpommern,ICD10-T67,Schäden durch Hitze und Sonnenlicht,38.0
+2003,Niedersachsen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,211.0
+2006,Hessen,ICD10-L55,Dermatitis solaris acuta,26.0
+2004,Saarland,ICD10-T67,Schäden durch Hitze und Sonnenlicht,16.0
+2005,Niedersachsen,ICD10-L55,Dermatitis solaris acuta,24.0
+2007,Mecklenburg-Vorpommern,ICD10-T67,Schäden durch Hitze und Sonnenlicht,33.0
+2009,Thüringen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,34.0
+2004,Hessen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,68.0
+2009,Mecklenburg-Vorpommern,ICD10-L55,Dermatitis solaris acuta,11.0
+2002,Niedersachsen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,143.0
+2007,Hessen,ICD10-L55,Dermatitis solaris acuta,7.0
+2007,Saarland,ICD10-L55,Dermatitis solaris acuta,
+2021,Hessen,ICD10-L55,Dermatitis solaris acuta,7.0
+2005,Saarland,ICD10-T67,Schäden durch Hitze und Sonnenlicht,26.0
+2017,Brandenburg,ICD10-T67,Schäden durch Hitze und Sonnenlicht,29.0
+2009,Bayern,ICD10-L55,Dermatitis solaris acuta,41.0
+2014,Hamburg,ICD10-L55,Dermatitis solaris acuta,3.0
+2024,Thüringen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,23.0
+2021,Thüringen,ICD10-L55,Dermatitis solaris acuta,3.0
+2009,Saarland,ICD10-L55,Dermatitis solaris acuta,5.0
+2004,Niedersachsen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,116.0
+2017,Hamburg,ICD10-T67,Schäden durch Hitze und Sonnenlicht,9.0
+2001,Niedersachsen,ICD10-L55,Dermatitis solaris acuta,12.0
+2003,Mecklenburg-Vorpommern,ICD10-T67,Schäden durch Hitze und Sonnenlicht,46.0
+2008,Niedersachsen,ICD10-L55,Dermatitis solaris acuta,17.0
+2007,Mecklenburg-Vorpommern,ICD10-L55,Dermatitis solaris acuta,4.0
+2022,Hessen,ICD10-L55,Dermatitis solaris acuta,10.0
+2002,Hessen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,80.0
+2016,Brandenburg,ICD10-T67,Schäden durch Hitze und Sonnenlicht,47.0
+2002,Saarland,ICD10-L55,Dermatitis solaris acuta,
+2008,Thüringen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,54.0
+2010,Hamburg,ICD10-T67,Schäden durch Hitze und Sonnenlicht,17.0
+2023,Bayern,ICD10-T67,Schäden durch Hitze und Sonnenlicht,181.0
+2000,Saarland,ICD10-T67,Schäden durch Hitze und Sonnenlicht,18.0
+2005,Bayern,ICD10-T67,Schäden durch Hitze und Sonnenlicht,362.0
+2018,Nordrhein-Westfalen,ICD10-L55,Dermatitis solaris acuta,52.0
+2010,Rheinland-Pfalz,ICD10-L55,Dermatitis solaris acuta,15.0
+2020,Mecklenburg-Vorpommern,ICD10-T67,Schäden durch Hitze und Sonnenlicht,44.0
+2009,Hessen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,96.0
+2022,Mecklenburg-Vorpommern,ICD10-L55,Dermatitis solaris acuta,6.0
+2006,Niedersachsen,ICD10-L55,Dermatitis solaris acuta,29.0
+2024,Hessen,ICD10-L55,Dermatitis solaris acuta,3.0
+2012,Hamburg,ICD10-L55,Dermatitis solaris acuta,8.0
+2007,Saarland,ICD10-T67,Schäden durch Hitze und Sonnenlicht,21.0
+2000,Hessen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,61.0
+2005,Mecklenburg-Vorpommern,ICD10-L55,Dermatitis solaris acuta,19.0
+2016,Nordrhein-Westfalen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,247.0
+2014,Brandenburg,ICD10-T67,Schäden durch Hitze und Sonnenlicht,41.0
+2007,Bayern,ICD10-L55,Dermatitis solaris acuta,30.0
+2005,Mecklenburg-Vorpommern,ICD10-T67,Schäden durch Hitze und Sonnenlicht,42.0
+2006,Niedersachsen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,212.0
+2019,Baden-Württemberg,ICD10-T67,Schäden durch Hitze und Sonnenlicht,183.0
+2024,Schleswig-Holstein,ICD10-T67,Schäden durch Hitze und Sonnenlicht,28.0
+2004,Hessen,ICD10-L55,Dermatitis solaris acuta,9.0
+2003,Bayern,ICD10-T67,Schäden durch Hitze und Sonnenlicht,530.0
+2008,Thüringen,ICD10-L55,Dermatitis solaris acuta,5.0
+2007,Hessen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,67.0
+2006,Thüringen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,69.0
+2020,Bayern,ICD10-L55,Dermatitis solaris acuta,7.0
+2015,Hamburg,ICD10-T67,Schäden durch Hitze und Sonnenlicht,15.0
+2011,Sachsen,ICD10-L55,Dermatitis solaris acuta,8.0
+2023,Thüringen,ICD10-L55,Dermatitis solaris acuta,7.0
+2017,Hamburg,ICD10-L55,Dermatitis solaris acuta,3.0
+2004,Saarland,ICD10-L55,Dermatitis solaris acuta,4.0
+2022,Hessen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,100.0
+2023,Saarland,ICD10-L55,Dermatitis solaris acuta,
+2020,Schleswig-Holstein,ICD10-T67,Schäden durch Hitze und Sonnenlicht,31.0
+2003,Mecklenburg-Vorpommern,ICD10-L55,Dermatitis solaris acuta,11.0
+2009,Schleswig-Holstein,ICD10-T67,Schäden durch Hitze und Sonnenlicht,37.0
+2009,Saarland,ICD10-T67,Schäden durch Hitze und Sonnenlicht,18.0
+2010,Berlin,ICD10-L55,Dermatitis solaris acuta,13.0
+2000,Baden-Württemberg,ICD10-L55,Dermatitis solaris acuta,17.0
+2014,Sachsen,ICD10-L55,Dermatitis solaris acuta,14.0
+2000,Mecklenburg-Vorpommern,ICD10-T67,Schäden durch Hitze und Sonnenlicht,37.0
+2018,Baden-Württemberg,ICD10-L55,Dermatitis solaris acuta,8.0
+2011,Sachsen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,63.0
+2001,Sachsen-Anhalt,ICD10-L55,Dermatitis solaris acuta,11.0
+2021,Niedersachsen,ICD10-L55,Dermatitis solaris acuta,8.0
+2013,Brandenburg,ICD10-T67,Schäden durch Hitze und Sonnenlicht,78.0
+2004,Thüringen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,43.0
+2024,Mecklenburg-Vorpommern,ICD10-T67,Schäden durch Hitze und Sonnenlicht,25.0
+2010,Hamburg,ICD10-L55,Dermatitis solaris acuta,8.0
+2019,Sachsen-Anhalt,ICD10-L55,Dermatitis solaris acuta,10.0
+2023,Hessen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,64.0
+2012,Nordrhein-Westfalen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,237.0
+2010,Sachsen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,100.0
+2017,Brandenburg,ICD10-L55,Dermatitis solaris acuta,2.0
+2012,Brandenburg,ICD10-T67,Schäden durch Hitze und Sonnenlicht,40.0
+2002,Hessen,ICD10-L55,Dermatitis solaris acuta,10.0
+2007,Niedersachsen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,117.0
+2023,Mecklenburg-Vorpommern,ICD10-T67,Schäden durch Hitze und Sonnenlicht,25.0
+2013,Rheinland-Pfalz,ICD10-L55,Dermatitis solaris acuta,15.0
+2017,Baden-Württemberg,ICD10-L55,Dermatitis solaris acuta,10.0
+2000,Sachsen-Anhalt,ICD10-L55,Dermatitis solaris acuta,6.0
+2018,Sachsen-Anhalt,ICD10-T67,Schäden durch Hitze und Sonnenlicht,55.0
+2004,Bayern,ICD10-L55,Dermatitis solaris acuta,19.0
+2016,Nordrhein-Westfalen,ICD10-L55,Dermatitis solaris acuta,49.0
+2024,Hessen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,57.0
+2005,Thüringen,ICD10-L55,Dermatitis solaris acuta,12.0
+2013,Nordrhein-Westfalen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,346.0
+2017,Baden-Württemberg,ICD10-T67,Schäden durch Hitze und Sonnenlicht,133.0
+2000,Bayern,ICD10-T67,Schäden durch Hitze und Sonnenlicht,276.0
+2001,Baden-Württemberg,ICD10-L55,Dermatitis solaris acuta,20.0
+2018,Brandenburg,ICD10-L55,Dermatitis solaris acuta,4.0
+2004,Mecklenburg-Vorpommern,ICD10-L55,Dermatitis solaris acuta,9.0
+2010,Rheinland-Pfalz,ICD10-T67,Schäden durch Hitze und Sonnenlicht,92.0
+2015,Sachsen,ICD10-L55,Dermatitis solaris acuta,13.0
+2003,Bayern,ICD10-L55,Dermatitis solaris acuta,41.0
+2022,Saarland,ICD10-L55,Dermatitis solaris acuta,
+2024,Schleswig-Holstein,ICD10-L55,Dermatitis solaris acuta,4.0
+2021,Schleswig-Holstein,ICD10-T67,Schäden durch Hitze und Sonnenlicht,24.0
+2008,Niedersachsen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,127.0
+2013,Brandenburg,ICD10-L55,Dermatitis solaris acuta,4.0
+2024,Mecklenburg-Vorpommern,ICD10-L55,Dermatitis solaris acuta,
+2020,Thüringen,ICD10-L55,Dermatitis solaris acuta,3.0
+2019,Sachsen-Anhalt,ICD10-T67,Schäden durch Hitze und Sonnenlicht,61.0
+2010,Berlin,ICD10-T67,Schäden durch Hitze und Sonnenlicht,25.0
+2008,Hessen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,63.0
+2022,Berlin,ICD10-T67,Schäden durch Hitze und Sonnenlicht,9.0
+2001,Sachsen-Anhalt,ICD10-T67,Schäden durch Hitze und Sonnenlicht,54.0
+2023,Saarland,ICD10-T67,Schäden durch Hitze und Sonnenlicht,12.0
+2020,Schleswig-Holstein,ICD10-L55,Dermatitis solaris acuta,5.0
+2014,Berlin,ICD10-L55,Dermatitis solaris acuta,3.0
+2021,Bremen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,3.0
+2003,Saarland,ICD10-L55,Dermatitis solaris acuta,3.0
+2012,Brandenburg,ICD10-L55,Dermatitis solaris acuta,2.0
+2022,Niedersachsen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,72.0
+2011,Hamburg,ICD10-T67,Schäden durch Hitze und Sonnenlicht,7.0
+2023,Mecklenburg-Vorpommern,ICD10-L55,Dermatitis solaris acuta,5.0
+2017,Nordrhein-Westfalen,ICD10-L55,Dermatitis solaris acuta,37.0
+2000,Brandenburg,ICD10-L55,Dermatitis solaris acuta,9.0
+2008,Bayern,ICD10-L55,Dermatitis solaris acuta,37.0
+2012,Nordrhein-Westfalen,ICD10-L55,Dermatitis solaris acuta,52.0
+2010,Sachsen,ICD10-L55,Dermatitis solaris acuta,17.0
+2005,Schleswig-Holstein,ICD10-T67,Schäden durch Hitze und Sonnenlicht,73.0
+2016,Hamburg,ICD10-T67,Schäden durch Hitze und Sonnenlicht,8.0
+2023,Hessen,ICD10-L55,Dermatitis solaris acuta,2.0
+2014,Sachsen-Anhalt,ICD10-T67,Schäden durch Hitze und Sonnenlicht,48.0
+2009,Mecklenburg-Vorpommern,ICD10-T67,Schäden durch Hitze und Sonnenlicht,36.0
+2004,Thüringen,ICD10-L55,Dermatitis solaris acuta,6.0
+2018,Baden-Württemberg,ICD10-T67,Schäden durch Hitze und Sonnenlicht,139.0
+2019,Sachsen,ICD10-L55,Dermatitis solaris acuta,12.0
+2014,Rheinland-Pfalz,ICD10-T67,Schäden durch Hitze und Sonnenlicht,88.0
+2005,Thüringen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,53.0
+2003,Hessen,ICD10-L55,Dermatitis solaris acuta,15.0
+2024,Bayern,ICD10-T67,Schäden durch Hitze und Sonnenlicht,156.0
+2009,Thüringen,ICD10-L55,Dermatitis solaris acuta,5.0
+2004,Bayern,ICD10-T67,Schäden durch Hitze und Sonnenlicht,215.0
+2016,Hamburg,ICD10-L55,Dermatitis solaris acuta,3.0
+2014,Rheinland-Pfalz,ICD10-L55,Dermatitis solaris acuta,7.0
+2002,Niedersachsen,ICD10-L55,Dermatitis solaris acuta,11.0
+2022,Rheinland-Pfalz,ICD10-T67,Schäden durch Hitze und Sonnenlicht,66.0
+2008,Saarland,ICD10-T67,Schäden durch Hitze und Sonnenlicht,19.0
+2013,Bremen,ICD10-L55,Dermatitis solaris acuta,2.0
+2007,Niedersachsen,ICD10-L55,Dermatitis solaris acuta,10.0
+2022,Niedersachsen,ICD10-L55,Dermatitis solaris acuta,5.0
+2015,Sachsen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,149.0
+2011,Hamburg,ICD10-L55,Dermatitis solaris acuta,3.0
+2017,Nordrhein-Westfalen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,173.0
+2013,Baden-Württemberg,ICD10-T67,Schäden durch Hitze und Sonnenlicht,213.0
+2018,Sachsen-Anhalt,ICD10-L55,Dermatitis solaris acuta,2.0
+2005,Baden-Württemberg,ICD10-L55,Dermatitis solaris acuta,37.0
+2000,Thüringen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,54.0
+2004,Mecklenburg-Vorpommern,ICD10-T67,Schäden durch Hitze und Sonnenlicht,21.0
+2006,Schleswig-Holstein,ICD10-L55,Dermatitis solaris acuta,13.0
+2004,Brandenburg,ICD10-L55,Dermatitis solaris acuta,6.0
+2003,Baden-Württemberg,ICD10-T67,Schäden durch Hitze und Sonnenlicht,423.0
+2012,Baden-Württemberg,ICD10-L55,Dermatitis solaris acuta,18.0
+2016,Rheinland-Pfalz,ICD10-T67,Schäden durch Hitze und Sonnenlicht,106.0
+2017,Berlin,ICD10-L55,Dermatitis solaris acuta,8.0
+2017,Sachsen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,80.0
+2010,Sachsen-Anhalt,ICD10-T67,Schäden durch Hitze und Sonnenlicht,81.0
+2013,Sachsen-Anhalt,ICD10-L55,Dermatitis solaris acuta,11.0
+2022,Berlin,ICD10-L55,Dermatitis solaris acuta,4.0
+2015,Bremen,ICD10-L55,Dermatitis solaris acuta,6.0
+2007,Bremen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,12.0
+2023,Sachsen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,57.0
+2005,Sachsen-Anhalt,ICD10-T67,Schäden durch Hitze und Sonnenlicht,56.0
+2001,Brandenburg,ICD10-T67,Schäden durch Hitze und Sonnenlicht,47.0
+2002,Nordrhein-Westfalen,ICD10-L55,Dermatitis solaris acuta,48.0
+2008,Berlin,ICD10-T67,Schäden durch Hitze und Sonnenlicht,13.0
+2016,Berlin,ICD10-L55,Dermatitis solaris acuta,3.0
+2011,Baden-Württemberg,ICD10-L55,Dermatitis solaris acuta,15.0
+2007,Schleswig-Holstein,ICD10-L55,Dermatitis solaris acuta,7.0
+2007,Berlin,ICD10-T67,Schäden durch Hitze und Sonnenlicht,11.0
+2024,Rheinland-Pfalz,ICD10-L55,Dermatitis solaris acuta,7.0
+2004,Baden-Württemberg,ICD10-T67,Schäden durch Hitze und Sonnenlicht,133.0
+2017,Rheinland-Pfalz,ICD10-T67,Schäden durch Hitze und Sonnenlicht,99.0
+2011,Sachsen-Anhalt,ICD10-T67,Schäden durch Hitze und Sonnenlicht,32.0
+2021,Bremen,ICD10-L55,Dermatitis solaris acuta,
+2014,Bremen,ICD10-L55,Dermatitis solaris acuta,
+2024,Sachsen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,54.0
+2004,Sachsen-Anhalt,ICD10-T67,Schäden durch Hitze und Sonnenlicht,34.0
+2017,Bremen,ICD10-L55,Dermatitis solaris acuta,1.0
+2023,Rheinland-Pfalz,ICD10-L55,Dermatitis solaris acuta,5.0
+2010,Baden-Württemberg,ICD10-T67,Schäden durch Hitze und Sonnenlicht,198.0
+2013,Schleswig-Holstein,ICD10-L55,Dermatitis solaris acuta,22.0
+2015,Berlin,ICD10-T67,Schäden durch Hitze und Sonnenlicht,26.0
+2001,Nordrhein-Westfalen,ICD10-L55,Dermatitis solaris acuta,50.0
+2001,Baden-Württemberg,ICD10-T67,Schäden durch Hitze und Sonnenlicht,202.0
+2008,Schleswig-Holstein,ICD10-L55,Dermatitis solaris acuta,12.0
+2002,Brandenburg,ICD10-L55,Dermatitis solaris acuta,4.0
+2008,Bremen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,12.0
+2003,Sachsen-Anhalt,ICD10-T67,Schäden durch Hitze und Sonnenlicht,69.0
+2024,Sachsen,ICD10-L55,Dermatitis solaris acuta,9.0
+2005,Baden-Württemberg,ICD10-T67,Schäden durch Hitze und Sonnenlicht,204.0
+2012,Sachsen-Anhalt,ICD10-T67,Schäden durch Hitze und Sonnenlicht,48.0
+2019,Sachsen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,106.0
+2020,Sachsen-Anhalt,ICD10-L55,Dermatitis solaris acuta,5.0
+2014,Bremen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,12.0
+2017,Rheinland-Pfalz,ICD10-L55,Dermatitis solaris acuta,18.0
+2023,Berlin,ICD10-L55,Dermatitis solaris acuta,2.0
+2018,Sachsen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,102.0
+2003,Brandenburg,ICD10-L55,Dermatitis solaris acuta,15.0
+2009,Bremen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,6.0
+2015,Rheinland-Pfalz,ICD10-T67,Schäden durch Hitze und Sonnenlicht,219.0
+2000,Schleswig-Holstein,ICD10-T67,Schäden durch Hitze und Sonnenlicht,32.0
+2016,Bremen,ICD10-L55,Dermatitis solaris acuta,2.0
+2002,Sachsen-Anhalt,ICD10-T67,Schäden durch Hitze und Sonnenlicht,42.0
+2000,Nordrhein-Westfalen,ICD10-L55,Dermatitis solaris acuta,39.0
+2005,Sachsen-Anhalt,ICD10-L55,Dermatitis solaris acuta,21.0
+2009,Schleswig-Holstein,ICD10-L55,Dermatitis solaris acuta,9.0
+2018,Berlin,ICD10-L55,Dermatitis solaris acuta,4.0
+2018,Rheinland-Pfalz,ICD10-L55,Dermatitis solaris acuta,13.0
+2022,Rheinland-Pfalz,ICD10-L55,Dermatitis solaris acuta,9.0
+2010,Nordrhein-Westfalen,ICD10-L55,Dermatitis solaris acuta,69.0
+2016,Berlin,ICD10-T67,Schäden durch Hitze und Sonnenlicht,19.0
+2024,Bremen,ICD10-L55,Dermatitis solaris acuta,
+2010,Sachsen-Anhalt,ICD10-L55,Dermatitis solaris acuta,9.0
+2008,Berlin,ICD10-L55,Dermatitis solaris acuta,6.0
+2013,Sachsen-Anhalt,ICD10-T67,Schäden durch Hitze und Sonnenlicht,56.0
+2015,Bremen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,6.0
+2011,Nordrhein-Westfalen,ICD10-L55,Dermatitis solaris acuta,41.0
+2007,Bremen,ICD10-L55,Dermatitis solaris acuta,3.0
+2009,Sachsen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,56.0
+2018,Sachsen,ICD10-L55,Dermatitis solaris acuta,7.0
+2004,Brandenburg,ICD10-T67,Schäden durch Hitze und Sonnenlicht,19.0
+2006,Schleswig-Holstein,ICD10-T67,Schäden durch Hitze und Sonnenlicht,65.0
+2004,Sachsen-Anhalt,ICD10-L55,Dermatitis solaris acuta,16.0
+2014,Schleswig-Holstein,ICD10-L55,Dermatitis solaris acuta,10.0
+2004,Baden-Württemberg,ICD10-L55,Dermatitis solaris acuta,15.0
+2012,Baden-Württemberg,ICD10-T67,Schäden durch Hitze und Sonnenlicht,184.0
+2021,Niedersachsen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,62.0
+2001,Brandenburg,ICD10-L55,Dermatitis solaris acuta,2.0
+2016,Sachsen,ICD10-L55,Dermatitis solaris acuta,16.0
+2023,Sachsen,ICD10-L55,Dermatitis solaris acuta,8.0
+2022,Bremen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,6.0
+2002,Hamburg,ICD10-L55,Dermatitis solaris acuta,4.0
+2011,Brandenburg,ICD10-L55,Dermatitis solaris acuta,15.0
+2002,Brandenburg,ICD10-T67,Schäden durch Hitze und Sonnenlicht,35.0
+2023,Rheinland-Pfalz,ICD10-T67,Schäden durch Hitze und Sonnenlicht,69.0
+2000,Hamburg,ICD10-L55,Dermatitis solaris acuta,2.0
+2018,Berlin,ICD10-T67,Schäden durch Hitze und Sonnenlicht,22.0
+2016,Sachsen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,69.0
+2001,Nordrhein-Westfalen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,308.0
+2022,Bremen,ICD10-L55,Dermatitis solaris acuta,
+2017,Bremen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,2.0
+2018,Rheinland-Pfalz,ICD10-T67,Schäden durch Hitze und Sonnenlicht,125.0
+2002,Baden-Württemberg,ICD10-T67,Schäden durch Hitze und Sonnenlicht,167.0
+2009,Bremen,ICD10-L55,Dermatitis solaris acuta,2.0
+2022,Saarland,ICD10-T67,Schäden durch Hitze und Sonnenlicht,12.0
+2021,Schleswig-Holstein,ICD10-L55,Dermatitis solaris acuta,6.0
+2023,Berlin,ICD10-T67,Schäden durch Hitze und Sonnenlicht,7.0
+2002,Sachsen-Anhalt,ICD10-L55,Dermatitis solaris acuta,7.0
+2008,Rheinland-Pfalz,ICD10-T67,Schäden durch Hitze und Sonnenlicht,81.0
+2015,Rheinland-Pfalz,ICD10-L55,Dermatitis solaris acuta,17.0
+2012,Sachsen-Anhalt,ICD10-L55,Dermatitis solaris acuta,9.0
+2016,Schleswig-Holstein,ICD10-L55,Dermatitis solaris acuta,7.0
+2003,Nordrhein-Westfalen,ICD10-L55,Dermatitis solaris acuta,59.0
+2015,Berlin,ICD10-L55,Dermatitis solaris acuta,7.0
+2014,Schleswig-Holstein,ICD10-T67,Schäden durch Hitze und Sonnenlicht,56.0
+2020,Sachsen-Anhalt,ICD10-T67,Schäden durch Hitze und Sonnenlicht,28.0
+2007,Thüringen,ICD10-L55,Dermatitis solaris acuta,5.0
+2011,Nordrhein-Westfalen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,175.0
+2000,Bremen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,7.0
+2014,Saarland,ICD10-T67,Schäden durch Hitze und Sonnenlicht,27.0
+2013,Niedersachsen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,151.0
+2009,Sachsen,ICD10-L55,Dermatitis solaris acuta,12.0
+2024,Bremen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,9.0
+2023,Schleswig-Holstein,ICD10-L55,Dermatitis solaris acuta,1.0
+2020,Saarland,ICD10-T67,Schäden durch Hitze und Sonnenlicht,14.0
+2002,Hamburg,ICD10-T67,Schäden durch Hitze und Sonnenlicht,13.0
+2015,Schleswig-Holstein,ICD10-T67,Schäden durch Hitze und Sonnenlicht,45.0
+2005,Bayern,ICD10-L55,Dermatitis solaris acuta,37.0
+2021,Hessen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,42.0
+2008,Schleswig-Holstein,ICD10-T67,Schäden durch Hitze und Sonnenlicht,46.0
+2021,Saarland,ICD10-T67,Schäden durch Hitze und Sonnenlicht,15.0
+2022,Schleswig-Holstein,ICD10-L55,Dermatitis solaris acuta,3.0
+2020,Niedersachsen,ICD10-L55,Dermatitis solaris acuta,7.0
+2016,Schleswig-Holstein,ICD10-T67,Schäden durch Hitze und Sonnenlicht,27.0
+2011,Brandenburg,ICD10-T67,Schäden durch Hitze und Sonnenlicht,32.0
+2022,Mecklenburg-Vorpommern,ICD10-T67,Schäden durch Hitze und Sonnenlicht,42.0
+2019,Hamburg,ICD10-T67,Schäden durch Hitze und Sonnenlicht,10.0
+2021,Saarland,ICD10-L55,Dermatitis solaris acuta,2.0
+2020,Hessen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,35.0
+2022,Schleswig-Holstein,ICD10-T67,Schäden durch Hitze und Sonnenlicht,23.0
+2000,Berlin,ICD10-T67,Schäden durch Hitze und Sonnenlicht,15.0
+2023,Bremen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,5.0
+2021,Mecklenburg-Vorpommern,ICD10-T67,Schäden durch Hitze und Sonnenlicht,23.0
+2010,Brandenburg,ICD10-T67,Schäden durch Hitze und Sonnenlicht,118.0
+2012,Niedersachsen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,135.0
+2003,Nordrhein-Westfalen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,524.0
+2006,Thüringen,ICD10-L55,Dermatitis solaris acuta,8.0
+2008,Rheinland-Pfalz,ICD10-L55,Dermatitis solaris acuta,12.0
+2019,Baden-Württemberg,ICD10-L55,Dermatitis solaris acuta,6.0
+2001,Hamburg,ICD10-T67,Schäden durch Hitze und Sonnenlicht,6.0
+2013,Bayern,ICD10-L55,Dermatitis solaris acuta,24.0
+2007,Schleswig-Holstein,ICD10-T67,Schäden durch Hitze und Sonnenlicht,38.0
+2019,Brandenburg,ICD10-L55,Dermatitis solaris acuta,2.0
+2002,Baden-Württemberg,ICD10-L55,Dermatitis solaris acuta,21.0
+2018,Hamburg,ICD10-T67,Schäden durch Hitze und Sonnenlicht,13.0
+2016,Rheinland-Pfalz,ICD10-L55,Dermatitis solaris acuta,15.0
+2015,Schleswig-Holstein,ICD10-L55,Dermatitis solaris acuta,8.0
+2003,Baden-Württemberg,ICD10-L55,Dermatitis solaris acuta,15.0
+2017,Berlin,ICD10-T67,Schäden durch Hitze und Sonnenlicht,10.0
+2000,Rheinland-Pfalz,ICD10-T67,Schäden durch Hitze und Sonnenlicht,76.0
+2014,Bayern,ICD10-L55,Dermatitis solaris acuta,29.0
+2011,Baden-Württemberg,ICD10-T67,Schäden durch Hitze und Sonnenlicht,141.0
+2007,Thüringen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,48.0
+2022,Bayern,ICD10-T67,Schäden durch Hitze und Sonnenlicht,205.0
+2006,Bayern,ICD10-T67,Schäden durch Hitze und Sonnenlicht,406.0
+2009,Berlin,ICD10-L55,Dermatitis solaris acuta,9.0
+2022,Thüringen,ICD10-L55,Dermatitis solaris acuta,1.0
+2006,Saarland,ICD10-T67,Schäden durch Hitze und Sonnenlicht,39.0
+2024,Rheinland-Pfalz,ICD10-T67,Schäden durch Hitze und Sonnenlicht,39.0
+2013,Hessen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,113.0
+2023,Schleswig-Holstein,ICD10-T67,Schäden durch Hitze und Sonnenlicht,20.0
+2020,Saarland,ICD10-L55,Dermatitis solaris acuta,
+2024,Berlin,ICD10-L55,Dermatitis solaris acuta,1.0
+2002,Nordrhein-Westfalen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,234.0
+2005,Hessen,ICD10-L55,Dermatitis solaris acuta,9.0
+2009,Rheinland-Pfalz,ICD10-L55,Dermatitis solaris acuta,19.0
+2014,Thüringen,ICD10-L55,Dermatitis solaris acuta,6.0
+2003,Sachsen-Anhalt,ICD10-L55,Dermatitis solaris acuta,23.0
+2013,Saarland,ICD10-L55,Dermatitis solaris acuta,1.0
+2020,Niedersachsen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,65.0
+2013,Saarland,ICD10-T67,Schäden durch Hitze und Sonnenlicht,47.0
+2021,Bayern,ICD10-L55,Dermatitis solaris acuta,11.0
+2009,Rheinland-Pfalz,ICD10-T67,Schäden durch Hitze und Sonnenlicht,94.0
+2010,Baden-Württemberg,ICD10-L55,Dermatitis solaris acuta,20.0
+2011,Sachsen-Anhalt,ICD10-L55,Dermatitis solaris acuta,8.0
+2010,Nordrhein-Westfalen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,358.0
+2000,Sachsen,ICD10-L55,Dermatitis solaris acuta,12.0
+2024,Berlin,ICD10-T67,Schäden durch Hitze und Sonnenlicht,17.0
+2014,Mecklenburg-Vorpommern,ICD10-T67,Schäden durch Hitze und Sonnenlicht,48.0
+2003,Brandenburg,ICD10-T67,Schäden durch Hitze und Sonnenlicht,63.0
+2005,Niedersachsen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,152.0
+2001,Hamburg,ICD10-L55,Dermatitis solaris acuta,
+2023,Bremen,ICD10-L55,Dermatitis solaris acuta,1.0
+2021,Mecklenburg-Vorpommern,ICD10-L55,Dermatitis solaris acuta,7.0
+2012,Niedersachsen,ICD10-L55,Dermatitis solaris acuta,16.0
+2010,Brandenburg,ICD10-L55,Dermatitis solaris acuta,2.0
+2016,Bremen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,4.0
+2017,Sachsen,ICD10-L55,Dermatitis solaris acuta,9.0
+2019,Nordrhein-Westfalen,ICD10-L55,Dermatitis solaris acuta,36.0
+2006,Mecklenburg-Vorpommern,ICD10-L55,Dermatitis solaris acuta,9.0
+2008,Bremen,ICD10-L55,Dermatitis solaris acuta,3.0
+2006,Bayern,ICD10-L55,Dermatitis solaris acuta,34.0
+2009,Berlin,ICD10-T67,Schäden durch Hitze und Sonnenlicht,12.0
+2014,Bayern,ICD10-T67,Schäden durch Hitze und Sonnenlicht,235.0
+2015,Mecklenburg-Vorpommern,ICD10-L55,Dermatitis solaris acuta,7.0
+2019,Thüringen,ICD10-L55,Dermatitis solaris acuta,8.0
+2010,Hessen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,104.0
+2011,Saarland,ICD10-L55,Dermatitis solaris acuta,1.0
+2023,Nordrhein-Westfalen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,152.0
+2002,Sachsen,ICD10-L55,Dermatitis solaris acuta,11.0
+2008,Hamburg,ICD10-T67,Schäden durch Hitze und Sonnenlicht,8.0
+2013,Hessen,ICD10-L55,Dermatitis solaris acuta,10.0
+2017,Bayern,ICD10-L55,Dermatitis solaris acuta,26.0
+2022,Hamburg,ICD10-L55,Dermatitis solaris acuta,5.0
+2012,Mecklenburg-Vorpommern,ICD10-T67,Schäden durch Hitze und Sonnenlicht,39.0
+2016,Thüringen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,52.0
+2003,Sachsen,ICD10-L55,Dermatitis solaris acuta,15.0
+2018,Thüringen,ICD10-L55,Dermatitis solaris acuta,4.0
+2009,Hamburg,ICD10-T67,Schäden durch Hitze und Sonnenlicht,9.0
+2013,Bayern,ICD10-T67,Schäden durch Hitze und Sonnenlicht,428.0
+2015,Bayern,ICD10-T67,Schäden durch Hitze und Sonnenlicht,552.0
+2020,Hamburg,ICD10-T67,Schäden durch Hitze und Sonnenlicht,4.0
+2000,Rheinland-Pfalz,ICD10-L55,Dermatitis solaris acuta,6.0
+2010,Saarland,ICD10-L55,Dermatitis solaris acuta,4.0
+2015,Thüringen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,90.0
+2023,Hamburg,ICD10-L55,Dermatitis solaris acuta,2.0
+2000,Sachsen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,84.0
+2018,Bayern,ICD10-L55,Dermatitis solaris acuta,15.0
+2013,Mecklenburg-Vorpommern,ICD10-T67,Schäden durch Hitze und Sonnenlicht,73.0
+2010,Niedersachsen,ICD10-L55,Dermatitis solaris acuta,17.0
+2012,Hessen,ICD10-L55,Dermatitis solaris acuta,10.0
+2014,Thüringen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,40.0
+2024,Hamburg,ICD10-L55,Dermatitis solaris acuta,2.0
+2019,Bayern,ICD10-L55,Dermatitis solaris acuta,14.0
+2010,Mecklenburg-Vorpommern,ICD10-T67,Schäden durch Hitze und Sonnenlicht,95.0
+2017,Thüringen,ICD10-L55,Dermatitis solaris acuta,8.0
+2012,Bayern,ICD10-T67,Schäden durch Hitze und Sonnenlicht,254.0
+2007,Hamburg,ICD10-T67,Schäden durch Hitze und Sonnenlicht,16.0
+2016,Bayern,ICD10-T67,Schäden durch Hitze und Sonnenlicht,267.0
+2002,Rheinland-Pfalz,ICD10-L55,Dermatitis solaris acuta,9.0
+2013,Mecklenburg-Vorpommern,ICD10-L55,Dermatitis solaris acuta,9.0
+2021,Hamburg,ICD10-T67,Schäden durch Hitze und Sonnenlicht,6.0
+2001,Sachsen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,87.0
+2012,Saarland,ICD10-L55,Dermatitis solaris acuta,9.0
+2011,Hessen,ICD10-L55,Dermatitis solaris acuta,9.0
+2013,Thüringen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,49.0
+2014,Mecklenburg-Vorpommern,ICD10-L55,Dermatitis solaris acuta,9.0
+2024,Nordrhein-Westfalen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,128.0
+2011,Mecklenburg-Vorpommern,ICD10-T67,Schäden durch Hitze und Sonnenlicht,33.0
+2011,Bayern,ICD10-T67,Schäden durch Hitze und Sonnenlicht,258.0
+2001,Rheinland-Pfalz,ICD10-L55,Dermatitis solaris acuta,10.0
+2016,Thüringen,ICD10-L55,Dermatitis solaris acuta,8.0
+2017,Bayern,ICD10-T67,Schäden durch Hitze und Sonnenlicht,241.0
+2004,Sachsen,ICD10-L55,Dermatitis solaris acuta,22.0
+2022,Hamburg,ICD10-T67,Schäden durch Hitze und Sonnenlicht,9.0
+2005,Hamburg,ICD10-T67,Schäden durch Hitze und Sonnenlicht,10.0
+2013,Niedersachsen,ICD10-L55,Dermatitis solaris acuta,17.0
+2002,Sachsen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,70.0
+2015,Mecklenburg-Vorpommern,ICD10-T67,Schäden durch Hitze und Sonnenlicht,51.0
+2000,Bremen,ICD10-L55,Dermatitis solaris acuta,4.0
+2023,Nordrhein-Westfalen,ICD10-L55,Dermatitis solaris acuta,26.0
+2024,Baden-Württemberg,ICD10-T67,Schäden durch Hitze und Sonnenlicht,80.0
+2001,Rheinland-Pfalz,ICD10-T67,Schäden durch Hitze und Sonnenlicht,118.0
+2006,Sachsen,ICD10-L55,Dermatitis solaris acuta,19.0
+2024,Brandenburg,ICD10-L55,Dermatitis solaris acuta,
+2009,Hamburg,ICD10-L55,Dermatitis solaris acuta,4.0
+2010,Bayern,ICD10-T67,Schäden durch Hitze und Sonnenlicht,380.0
+2019,Mecklenburg-Vorpommern,ICD10-L55,Dermatitis solaris acuta,4.0
+2015,Thüringen,ICD10-L55,Dermatitis solaris acuta,13.0
+2014,Hessen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,98.0
+2018,Thüringen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,43.0
+2018,Bayern,ICD10-T67,Schäden durch Hitze und Sonnenlicht,261.0
+2023,Hamburg,ICD10-T67,Schäden durch Hitze und Sonnenlicht,5.0
+2010,Saarland,ICD10-T67,Schäden durch Hitze und Sonnenlicht,29.0
+2016,Hessen,ICD10-L55,Dermatitis solaris acuta,14.0
+2003,Rheinland-Pfalz,ICD10-L55,Dermatitis solaris acuta,11.0
+2022,Brandenburg,ICD10-T67,Schäden durch Hitze und Sonnenlicht,31.0
+2020,Hamburg,ICD10-L55,Dermatitis solaris acuta,3.0
+2008,Nordrhein-Westfalen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,219.0
+2015,Bayern,ICD10-L55,Dermatitis solaris acuta,23.0
+2019,Schleswig-Holstein,ICD10-T67,Schäden durch Hitze und Sonnenlicht,45.0
+2003,Berlin,ICD10-L55,Dermatitis solaris acuta,16.0
+2012,Mecklenburg-Vorpommern,ICD10-L55,Dermatitis solaris acuta,8.0
+2022,Baden-Württemberg,ICD10-T67,Schäden durch Hitze und Sonnenlicht,112.0
+2011,Niedersachsen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,78.0
+2000,Berlin,ICD10-L55,Dermatitis solaris acuta,3.0
+2007,Hamburg,ICD10-L55,Dermatitis solaris acuta,1.0
+2017,Mecklenburg-Vorpommern,ICD10-L55,Dermatitis solaris acuta,3.0
+2010,Mecklenburg-Vorpommern,ICD10-L55,Dermatitis solaris acuta,13.0
+2012,Hessen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,105.0
+2004,Sachsen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,35.0
+2011,Niedersachsen,ICD10-L55,Dermatitis solaris acuta,16.0
+2009,Brandenburg,ICD10-T67,Schäden durch Hitze und Sonnenlicht,34.0
+2011,Thüringen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,36.0
+2005,Rheinland-Pfalz,ICD10-L55,Dermatitis solaris acuta,17.0
+2013,Thüringen,ICD10-L55,Dermatitis solaris acuta,6.0
+2014,Saarland,ICD10-L55,Dermatitis solaris acuta,2.0
+2014,Hessen,ICD10-L55,Dermatitis solaris acuta,8.0
+2021,Nordrhein-Westfalen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,114.0
+2001,Sachsen,ICD10-L55,Dermatitis solaris acuta,12.0
+2012,Saarland,ICD10-T67,Schäden durch Hitze und Sonnenlicht,21.0
+2002,Bremen,ICD10-L55,Dermatitis solaris acuta,2.0
+2024,Brandenburg,ICD10-T67,Schäden durch Hitze und Sonnenlicht,19.0
+2018,Schleswig-Holstein,ICD10-L55,Dermatitis solaris acuta,11.0
+2020,Nordrhein-Westfalen,ICD10-L55,Dermatitis solaris acuta,27.0
+2021,Brandenburg,ICD10-L55,Dermatitis solaris acuta,5.0
+2011,Bayern,ICD10-L55,Dermatitis solaris acuta,29.0
+2007,Rheinland-Pfalz,ICD10-L55,Dermatitis solaris acuta,11.0
+2020,Baden-Württemberg,ICD10-T67,Schäden durch Hitze und Sonnenlicht,79.0
+2022,Sachsen-Anhalt,ICD10-T67,Schäden durch Hitze und Sonnenlicht,48.0
+2012,Thüringen,ICD10-L55,Dermatitis solaris acuta,7.0
+2003,Rheinland-Pfalz,ICD10-T67,Schäden durch Hitze und Sonnenlicht,228.0
+2021,Sachsen-Anhalt,ICD10-T67,Schäden durch Hitze und Sonnenlicht,29.0
+2008,Sachsen,ICD10-L55,Dermatitis solaris acuta,11.0
+2005,Nordrhein-Westfalen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,372.0
+2012,Bayern,ICD10-L55,Dermatitis solaris acuta,42.0
+2001,Bremen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,10.0
+2016,Hessen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,85.0
+2019,Hessen,ICD10-L55,Dermatitis solaris acuta,4.0
+2014,Niedersachsen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,130.0
+2018,Bremen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,9.0
+2006,Berlin,ICD10-L55,Dermatitis solaris acuta,7.0
+2006,Rheinland-Pfalz,ICD10-L55,Dermatitis solaris acuta,14.0
+2024,Baden-Württemberg,ICD10-L55,Dermatitis solaris acuta,5.0
+2011,Thüringen,ICD10-L55,Dermatitis solaris acuta,8.0
+2003,Hamburg,ICD10-T67,Schäden durch Hitze und Sonnenlicht,12.0
+2001,Berlin,ICD10-T67,Schäden durch Hitze und Sonnenlicht,24.0
+2019,Saarland,ICD10-L55,Dermatitis solaris acuta,1.0
+2004,Nordrhein-Westfalen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,210.0
+2016,Saarland,ICD10-L55,Dermatitis solaris acuta,2.0
+2005,Bremen,ICD10-L55,Dermatitis solaris acuta,4.0
+2007,Sachsen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,76.0
+2015,Hessen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,155.0
+2000,Hamburg,ICD10-T67,Schäden durch Hitze und Sonnenlicht,8.0
+2009,Brandenburg,ICD10-L55,Dermatitis solaris acuta,8.0
+2002,Bremen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,6.0
+2003,Hamburg,ICD10-L55,Dermatitis solaris acuta,2.0
+2017,Mecklenburg-Vorpommern,ICD10-T67,Schäden durch Hitze und Sonnenlicht,35.0
+2020,Brandenburg,ICD10-T67,Schäden durch Hitze und Sonnenlicht,25.0
+2014,Niedersachsen,ICD10-L55,Dermatitis solaris acuta,13.0
+2007,Berlin,ICD10-L55,Dermatitis solaris acuta,3.0
+2016,Saarland,ICD10-T67,Schäden durch Hitze und Sonnenlicht,19.0
+2006,Rheinland-Pfalz,ICD10-T67,Schäden durch Hitze und Sonnenlicht,153.0
+2017,Schleswig-Holstein,ICD10-T67,Schäden durch Hitze und Sonnenlicht,25.0
+2015,Saarland,ICD10-T67,Schäden durch Hitze und Sonnenlicht,30.0
+2021,Baden-Württemberg,ICD10-T67,Schäden durch Hitze und Sonnenlicht,81.0
+2006,Brandenburg,ICD10-T67,Schäden durch Hitze und Sonnenlicht,91.0
+2019,Bremen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,7.0
+2004,Hamburg,ICD10-L55,Dermatitis solaris acuta,8.0
+2002,Berlin,ICD10-L55,Dermatitis solaris acuta,10.0
+2015,Niedersachsen,ICD10-L55,Dermatitis solaris acuta,12.0
+2008,Sachsen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,62.0
+2019,Rheinland-Pfalz,ICD10-T67,Schäden durch Hitze und Sonnenlicht,163.0
+2007,Rheinland-Pfalz,ICD10-T67,Schäden durch Hitze und Sonnenlicht,95.0
+2009,Nordrhein-Westfalen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,213.0
+2021,Brandenburg,ICD10-T67,Schäden durch Hitze und Sonnenlicht,34.0
+2011,Saarland,ICD10-T67,Schäden durch Hitze und Sonnenlicht,26.0
+2020,Baden-Württemberg,ICD10-L55,Dermatitis solaris acuta,10.0
+2021,Rheinland-Pfalz,ICD10-L55,Dermatitis solaris acuta,6.0
+2001,Berlin,ICD10-L55,Dermatitis solaris acuta,6.0
+2010,Niedersachsen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,240.0
+2006,Bremen,ICD10-L55,Dermatitis solaris acuta,5.0
+2015,Saarland,ICD10-L55,Dermatitis solaris acuta,2.0
+2010,Hessen,ICD10-L55,Dermatitis solaris acuta,17.0
+2018,Schleswig-Holstein,ICD10-T67,Schäden durch Hitze und Sonnenlicht,57.0
+2001,Bremen,ICD10-L55,Dermatitis solaris acuta,1.0
+2003,Sachsen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,107.0
+2021,Sachsen-Anhalt,ICD10-L55,Dermatitis solaris acuta,8.0
+2019,Niedersachsen,ICD10-L55,Dermatitis solaris acuta,11.0
+2005,Brandenburg,ICD10-T67,Schäden durch Hitze und Sonnenlicht,53.0
+2020,Nordrhein-Westfalen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,149.0
+2008,Hamburg,ICD10-L55,Dermatitis solaris acuta,4.0
+2012,Thüringen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,46.0
+2016,Mecklenburg-Vorpommern,ICD10-T67,Schäden durch Hitze und Sonnenlicht,48.0
+2017,Thüringen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,38.0
+2016,Bayern,ICD10-L55,Dermatitis solaris acuta,26.0
+2015,Hessen,ICD10-L55,Dermatitis solaris acuta,8.0
+2004,Nordrhein-Westfalen,ICD10-L55,Dermatitis solaris acuta,52.0
+2013,Schleswig-Holstein,ICD10-T67,Schäden durch Hitze und Sonnenlicht,57.0
+2024,Hamburg,ICD10-T67,Schäden durch Hitze und Sonnenlicht,3.0
+2006,Sachsen-Anhalt,ICD10-T67,Schäden durch Hitze und Sonnenlicht,85.0
+2017,Schleswig-Holstein,ICD10-L55,Dermatitis solaris acuta,11.0
+2015,Niedersachsen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,171.0
+2005,Schleswig-Holstein,ICD10-L55,Dermatitis solaris acuta,11.0
+2022,Sachsen,ICD10-L55,Dermatitis solaris acuta,6.0
+2024,Nordrhein-Westfalen,ICD10-L55,Dermatitis solaris acuta,13.0
+2011,Hessen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,49.0
+2019,Berlin,ICD10-T67,Schäden durch Hitze und Sonnenlicht,23.0
+2011,Mecklenburg-Vorpommern,ICD10-L55,Dermatitis solaris acuta,6.0
+2016,Mecklenburg-Vorpommern,ICD10-L55,Dermatitis solaris acuta,10.0
+2018,Bremen,ICD10-L55,Dermatitis solaris acuta,3.0
+2000,Nordrhein-Westfalen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,209.0
+2002,Berlin,ICD10-T67,Schäden durch Hitze und Sonnenlicht,24.0
+2005,Brandenburg,ICD10-L55,Dermatitis solaris acuta,20.0
+2004,Hamburg,ICD10-T67,Schäden durch Hitze und Sonnenlicht,6.0
+2000,Schleswig-Holstein,ICD10-L55,Dermatitis solaris acuta,4.0
+2020,Brandenburg,ICD10-L55,Dermatitis solaris acuta,4.0
+2002,Rheinland-Pfalz,ICD10-T67,Schäden durch Hitze und Sonnenlicht,77.0
+2009,Nordrhein-Westfalen,ICD10-L55,Dermatitis solaris acuta,67.0
+2007,Sachsen,ICD10-L55,Dermatitis solaris acuta,9.0
+2006,Bremen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,13.0
+2021,Rheinland-Pfalz,ICD10-T67,Schäden durch Hitze und Sonnenlicht,53.0
+2008,Sachsen-Anhalt,ICD10-L55,Dermatitis solaris acuta,10.0
+2012,Bremen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,2.0
+2019,Rheinland-Pfalz,ICD10-L55,Dermatitis solaris acuta,12.0
+2003,Schleswig-Holstein,ICD10-T67,Schäden durch Hitze und Sonnenlicht,57.0
+2006,Baden-Württemberg,ICD10-L55,Dermatitis solaris acuta,36.0
+2000,Thüringen,ICD10-L55,Dermatitis solaris acuta,9.0
+2011,Schleswig-Holstein,ICD10-L55,Dermatitis solaris acuta,4.0
+2011,Bremen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,3.0
+2014,Sachsen-Anhalt,ICD10-L55,Dermatitis solaris acuta,7.0
+2001,Thüringen,ICD10-L55,Dermatitis solaris acuta,5.0
+2009,Sachsen-Anhalt,ICD10-L55,Dermatitis solaris acuta,14.0
+2024,Niedersachsen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,71.0
+2014,Berlin,ICD10-T67,Schäden durch Hitze und Sonnenlicht,15.0
+2012,Schleswig-Holstein,ICD10-L55,Dermatitis solaris acuta,9.0
+2007,Baden-Württemberg,ICD10-L55,Dermatitis solaris acuta,24.0
+2021,Berlin,ICD10-L55,Dermatitis solaris acuta,7.0
+2002,Schleswig-Holstein,ICD10-T67,Schäden durch Hitze und Sonnenlicht,44.0
+2023,Niedersachsen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,82.0
+2021,Sachsen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,41.0
+2008,Baden-Württemberg,ICD10-L55,Dermatitis solaris acuta,17.0
+2006,Sachsen-Anhalt,ICD10-L55,Dermatitis solaris acuta,16.0
+2001,Schleswig-Holstein,ICD10-T67,Schäden durch Hitze und Sonnenlicht,51.0
+2006,Berlin,ICD10-T67,Schäden durch Hitze und Sonnenlicht,27.0
+2010,Schleswig-Holstein,ICD10-T67,Schäden durch Hitze und Sonnenlicht,50.0
+2013,Baden-Württemberg,ICD10-L55,Dermatitis solaris acuta,17.0
+2021,Berlin,ICD10-T67,Schäden durch Hitze und Sonnenlicht,13.0
+2018,Niedersachsen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,207.0
+2019,Berlin,ICD10-L55,Dermatitis solaris acuta,3.0
+2020,Bremen,ICD10-L55,Dermatitis solaris acuta,
+2020,Rheinland-Pfalz,ICD10-T67,Schäden durch Hitze und Sonnenlicht,41.0
+2022,Sachsen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,55.0
+2000,Brandenburg,ICD10-T67,Schäden durch Hitze und Sonnenlicht,28.0
+2000,Baden-Württemberg,ICD10-T67,Schäden durch Hitze und Sonnenlicht,141.0
+2020,Berlin,ICD10-T67,Schäden durch Hitze und Sonnenlicht,12.0
+2013,Bremen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,9.0
+2019,Niedersachsen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,166.0
+2003,Schleswig-Holstein,ICD10-L55,Dermatitis solaris acuta,8.0
+2006,Baden-Württemberg,ICD10-T67,Schäden durch Hitze und Sonnenlicht,240.0
+2011,Schleswig-Holstein,ICD10-T67,Schäden durch Hitze und Sonnenlicht,34.0
+2015,Sachsen-Anhalt,ICD10-L55,Dermatitis solaris acuta,8.0
+2012,Bremen,ICD10-L55,Dermatitis solaris acuta,6.0
+2022,Sachsen-Anhalt,ICD10-L55,Dermatitis solaris acuta,4.0
+2016,Niedersachsen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,116.0
+2014,Sachsen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,90.0
+2019,Bremen,ICD10-L55,Dermatitis solaris acuta,2.0
+2005,Berlin,ICD10-T67,Schäden durch Hitze und Sonnenlicht,20.0
+2013,Rheinland-Pfalz,ICD10-T67,Schäden durch Hitze und Sonnenlicht,132.0
+2013,Berlin,ICD10-L55,Dermatitis solaris acuta,6.0
+2003,Thüringen,ICD10-L55,Dermatitis solaris acuta,15.0
+2002,Bayern,ICD10-L55,Dermatitis solaris acuta,35.0
+2009,Baden-Württemberg,ICD10-L55,Dermatitis solaris acuta,16.0
+2001,Thüringen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,48.0
+2007,Baden-Württemberg,ICD10-T67,Schäden durch Hitze und Sonnenlicht,173.0
+2012,Schleswig-Holstein,ICD10-T67,Schäden durch Hitze und Sonnenlicht,45.0
+2005,Nordrhein-Westfalen,ICD10-L55,Dermatitis solaris acuta,92.0
+2007,Sachsen-Anhalt,ICD10-T67,Schäden durch Hitze und Sonnenlicht,61.0
+2011,Berlin,ICD10-T67,Schäden durch Hitze und Sonnenlicht,13.0
+2019,Hessen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,111.0
+2017,Sachsen-Anhalt,ICD10-L55,Dermatitis solaris acuta,11.0
+2004,Schleswig-Holstein,ICD10-L55,Dermatitis solaris acuta,5.0
+2014,Baden-Württemberg,ICD10-L55,Dermatitis solaris acuta,8.0
+2017,Saarland,ICD10-T67,Schäden durch Hitze und Sonnenlicht,26.0
+2011,Rheinland-Pfalz,ICD10-T67,Schäden durch Hitze und Sonnenlicht,78.0
+2024,Saarland,ICD10-T67,Schäden durch Hitze und Sonnenlicht,21.0
+2021,Baden-Württemberg,ICD10-L55,Dermatitis solaris acuta,9.0
+2003,Berlin,ICD10-T67,Schäden durch Hitze und Sonnenlicht,30.0
+2018,Niedersachsen,ICD10-L55,Dermatitis solaris acuta,10.0
+2019,Saarland,ICD10-T67,Schäden durch Hitze und Sonnenlicht,28.0
+2001,Schleswig-Holstein,ICD10-L55,Dermatitis solaris acuta,10.0
+2004,Schleswig-Holstein,ICD10-T67,Schäden durch Hitze und Sonnenlicht,50.0
+2005,Bremen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,12.0
+2021,Sachsen,ICD10-L55,Dermatitis solaris acuta,4.0
+2020,Rheinland-Pfalz,ICD10-L55,Dermatitis solaris acuta,7.0
+2023,Niedersachsen,ICD10-L55,Dermatitis solaris acuta,7.0
+2006,Brandenburg,ICD10-L55,Dermatitis solaris acuta,12.0
+2015,Sachsen-Anhalt,ICD10-T67,Schäden durch Hitze und Sonnenlicht,98.0
+2008,Nordrhein-Westfalen,ICD10-L55,Dermatitis solaris acuta,62.0
+2000,Sachsen-Anhalt,ICD10-T67,Schäden durch Hitze und Sonnenlicht,48.0
+2020,Berlin,ICD10-L55,Dermatitis solaris acuta,2.0
+2014,Baden-Württemberg,ICD10-T67,Schäden durch Hitze und Sonnenlicht,144.0
+2007,Sachsen-Anhalt,ICD10-L55,Dermatitis solaris acuta,6.0
+2010,Bayern,ICD10-L55,Dermatitis solaris acuta,27.0
+2024,Saarland,ICD10-L55,Dermatitis solaris acuta,
+2016,Baden-Württemberg,ICD10-L55,Dermatitis solaris acuta,14.0
+2000,Bayern,ICD10-L55,Dermatitis solaris acuta,41.0
+2020,Bremen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,3.0
+2013,Berlin,ICD10-T67,Schäden durch Hitze und Sonnenlicht,29.0
+2009,Baden-Württemberg,ICD10-T67,Schäden durch Hitze und Sonnenlicht,148.0
+2010,Bremen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,12.0
+2013,Nordrhein-Westfalen,ICD10-L55,Dermatitis solaris acuta,29.0
+2000,Mecklenburg-Vorpommern,ICD10-L55,Dermatitis solaris acuta,5.0
+2002,Bayern,ICD10-T67,Schäden durch Hitze und Sonnenlicht,318.0
+2015,Baden-Württemberg,ICD10-T67,Schäden durch Hitze und Sonnenlicht,303.0
+2016,Brandenburg,ICD10-L55,Dermatitis solaris acuta,3.0
+2007,Brandenburg,ICD10-T67,Schäden durch Hitze und Sonnenlicht,53.0
+2004,Rheinland-Pfalz,ICD10-T67,Schäden durch Hitze und Sonnenlicht,77.0
+2005,Berlin,ICD10-L55,Dermatitis solaris acuta,13.0
+2016,Niedersachsen,ICD10-L55,Dermatitis solaris acuta,16.0
+2018,Mecklenburg-Vorpommern,ICD10-T67,Schäden durch Hitze und Sonnenlicht,78.0
+2006,Nordrhein-Westfalen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,455.0
+2003,Bremen,ICD10-L55,Dermatitis solaris acuta,2.0
+2014,Nordrhein-Westfalen,ICD10-L55,Dermatitis solaris acuta,36.0
+2018,Saarland,ICD10-L55,Dermatitis solaris acuta,1.0
+2017,Hessen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,95.0
+2001,Hessen,ICD10-L55,Dermatitis solaris acuta,11.0
+2017,Niedersachsen,ICD10-L55,Dermatitis solaris acuta,11.0
+2000,Saarland,ICD10-L55,Dermatitis solaris acuta,1.0
+2019,Mecklenburg-Vorpommern,ICD10-T67,Schäden durch Hitze und Sonnenlicht,50.0
+2011,Berlin,ICD10-L55,Dermatitis solaris acuta,7.0
+2004,Bremen,ICD10-L55,Dermatitis solaris acuta,3.0
+2002,Mecklenburg-Vorpommern,ICD10-L55,Dermatitis solaris acuta,5.0
+2017,Sachsen-Anhalt,ICD10-T67,Schäden durch Hitze und Sonnenlicht,55.0
+2022,Brandenburg,ICD10-L55,Dermatitis solaris acuta,2.0
+2013,Sachsen,ICD10-L55,Dermatitis solaris acuta,14.0
+2015,Nordrhein-Westfalen,ICD10-L55,Dermatitis solaris acuta,52.0
+2006,Sachsen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,109.0
+2020,Sachsen,ICD10-L55,Dermatitis solaris acuta,11.0
+2024,Sachsen-Anhalt,ICD10-L55,Dermatitis solaris acuta,6.0
+2005,Hamburg,ICD10-L55,Dermatitis solaris acuta,12.0
+2008,Brandenburg,ICD10-T67,Schäden durch Hitze und Sonnenlicht,54.0
+2011,Rheinland-Pfalz,ICD10-L55,Dermatitis solaris acuta,11.0
+2023,Brandenburg,ICD10-L55,Dermatitis solaris acuta,1.0
+2022,Baden-Württemberg,ICD10-L55,Dermatitis solaris acuta,9.0
+2009,Niedersachsen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,119.0
+2002,Thüringen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,40.0
+2014,Brandenburg,ICD10-L55,Dermatitis solaris acuta,5.0
+2000,Hessen,ICD10-L55,Dermatitis solaris acuta,2.0
+2010,Bremen,ICD10-L55,Dermatitis solaris acuta,4.0
+2007,Nordrhein-Westfalen,ICD10-L55,Dermatitis solaris acuta,58.0
+2021,Nordrhein-Westfalen,ICD10-L55,Dermatitis solaris acuta,28.0
+2018,Hessen,ICD10-L55,Dermatitis solaris acuta,12.0
+2024,Sachsen-Anhalt,ICD10-T67,Schäden durch Hitze und Sonnenlicht,28.0
+2008,Brandenburg,ICD10-L55,Dermatitis solaris acuta,6.0
+2001,Bayern,ICD10-T67,Schäden durch Hitze und Sonnenlicht,335.0
+2012,Rheinland-Pfalz,ICD10-L55,Dermatitis solaris acuta,13.0
+2010,Thüringen,ICD10-L55,Dermatitis solaris acuta,10.0
+2016,Baden-Württemberg,ICD10-T67,Schäden durch Hitze und Sonnenlicht,163.0
+2017,Saarland,ICD10-L55,Dermatitis solaris acuta,1.0
+2019,Schleswig-Holstein,ICD10-L55,Dermatitis solaris acuta,8.0
+2023,Baden-Württemberg,ICD10-L55,Dermatitis solaris acuta,3.0
+2009,Sachsen-Anhalt,ICD10-T67,Schäden durch Hitze und Sonnenlicht,41.0
+2003,Thüringen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,61.0
+2005,Rheinland-Pfalz,ICD10-T67,Schäden durch Hitze und Sonnenlicht,143.0
+2023,Sachsen-Anhalt,ICD10-T67,Schäden durch Hitze und Sonnenlicht,37.0
+2006,Nordrhein-Westfalen,ICD10-L55,Dermatitis solaris acuta,91.0
+2001,Saarland,ICD10-L55,Dermatitis solaris acuta,4.0
+2001,Mecklenburg-Vorpommern,ICD10-T67,Schäden durch Hitze und Sonnenlicht,56.0
+2003,Bremen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,14.0
+2012,Berlin,ICD10-L55,Dermatitis solaris acuta,5.0
+2012,Sachsen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,72.0
+2014,Nordrhein-Westfalen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,197.0
+2017,Hessen,ICD10-L55,Dermatitis solaris acuta,13.0
+2004,Rheinland-Pfalz,ICD10-L55,Dermatitis solaris acuta,6.0
+2015,Baden-Württemberg,ICD10-L55,Dermatitis solaris acuta,15.0
+2005,Sachsen,ICD10-L55,Dermatitis solaris acuta,22.0
+2023,Baden-Württemberg,ICD10-T67,Schäden durch Hitze und Sonnenlicht,71.0
+2016,Sachsen-Anhalt,ICD10-L55,Dermatitis solaris acuta,12.0
+2019,Thüringen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,58.0
+2008,Sachsen-Anhalt,ICD10-T67,Schäden durch Hitze und Sonnenlicht,42.0
+2020,Sachsen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,49.0
+2002,Schleswig-Holstein,ICD10-L55,Dermatitis solaris acuta,6.0
+2004,Bremen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,5.0
+2013,Hamburg,ICD10-L55,Dermatitis solaris acuta,4.0
+2002,Mecklenburg-Vorpommern,ICD10-T67,Schäden durch Hitze und Sonnenlicht,35.0
+2013,Sachsen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,99.0
+2015,Brandenburg,ICD10-T67,Schäden durch Hitze und Sonnenlicht,70.0
+2024,Niedersachsen,ICD10-L55,Dermatitis solaris acuta,11.0
+2015,Nordrhein-Westfalen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,342.0
+2017,Niedersachsen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,78.0
+2011,Bremen,ICD10-L55,Dermatitis solaris acuta,2.0
+2000,Niedersachsen,ICD10-L55,Dermatitis solaris acuta,7.0
+2001,Bayern,ICD10-L55,Dermatitis solaris acuta,33.0
+2022,Nordrhein-Westfalen,ICD10-L55,Dermatitis solaris acuta,23.0
+2018,Mecklenburg-Vorpommern,ICD10-L55,Dermatitis solaris acuta,10.0
+2006,Hamburg,ICD10-T67,Schäden durch Hitze und Sonnenlicht,26.0
+2009,Niedersachsen,ICD10-L55,Dermatitis solaris acuta,36.0
+2007,Brandenburg,ICD10-L55,Dermatitis solaris acuta,2.0
+2004,Berlin,ICD10-T67,Schäden durch Hitze und Sonnenlicht,15.0
+2019,Bayern,ICD10-T67,Schäden durch Hitze und Sonnenlicht,291.0
+2002,Thüringen,ICD10-L55,Dermatitis solaris acuta,4.0
+2021,Hamburg,ICD10-L55,Dermatitis solaris acuta,3.0
+2008,Baden-Württemberg,ICD10-T67,Schäden durch Hitze und Sonnenlicht,147.0
+2001,Mecklenburg-Vorpommern,ICD10-L55,Dermatitis solaris acuta,7.0
+2001,Saarland,ICD10-T67,Schäden durch Hitze und Sonnenlicht,40.0
+2012,Sachsen,ICD10-L55,Dermatitis solaris acuta,12.0
+2012,Berlin,ICD10-T67,Schäden durch Hitze und Sonnenlicht,25.0
+2023,Brandenburg,ICD10-T67,Schäden durch Hitze und Sonnenlicht,25.0
+2022,Nordrhein-Westfalen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,145.0
+2015,Brandenburg,ICD10-L55,Dermatitis solaris acuta,6.0
+2023,Sachsen-Anhalt,ICD10-L55,Dermatitis solaris acuta,3.0
+2006,Hamburg,ICD10-L55,Dermatitis solaris acuta,9.0
+2004,Berlin,ICD10-L55,Dermatitis solaris acuta,6.0
+2018,Saarland,ICD10-T67,Schäden durch Hitze und Sonnenlicht,29.0
+2010,Thüringen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,40.0
+2012,Rheinland-Pfalz,ICD10-T67,Schäden durch Hitze und Sonnenlicht,106.0
+2001,Hessen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,101.0
+2005,Sachsen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,77.0
+2007,Nordrhein-Westfalen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,209.0
+2010,Schleswig-Holstein,ICD10-L55,Dermatitis solaris acuta,12.0
+2018,Hessen,ICD10-T67,Schäden durch Hitze und Sonnenlicht,80.0
+2016,Sachsen-Anhalt,ICD10-T67,Schäden durch Hitze und Sonnenlicht,60.0
